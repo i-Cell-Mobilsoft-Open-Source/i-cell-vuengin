@@ -1,0 +1,16 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "printWidth": 180,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": "*.hbs",
+      "options": {
+        "parser": "html",
+        "singleQuote": false
+      }
+    }
+  ]
+}
