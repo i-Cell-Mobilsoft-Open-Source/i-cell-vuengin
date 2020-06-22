@@ -123,9 +123,19 @@ export default {
                   type: 'input',
                   subtype: 'datetime',
                   classes: 'column is-2',
-                  disabled: true,
+                  disabled: false,
                   data: 'model.generalData.contractDate',
                   hasIconsRight: 'calendar-month'
+                },
+                {
+                  name: 'settlementPeriodLength',
+                  type: 'input',
+                  subtype: 'number',
+                  classes: 'column is-2',
+                  minValue: 0,
+                  maxValue: 100,
+                  data: 'model.generalData.settlementPeriodLength',
+                  hasIconsRight: 'numeric'
                 },
                 {
                   name: 'name',

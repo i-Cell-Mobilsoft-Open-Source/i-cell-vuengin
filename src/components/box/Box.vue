@@ -17,7 +17,7 @@
         :class="content.classes"
         :key="asKey(content, index)"
         :label="content.subtype !== 'checkbox' && (content.caption || content.name)"
-        :labelFor="asKey(content, index)"
+        :label-for="asKey(content, index)"
         class=""
       >
         <b-checkbox
@@ -49,10 +49,13 @@
         />
         <b-datetimepicker
           v-if="content.subtype === 'datetime'"
+          :disabled="content.disabled"
           :datetime-formatter="defaultDateTimeFormatter"
           :datetime-parser="defaultDateTimeParser"
           :datepicker="datepickerConfig"
           :icon-right="content.hasIconsRight"
+          :id="asKey(content, index)"
+          :name="asKey(content, index)"
           :placeholder="content.caption || content.name"
           :picker-format-month-year="false"
           :value="getInputValue(content)"
@@ -102,7 +105,19 @@ interface HasAction {
 }
 
 export default {
-  props: ['contents', 'root', 'lang'],
+  // ['contents', 'root', 'lang'],
+  props: {
+    contents: Object,
+    root: Object,
+    lang: {
+      type: String,
+      default: 'hu'
+    },
+    unix: {
+      type: Boolean,
+      default: false
+    }
+  },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setup(props: any) {
     moment.locale(props.langs || 'hu');
@@ -115,7 +130,7 @@ export default {
       return ['text', 'number', 'email', 'url'].includes(type);
     };
     const defaultDateTimeHandler = ($ev: Date | number, $me: HasData) => {
-      set(props.root, $me.data, parseInt(moment($ev).format('x'), 10));
+      set(props.root, $me.data, props.unix ? parseInt(moment($ev).format('x'), 10) : $ev);
     };
     const defaultInputHandler = ($ev: NativeInputEvent, $me: HasData) => {
       set(props.root, $me.data, $me.subtype !== 'number' ? $ev.target.value : parseFloat($ev.target.value));
