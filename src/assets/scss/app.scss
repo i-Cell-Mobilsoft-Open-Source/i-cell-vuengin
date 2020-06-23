@@ -56,8 +56,16 @@ $colors: map-merge($colors, $addColors);
 
 .tile.is-parent {
   margin-right: $size-small;
+  &:last-child {
+    padding-top: 0;
+    margin-right: 0;
+  }
 }
 
 .tile.is-vertical > .tile.is-child:not(:last-child) {
   margin-bottom: initial !important;
+}
+
+input.is-text-right {
+  text-align: right;
 }

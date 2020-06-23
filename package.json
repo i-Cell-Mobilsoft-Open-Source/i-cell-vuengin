@@ -35,6 +35,7 @@
     "lint-staged": "^9.5.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.19.1",
+    "reflect-metadata": "^0.1.13",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3",
     "vue-cli-plugin-buefy": "~0.3.7",
