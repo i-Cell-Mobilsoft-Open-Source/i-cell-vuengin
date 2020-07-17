@@ -4,15 +4,22 @@ import router from './router';
 import store from './store';
 import VueCompositionApi from '@vue/composition-api';
 import Buefy from '@flnf/buefy';
+
+// Style
 import './assets/scss/app.scss';
 
+// Components
 import Box from './components/box/Box.vue';
+import PropsComponent from './components/sandbox/props.component.vue';
+import ClassApiComponent from './components/sandbox/class-api.component.vue';
 
 Vue.use(Buefy, {});
 Vue.use(VueCompositionApi);
 
 Vue.config.productionTip = false;
 Vue.component('Box', Box);
+Vue.component('PropsComponent', PropsComponent);
+Vue.component('ClassApiComponent', ClassApiComponent);
 
 new Vue({
   router,
