@@ -1,9 +1,9 @@
 <template>
   <div class="playGroundComponent">
-    <div class="button-content">
-      <button @click="addCount">+ count</button>
-      <button @click="removeCount">- count</button>
-    </div>
+    <!--<div class="button-content">
+            <button @click="addCount">+ count</button>
+            <button @click="removeCount">- count</button>
+        </div>-->
 
     <!-- Template attributes -->
     <!--<div class="item-content">
@@ -21,23 +21,30 @@
 
     <!-- @Input/@Output: Data down / Events up -->
     <PropsComponent :count="state.count" @count-changed="onCountChanged"></PropsComponent>
+
+    <!-- watchEffect, watch, lifecycle-hooks -->
+    <!--<WatchersComponent :count="state.count"></WatchersComponent>-->
+    <DIComponent></DIComponent>
   </div>
 </template>
 
 <script>
 import { reactive, computed, ref } from '@vue/composition-api';
-
+// import * as httpClient from '../services/http.service';
 export default {
+  /*provide: {
+      'http': httpClient
+    },*/
   methods: {
-    // Output change data event handler
     onCountChanged(newVal) {
+      // Output change data event handler
       console.log('onCountChanged', newVal);
     }
   },
   setup() {
     const count = ref(0);
     const state = reactive({ count: 0 });
-
+    // console.log('LoggedInSymbol', LoggedInSymbol);
     const addCount = () => {
       state.count++;
       count.value++;
@@ -47,16 +54,10 @@ export default {
       count.value--;
     };
 
-    // ha state value változik, lefut és érték transformálás lehetséges és ref-ként tér vissza
+    // Ha state value változik, lefut és érték transformálás lehetséges és ref-ként tér vissza
     const transformCount = computed(() => {
       return state.count + 1;
     });
-
-    // ha state value változik, lefut és side effect lehetséges
-    // watchEffect(() => {
-    //   // console.log(state.count) // reactive change
-    //   // console.log(transformCount.value); // ref change
-    // });
 
     return {
       state,

@@ -12,6 +12,8 @@ import './assets/scss/app.scss';
 import Box from './components/box/Box.vue';
 import PropsComponent from './components/sandbox/props.component.vue';
 import ClassApiComponent from './components/sandbox/class-api.component.vue';
+import WatchersComponent from './components/sandbox/watchers.component.vue';
+import DIComponent from './components/sandbox/dependency-injection.component.vue';
 
 Vue.use(Buefy, {});
 Vue.use(VueCompositionApi);
@@ -20,6 +22,8 @@ Vue.config.productionTip = false;
 Vue.component('Box', Box);
 Vue.component('PropsComponent', PropsComponent);
 Vue.component('ClassApiComponent', ClassApiComponent);
+Vue.component('WatchersComponent', WatchersComponent);
+Vue.component('DIComponent', DIComponent);
 
 new Vue({
   router,

@@ -4,28 +4,20 @@
   </div>
 </template>
 <script>
-import { onMounted, onUnmounted, onUpdated, ref } from '@vue/composition-api';
-
 export default {
   props: {
     count: Number
   },
   /* data() {
-       return {
-         count: 0,
-       }
-     },
-     */
+         return {
+           count: 0,
+         }
+       },
+       */
   setup(props, { emit }) {
-    onMounted(() => {
-      // console.log('mounted!');
-    });
-    onUpdated(() => {
+    setTimeout(() => {
       emit('count-changed', -100); // @Output data to parent component
-    });
-    onUnmounted(() => {
-      // console.log('unmounted!');
-    });
+    }, 2000);
 
     return {};
   }
