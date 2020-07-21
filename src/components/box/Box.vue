@@ -98,32 +98,10 @@
 <script lang="ts">
 import { get, set } from 'lodash';
 import moment from 'moment';
-
-interface HasValue {
-  value: string;
-}
-interface HasChecked {
-  checked: boolean;
-}
-interface NativeInputEvent {
-  target: HasValue & HasChecked;
-}
-interface HasData {
-  data: import('lodash').Many<string | number | symbol>;
-  subtype: string;
-}
-interface MetaHeader {
-  parent?: string;
-  type: string;
-  name: string;
-}
-type Action = ($ev: NativeInputEvent, $me: HasData) => void;
-interface HasAction {
-  action?: Action;
-}
+import { Action } from '@/core/type';
+import { HasData, NativeInputEvent, HasAction, MetaHeader } from '@/core/interfaces';
 
 export default {
-  // ['contents', 'root', 'lang'],
   props: {
     contents: Object,
     root: Object,
