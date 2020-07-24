@@ -1,9 +1,10 @@
 <template>
   <div class="playGroundComponent">
-    <!--<div class="button-content">
-            <button @click="addCount">+ count</button>
-            <button @click="removeCount">- count</button>
-        </div>-->
+    <div class="button-content">
+      <button @click="addCount">+ count</button>
+      <button @click="removeCount">- count</button>
+    </div>
+    <!------------------------------------------------>
 
     <!-- Template attributes -->
     <!--<div class="item-content">
@@ -12,6 +13,8 @@
             <div v-once>Never change: {{ state.count }}</div>
         </div>-->
 
+    <!------------------------------------------------>
+
     <!-- Ref & Reactive & Computed-->
     <!--<div class="item-content">
             <span>Reactive: {{state.count}}</span> |
@@ -19,12 +22,23 @@
             <span>Computed: {{transformCount}}</span>
         </div>-->
 
+    <!------------------------------------------------>
+
     <!-- @Input/@Output: Data down / Events up -->
-    <PropsComponent :count="state.count" @count-changed="onCountChanged"></PropsComponent>
+    <!--<ChildComponent
+                :count="state.count"
+                @count-changed="onCountChanged">
+        </ChildComponent>-->
+
+    <!------------------------------------------------>
 
     <!-- watchEffect, watch, lifecycle-hooks -->
     <!--<WatchersComponent :count="state.count"></WatchersComponent>-->
-    <DIComponent></DIComponent>
+
+    <!------------------------------------------------>
+
+    <!-- Dependency Injection -->
+    <!--<DIComponent></DIComponent>-->
   </div>
 </template>
 
@@ -33,18 +47,17 @@ import { reactive, computed, ref } from '@vue/composition-api';
 // import * as httpClient from '../services/http.service';
 export default {
   /*provide: {
-      'http': httpClient
-    },*/
+        'http': httpClient
+      },*/
   methods: {
     onCountChanged(newVal) {
       // Output change data event handler
-      console.log('onCountChanged', newVal);
+      console.log('Emit data from child component: ', newVal);
     }
   },
   setup() {
     const count = ref(0);
     const state = reactive({ count: 0 });
-    // console.log('LoggedInSymbol', LoggedInSymbol);
     const addCount = () => {
       state.count++;
       count.value++;

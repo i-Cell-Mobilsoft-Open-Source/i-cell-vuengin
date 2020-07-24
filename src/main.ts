@@ -10,7 +10,7 @@ import './assets/scss/app.scss';
 
 // Components
 import Box from './components/box/Box.vue';
-import PropsComponent from './components/sandbox/props.component.vue';
+import ChildComponent from './components/sandbox/child.component.vue';
 import ClassApiComponent from './components/sandbox/class-api.component.vue';
 import WatchersComponent from './components/sandbox/watchers.component.vue';
 import DIComponent from './components/sandbox/dependency-injection.component.vue';
@@ -20,7 +20,7 @@ Vue.use(VueCompositionApi);
 
 Vue.config.productionTip = false;
 Vue.component('Box', Box);
-Vue.component('PropsComponent', PropsComponent);
+Vue.component('ChildComponent', ChildComponent);
 Vue.component('ClassApiComponent', ClassApiComponent);
 Vue.component('WatchersComponent', WatchersComponent);
 Vue.component('DIComponent', DIComponent);
