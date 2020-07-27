@@ -1,6 +1,6 @@
 <template>
   <div class="vuexComponent">
-    Vuex
+    Working progress..
   </div>
 </template>
 
