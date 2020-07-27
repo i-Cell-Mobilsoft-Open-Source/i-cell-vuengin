@@ -10,6 +10,16 @@ const routes: Array<RouteConfig> = [
     component: () => import('../views/Home.vue')
   },
   {
+    path: '/vuex',
+    name: 'Vuex',
+    component: () => import('../views/Vuex.vue')
+  },
+  {
+    path: '/dynamic-component',
+    name: 'DynamicComponent',
+    component: () => import('../views/ContainerComponent.vue')
+  },
+  {
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.

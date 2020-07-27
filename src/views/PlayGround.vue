@@ -39,19 +39,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { reactive, computed, ref } from '@vue/composition-api';
 // import * as httpClient from '../services/http.service';
 export default {
   /*provide: {
       'http': httpClient
     },*/
-  methods: {
-    onCountChanged(newVal) {
-      // Output change data event handler
-      console.log('Emit data from child component: ', newVal);
-    }
-  },
   setup() {
     const count = ref(0);
     const state = reactive({ count: 0 });
@@ -63,16 +57,19 @@ export default {
       state.count--;
       count.value--;
     };
-
     // Ha state value változik, lefut és érték transformálás lehetséges és ref-ként tér vissza
     const transformCount = computed(() => {
       return state.count + 1;
     });
-
+    const onCountChanged = (newVal: number) => {
+      // Output change data event handler
+      console.log('Emit data from child component: ', newVal);
+    };
     return {
       state,
       count,
       transformCount,
+      onCountChanged,
       addCount,
       removeCount
     };
