@@ -29,8 +29,8 @@
           :value="getInputValue(content)"
           @input.native="getAction(content, defaultCheckHandler)($event, content)"
           class=""
-          >{{ content.caption || content.name }}</b-checkbox
-        >
+          >{{ content.caption || content.name }}
+        </b-checkbox>
         <b-input
           v-if="isAlphaNumeric(content.subtype)"
           :capitalize="content.capitalize"
@@ -89,8 +89,8 @@
         :native-type="content.subtype || content.type"
         @click.native="content.action"
         type="is-primary"
-        >{{ content.caption || content.name }}</b-button
-      >
+        >{{ content.caption || content.name }}
+      </b-button>
     </template>
   </section>
 </template>
@@ -144,9 +144,11 @@ export default {
     const getAction = (content: HasAction, defaultHandler: Action) => {
       return content.action || defaultHandler;
     };
+
     function asKey(content: MetaHeader, index: number) {
       return `${content.parent || 'root'}_${content.type}_${content.name}_${index}`;
     }
+
     const getContents = (content: { data: MetaHeader[]; name: string }) => {
       content.data.forEach((item: MetaHeader) => {
         item.parent = content.name;

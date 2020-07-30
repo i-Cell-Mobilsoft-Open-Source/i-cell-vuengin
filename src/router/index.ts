@@ -7,17 +7,22 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/Home.vue')
+    component: () => import('@/views/Home.vue')
   },
   {
     path: '/vuex',
     name: 'Vuex',
-    component: () => import('../views/Vuex.vue')
+    component: () => import('@/views/Vuex.vue')
   },
   {
     path: '/dynamic-component',
     name: 'DynamicComponent',
-    component: () => import('../views/ContainerComponent.vue')
+    component: () => import('@/views/ContainerComponent.vue')
+  },
+  {
+    path: '/forms',
+    name: 'Forms',
+    component: () => import('@/views/Forms.vue')
   },
   {
     // route level code-splitting
