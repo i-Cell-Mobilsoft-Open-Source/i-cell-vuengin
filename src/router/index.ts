@@ -10,28 +10,30 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/Home.vue')
   },
   {
+    path: '/form',
+    name: 'Form',
+    component: () => import('@/views/Form.vue')
+  },
+  {
+    path: '/dynamic-form',
+    name: 'Dynamic Form',
+    component: () => import('@/views/DynamicForm.vue')
+  }
+  /*{
     path: '/vuex',
     name: 'Vuex',
     component: () => import('@/views/Vuex.vue')
-  },
-  {
+  },*/
+  /*{
     path: '/dynamic-component',
     name: 'DynamicComponent',
     component: () => import('@/views/ContainerComponent.vue')
-  },
-  {
-    path: '/forms',
-    name: 'Forms',
-    component: () => import('@/views/Forms.vue')
-  },
-  {
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+  },*/
+  /*{
     path: '/playground',
     name: 'Playground',
     component: () => import('../views/PlayGround.vue')
-  }
+  }*/
 ];
 
 const router = new VueRouter({

@@ -9,7 +9,7 @@
               <div class="input-item">
                 <b-field label="Name">
                   <ValidationProvider rules="required" v-slot="nameValidate">
-                    <b-input :type="'text'" :placeholder="'placeholder'" v-model="formGroup.name" @input="onChange"> </b-input>
+                    <b-input :type="'text'" :placeholder="'placeholder'" v-model="formGroup.name" @input="onChange"></b-input>
                     <div>valid: {{ nameValidate.valid }}</div>
                   </ValidationProvider>
                 </b-field>
@@ -18,7 +18,7 @@
               <div class="input-item">
                 <b-field label="City">
                   <ValidationProvider rules="required" v-slot="cityValidate">
-                    <b-input :type="'text'" :placeholder="'placeholder'" v-model="formGroup.city" @input="onChange"> </b-input>
+                    <b-input :type="'text'" :placeholder="'placeholder'" v-model="formGroup.city" @input="onChange"></b-input>
                     <div>valid: {{ cityValidate.valid }}</div>
                   </ValidationProvider>
                 </b-field>
@@ -26,18 +26,17 @@
 
               <!-- Submit content-->
               <div class="submit-content">
-                <b-button tag="input" native-type="submit" :disabled="!formValidate.valid">Submit </b-button>
+                <b-button tag="input" native-type="submit" :disabled="!formValidate.valid">Submit</b-button>
               </div>
               <div class="form-validate">Form valid: {{ formValidate.valid }}</div>
             </ValidationObserver>
           </form>
         </div>
       </div>
-      <div class="notification">
-        <div class="debugger-content">
-          Output:
-          <pre>{{ formData }}</pre>
-        </div>
+
+      <div class="debugger-content">
+        Output:
+        <pre>{{ formData }}</pre>
       </div>
     </div>
   </div>

@@ -13,6 +13,14 @@ import ChildComponent from './components/sandbox/child.component.vue';
 import ClassApiComponent from './components/sandbox/class-api.component.vue';
 import WatchersComponent from './components/sandbox/watchers.component.vue';
 import DIComponent from './components/sandbox/dependency-injection.component.vue';
+
+// Entry Components
+import InputComponent from '@/shared/components/entry/input.vue';
+import SelectComponent from '@/shared/components/entry/select.vue';
+import DateTimeComponent from '@/shared/components/entry/datepicker.vue';
+import DateTimePickerComponent from '@/shared/components/entry/datetimepicker.vue';
+import CheckboxComponent from '@/shared/components/entry/checkbox.vue';
+
 // Validators extension
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
@@ -27,6 +35,13 @@ Vue.component('WatchersComponent', WatchersComponent);
 Vue.component('DIComponent', DIComponent);
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
+
+// Entry Componenty
+Vue.component('v-input', InputComponent);
+Vue.component('v-select', SelectComponent);
+Vue.component('v-date', DateTimeComponent);
+Vue.component('v-datetime', DateTimePickerComponent);
+Vue.component('v-checkbox', CheckboxComponent);
 
 new Vue({
   router,

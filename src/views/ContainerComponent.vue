@@ -27,8 +27,8 @@ import { ref } from '@vue/composition-api';
 
 export default {
   components: {
-    component1: () => import('@/shared/components/d-component-1.vue'),
-    component2: () => import('@/shared/components/d-component-2.vue')
+    component1: () => import('@/shared/components/component-1.vue'),
+    component2: () => import('@/shared/components/component-2.vue')
   },
   setup() {
     // default component instance
