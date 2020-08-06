@@ -3,7 +3,19 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import VueCompositionApi from '@vue/composition-api';
+
+// Buefy
 import Buefy from '@flnf/buefy';
+
+// BootstrapVue
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+// Vuetify
+// https://medium.com/@attiewilly/how-i-married-vuetify-with-typescript-d6441dedd16
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
 
 // Style
 import './assets/scss/app.scss';
@@ -16,8 +28,16 @@ import DIComponent from './components/sandbox/dependency-injection.component.vue
 // Validators extension
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
+// USE Buefy
 Vue.use(Buefy, {});
 Vue.use(VueCompositionApi);
+
+// USE BootstrapVue
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+
+// Vuetify
+Vue.use(Vuetify);
 
 Vue.config.productionTip = false;
 Vue.component('Box', Box);

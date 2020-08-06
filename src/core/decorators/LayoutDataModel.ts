@@ -1,5 +1,4 @@
 import 'reflect-metadata';
-import * as _ from 'lodash';
 import { MetadataKeys } from '@/core/enums';
 export const LAYOUT_META = 'layout:metadata';
 
@@ -36,7 +35,7 @@ export function multiDecorateProperty(props: string[], values: any[]) {
 }
 
 export function LayoutModel(name: string, debug = false): ClassDecorator {
-  return (target: Function) => {
+  return (target: any) => {
     const tmpInstance = Reflect.construct(target, []);
     const props: any = {};
     for (const prop of Reflect.ownKeys(tmpInstance)) {

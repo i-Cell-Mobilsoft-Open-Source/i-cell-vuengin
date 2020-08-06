@@ -25,6 +25,16 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/Forms.vue')
   },
   {
+    path: '/formsbootstrap',
+    name: 'Forms Bootstap',
+    component: () => import('@/views/Forms_bootstrap.vue')
+  },
+  {
+    path: '/formsvuetify',
+    name: 'Forms Vuetify',
+    component: () => import('@/views/Forms_vuetify.vue')
+  },
+  {
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
