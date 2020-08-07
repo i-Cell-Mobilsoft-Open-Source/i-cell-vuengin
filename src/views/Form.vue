@@ -28,16 +28,15 @@
               <div class="submit-content">
                 <b-button tag="input" native-type="submit" :disabled="!formValidate.valid">Submit</b-button>
               </div>
-              <div class="form-validate">Form valid: {{ formValidate.valid }}</div>
+              <!--<div class="form-validate">Form valid: {{ formValidate.valid }}</div>-->
             </ValidationObserver>
           </form>
         </div>
       </div>
-
-      <div class="debugger-content">
+      <!--<div class="debugger-content">
         Output:
         <pre>{{ formData }}</pre>
-      </div>
+      </div>-->
     </div>
   </div>
 </template>

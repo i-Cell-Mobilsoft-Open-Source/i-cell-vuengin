@@ -1,6 +1,10 @@
 <template>
   <div class="checkboxComponent">
-    <b-field :label="label">
+    <div class="label-content">
+      <strong>{{ label }}</strong>
+      <div class="required-icon" v-if="required">*</div>
+    </div>
+    <b-field>
       <b-checkbox :disabled="disabled" v-model="model">
         {{ model }}
       </b-checkbox>
@@ -31,4 +35,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.required-icon {
+  margin-left: 5px;
+  color: red;
+}
+.label-content {
+  display: flex;
+  align-content: center;
+}
+</style>

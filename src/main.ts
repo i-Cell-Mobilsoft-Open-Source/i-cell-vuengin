@@ -20,9 +20,15 @@ import SelectComponent from '@/shared/components/entry/select.vue';
 import DateTimeComponent from '@/shared/components/entry/datepicker.vue';
 import DateTimePickerComponent from '@/shared/components/entry/datetimepicker.vue';
 import CheckboxComponent from '@/shared/components/entry/checkbox.vue';
+import LegendComponent from '@/shared/components/entry/legend.vue';
 
 // Validators extension
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
+import { required, length } from 'vee-validate/dist/rules';
+import { extend } from 'vee-validate';
+
+extend('required', required);
+extend('length', length);
 
 Vue.use(Buefy, {});
 Vue.use(VueCompositionApi);
@@ -42,6 +48,7 @@ Vue.component('v-select', SelectComponent);
 Vue.component('v-date', DateTimeComponent);
 Vue.component('v-datetime', DateTimePickerComponent);
 Vue.component('v-checkbox', CheckboxComponent);
+Vue.component('v-legend', LegendComponent);
 
 new Vue({
   router,

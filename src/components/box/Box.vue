@@ -9,88 +9,28 @@
         :root="root"
         class=""
       />
-      <h3 v-if="content.type === 'legend'" :key="asKey(content, index)" :class="content.classes" class="is-size-5">
-        {{ content.caption || content.name }}
-      </h3>
-      <b-field
-        v-if="content.type === 'input'"
-        :class="content.classes"
+      <!--Component container-->
+      <component
+        v-if="content.type !== 'box'"
+        v-bind:is="getType(content.type, content.subtype)"
         :key="asKey(content, index)"
+        :id="asKey(content, index)"
+        :labelFor="asKey(content, index)"
+        :name="content.name"
+        :classes="content.classes"
+        :caption="content.caption"
         :label="content.subtype !== 'checkbox' && (content.caption || content.name)"
-        :label-for="asKey(content, index)"
-        class=""
-      >
-        <b-checkbox
-          v-if="content.subtype === 'checkbox'"
-          :class="content.classes"
-          :id="asKey(content, index)"
-          :key="asKey(content, index)"
-          :name="asKey(content, index)"
-          :value="getInputValue(content)"
-          @input.native="getAction(content, defaultCheckHandler)($event, content)"
-          class=""
-          >{{ content.caption || content.name }}
-        </b-checkbox>
-        <b-input
-          v-if="isAlphaNumeric(content.subtype)"
-          :capitalize="content.capitalize"
-          :custom-class="content.customClass"
-          :disabled="content.disabled"
-          :icon="content.hasIconsLeft"
-          :icon-right="content.hasIconsRight"
-          :id="asKey(content, index)"
-          :max="content.max"
-          :maxlength="content.maxLength"
-          :min="content.min"
-          :name="asKey(content, index)"
-          :pattern="content.validationPattern"
-          :placeholder="content.caption || content.name"
-          :required="content.required"
-          :type="content.subtype"
-          :validation-message="content.validationMessage"
-          :value="getInputValue(content)"
-          @input.native="getAction(content, defaultInputHandler)($event, content)"
-        />
-        <b-datetimepicker
-          v-if="content.subtype === 'datetime'"
-          :disabled="content.disabled"
-          :datetime-formatter="defaultDateTimeFormatter"
-          :datetime-parser="defaultDateTimeParser"
-          :datepicker="datepickerConfig"
-          :icon-right="content.hasIconsRight"
-          :id="asKey(content, index)"
-          :name="asKey(content, index)"
-          :placeholder="content.caption || content.name"
-          :picker-format-month-year="false"
-          :value="getInputValue(content)"
-          @input="getAction(content, defaultDateTimeHandler)($event, content)"
-        />
-        <b-datepicker
-          v-if="content.subtype === 'date'"
-          :disabled="content.disabled"
-          :date-formatter="defaultDateTimeFormatter"
-          :date-parser="defaultDateTimeParser"
-          :datepicker="datepickerConfig"
-          :icon-right="content.hasIconsRight"
-          :id="asKey(content, index)"
-          :name="asKey(content, index)"
-          :placeholder="content.caption || content.name"
-          :picker-format-month-year="false"
-          :value="getInputValue(content)"
-          @input="getAction(content, defaultDateTimeHandler)($event, content)"
-        />
-      </b-field>
-      <b-button
-        v-if="content.type === 'button'"
-        :class="content.classes"
-        :icon-left="content.hasIconsLeft"
-        :icon-right="content.hasIconsRight"
-        :key="asKey(content, index)"
-        :native-type="content.subtype || content.type"
-        @click.native="content.action"
-        type="is-primary"
-        >{{ content.caption || content.name }}
-      </b-button>
+        :capitalize="content.capitalize"
+        :custom-class="content.customClass"
+        :disabled="content.disabled"
+        :placeholder="content.placeHolder"
+        :required="content.required"
+        :type="content.subtype"
+        :value="getInputValue(content)"
+        @getInputAction="getAction(content, defaultInputHandler)($event, content)"
+        @getDateTimeAction="getAction(content, defaultDateTimeHandler)($event, content)"
+        @getDateAction="getAction(content, defaultDateTimeHandler)($event, content)"
+      ></component>
     </template>
   </section>
 </template>
@@ -122,8 +62,9 @@ export default {
       dayNames: moment.localeData().weekdaysShort(),
       monthNames: moment.localeData().months()
     };
-    const isAlphaNumeric = (type: string) => {
-      return ['text', 'number', 'email', 'url'].includes(type);
+    const getType = (type: string, subtype: string): string => {
+      const componentType = ['date', 'datetime', 'checkbox'].includes(subtype) ? subtype : type;
+      return `v-${componentType}`;
     };
     const defaultDateTimeHandler = ($ev: Date | number, $me: HasData) => {
       set(props.root, $me.data, props.unix ? parseInt(moment($ev).format('x'), 10) : $ev);
@@ -132,24 +73,21 @@ export default {
       set(props.root, $me.data, $me.subtype !== 'number' ? $ev.target.value : parseFloat($ev.target.value));
     };
     const defaultCheckHandler = ($ev: NativeInputEvent, $me: HasData) => {
-      console.log($me);
       set(props.root, $me.data, $ev.target.checked);
     };
-    const defaultDateTimeFormatter = (date: Date) => {
+    const defaultDateTimeFormatter = (date: Date): any => {
       return moment(date).format('L LT');
     };
-    const defaultDateTimeParser = (date: string) => {
+    const defaultDateTimeParser = (date: string): Date => {
       return new Date(Date.parse(date));
     };
-    const getAction = (content: HasAction, defaultHandler: Action) => {
+    const getAction = (content: HasAction, defaultHandler: Action): any => {
       return content.action || defaultHandler;
     };
-
-    function asKey(content: MetaHeader, index: number) {
+    const asKey = (content: MetaHeader, index: number): string => {
       return `${content.parent || 'root'}_${content.type}_${content.name}_${index}`;
-    }
-
-    const getContents = (content: { data: MetaHeader[]; name: string }) => {
+    };
+    const getContents = (content: { data: MetaHeader[]; name: string }): any => {
       content.data.forEach((item: MetaHeader) => {
         item.parent = content.name;
       });
@@ -163,14 +101,14 @@ export default {
       asKey,
       datepickerConfig,
       defaultCheckHandler,
-      defaultDateTimeFormatter,
       defaultDateTimeHandler,
-      defaultDateTimeParser,
       defaultInputHandler,
+      defaultDateTimeFormatter,
+      defaultDateTimeParser,
       getContents,
       getInputValue,
       getAction,
-      isAlphaNumeric
+      getType
     };
   }
 };

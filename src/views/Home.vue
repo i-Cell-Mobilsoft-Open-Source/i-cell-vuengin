@@ -1,7 +1,14 @@
 <template>
-  <section>
-    <Box :contents="layout" :root="layout" class="tile is-ancestor is-vertical" />
-    <pre>{{ generalData }}, {{ addressDataPostal }}</pre>
+  <section class="notification">
+    <div class="box">
+      <ValidationObserver ref="observer" rules="required" v-slot="formValidate">
+        <Box :contents="layout" :root="layout" class="" />
+        <div class="submit-content">
+          <b-button tag="input" native-type="submit" :disabled="!formValidate.valid">Submit</b-button>
+        </div>
+      </ValidationObserver>
+    </div>
+    <!--<pre>{{ generalData }}</pre>-->
   </section>
 </template>
 
@@ -16,18 +23,18 @@ import { ref } from '@vue/composition-api';
 export default {
   setup() {
     const generalData: BoxTypeModel = BoxTypeModel.factory({
-      serviceProviderId: null,
       name: 'FE Test E2E',
-      settlementPeriodLength: 3,
+      serviceProviderId: null,
+      settlementPeriodLength: 2,
+      contractDate: new Date(),
       ifUrl: 'http://eets_service_spmock_serviceprovidermock:10010/mock',
-      regNumber: '11111111111111111',
+      regNumber: '',
       customerTaxNumber: 'HU11111111',
       iban: 'HU40031551504361750648232185',
-      oversightOrganization: 'ORG',
-      paymentTerm: 10,
-      contractDate: new Date()
+      oversightOrganization: '',
+      paymentTerm: 10
     });
-    const addressDataBilling = {
+    /*const addressDataBilling = {
       nationality: 'HU',
       country: 'Magyarország',
       zipCode: '1142',
@@ -47,9 +54,15 @@ export default {
     };
     const emailData = {
       emails: ['test-tsp.icell@example.com', 'test-tsp2.icell@example.com', 'test-tsp3.icell@example.com']
-    };
+    };*/
     const layout = ref(buildLayout(generalData));
-    return { layout, generalData, addressDataPostal, addressDataBilling, emailData };
+    return {
+      layout,
+      generalData
+      // addressDataPostal,
+      // addressDataBilling,
+      // emailData
+    };
   }
 };
 </script>

@@ -29,10 +29,10 @@ const routes: Array<RouteConfig> = [
     name: 'DynamicComponent',
     component: () => import('@/views/ContainerComponent.vue')
   },*/
-  /*{
+  /* {
     path: '/playground',
     name: 'Playground',
-    component: () => import('../views/PlayGround.vue')
+    component: () => import('@/views/PlayGround.vue')
   }*/
 ];
 

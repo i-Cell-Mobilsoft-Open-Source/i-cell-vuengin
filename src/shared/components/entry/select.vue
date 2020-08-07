@@ -1,12 +1,15 @@
 <template>
   <div class="selectComponent">
-    <ValidationProvider :rules="isRequired()" v-slot="error">
-      <b-field :label="label">
+    <ValidationProvider :rules="isRequired()" v-slot="">
+      <div class="label-content">
+        <strong>{{ label }}</strong>
+        <div class="required-icon" v-if="required">*</div>
+      </div>
+      <b-field>
         <b-select :placeholder="placeHolder" :expanded="expanded" v-model="model">
-          <option v-for="(item, index) in option" :value="item" :key="index">{{ item }} </option>
+          <option v-for="(item, index) in option" :value="item" :key="index">{{ item }}</option>
         </b-select>
       </b-field>
-      <div v-if="required">valid: {{ error.valid }}</div>
     </ValidationProvider>
   </div>
 </template>
@@ -21,9 +24,9 @@ export default {
     name: String,
     option: Array,
     expanded: Boolean,
-    value: String || Number || Object,
     required: Boolean,
-    disabled: Boolean
+    disabled: Boolean,
+    value: [String, Number, Object, Array]
   },
   setup(props: any) {
     const model = props.value ? ref(props.value) : null;
@@ -36,4 +39,14 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.required-icon {
+  margin-left: 5px;
+  color: red;
+}
+
+.label-content {
+  display: flex;
+  align-content: center;
+}
+</style>
