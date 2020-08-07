@@ -69,3 +69,7 @@ $colors: map-merge($colors, $addColors);
 input.is-text-right {
   text-align: right;
 }
+
+.v-application--wrap{
+  min-height: inherit !important;
+}

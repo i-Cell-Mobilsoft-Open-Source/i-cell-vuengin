@@ -5,7 +5,6 @@
         <strong>{{ label }}</strong>
         <div class="required-icon" v-if="required">*</div>
       </div>
-      <!--<b-field :label="label">-->
       <b-field>
         <b-input
           v-model="model"
@@ -29,7 +28,7 @@
 import { ref } from '@vue/composition-api';
 
 export default {
-  name: 'v-input',
+  name: 'v-icell-input',
   props: {
     type: String,
     value: [String, Number, Object, Date],

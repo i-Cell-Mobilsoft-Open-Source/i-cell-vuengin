@@ -16,7 +16,7 @@
 import { ref } from '@vue/composition-api';
 
 export default {
-  name: 'v-checkbox',
+  name: 'v-icell-checkbox',
   props: {
     label: String,
     type: String,

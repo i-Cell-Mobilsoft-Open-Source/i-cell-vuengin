@@ -25,7 +25,7 @@
 import { ref } from '@vue/composition-api';
 
 export default {
-  name: 'v-date',
+  name: 'v-icell-date',
   props: ['label', 'placeHolder', 'required', 'value', 'disabled', 'classes'],
   setup(props: any, attr: any) {
     const model = props.value ? ref(props.value) : null;

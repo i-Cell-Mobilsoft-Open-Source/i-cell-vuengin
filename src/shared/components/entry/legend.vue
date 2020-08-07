@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'v-legend',
+  name: 'v-icell-legend',
   props: {
     caption: String,
     name: String,

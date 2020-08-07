@@ -64,7 +64,7 @@ export default {
     };
     const getType = (type: string, subtype: string): string => {
       const componentType = ['date', 'datetime', 'checkbox'].includes(subtype) ? subtype : type;
-      return `v-${componentType}`;
+      return `v-icell-${componentType}`;
     };
     const defaultDateTimeHandler = ($ev: Date | number, $me: HasData) => {
       set(props.root, $me.data, props.unix ? parseInt(moment($ev).format('x'), 10) : $ev);

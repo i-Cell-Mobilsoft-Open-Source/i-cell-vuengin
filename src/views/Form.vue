@@ -5,56 +5,62 @@
         <div class="formGroupContent box">
           <form v-on:submit.prevent="onSubmit">
             <!-- Input content -->
+
+            <v-app>
+              <v-text-field label="First name" required></v-text-field>
+            </v-app>
             <ValidationObserver ref="observer" rules="required" v-slot="formValidate">
               <div class="input-item">
-                <b-field label="Name">
-                  <ValidationProvider rules="required" v-slot="nameValidate">
-                    <b-input :type="'text'" :placeholder="'placeholder'" v-model="formGroup.name" @input="onChange"></b-input>
-                    <div>valid: {{ nameValidate.valid }}</div>
-                  </ValidationProvider>
-                </b-field>
+                <v-icell-input
+                  :label="'Name'"
+                  :type="'text'"
+                  :placeholder="'Name'"
+                  :required="true"
+                  :value="formGroup.name"
+                ></v-icell-input>
               </div>
-
               <div class="input-item">
-                <b-field label="City">
-                  <ValidationProvider rules="required" v-slot="cityValidate">
-                    <b-input :type="'text'" :placeholder="'placeholder'" v-model="formGroup.city" @input="onChange"></b-input>
-                    <div>valid: {{ cityValidate.valid }}</div>
-                  </ValidationProvider>
-                </b-field>
+                <v-icell-input
+                  :label="'City'"
+                  :placeholder="'City'"
+                  :type="'text'"
+                  :required="true"
+                  :value="formGroup.city"
+                ></v-icell-input>
               </div>
-
+              <div class="input-item">
+                <v-icell-input
+                  :label="'Age'"
+                  :placeholder="'age'"
+                  :type="'number'"
+                  :required="false"
+                  :value="formGroup.age"
+                ></v-icell-input>
+              </div>
               <!-- Submit content-->
               <div class="submit-content">
-                <b-button tag="input" native-type="submit" :disabled="!formValidate.valid">Submit</b-button>
+                <b-button tag="input" native-type="submit" :disabled="!formValidate.valid">
+                  Submit
+                </b-button>
               </div>
-              <!--<div class="form-validate">Form valid: {{ formValidate.valid }}</div>-->
             </ValidationObserver>
           </form>
         </div>
       </div>
-      <!--<div class="debugger-content">
-        Output:
-        <pre>{{ formData }}</pre>
-      </div>-->
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { required, length } from 'vee-validate/dist/rules';
-import { extend } from 'vee-validate';
-
-extend('required', required);
-extend('length', length);
 import { computed, reactive } from '@vue/composition-api';
 
 export default {
   name: 'Forms',
   setup() {
     const formGroup = reactive({
-      name: '',
-      city: ''
+      name: 's',
+      city: '',
+      age: 0
     });
     const formData = computed(() => formGroup);
     const onChange = () => {
@@ -74,12 +80,18 @@ export default {
 </script>
 
 <style scoped>
+.vuetifyContainer {
+  opacity: 0.3;
+}
+
 .input-item {
   padding-bottom: 10px;
 }
+
 .submit-content {
   padding-top: 15px;
 }
+
 .form-validate {
   padding-top: 15px;
 }

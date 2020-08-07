@@ -25,7 +25,7 @@
 import { ref } from '@vue/composition-api';
 
 export default {
-  name: 'v-datetime',
+  name: 'v-icell-datetime',
   props: ['label', 'placeHolder', 'required', 'value', 'disabled', 'classes'],
   setup(props: any, attr: any) {
     const model = props.value ? ref(props.value) : null;

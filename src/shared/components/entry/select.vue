@@ -17,7 +17,7 @@
 import { ref } from '@vue/composition-api';
 
 export default {
-  name: 'v-select',
+  name: 'v-icell-select',
   props: {
     label: String,
     placeHolder: String,

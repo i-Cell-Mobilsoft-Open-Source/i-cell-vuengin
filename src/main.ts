@@ -26,11 +26,15 @@ import LegendComponent from '@/shared/components/entry/legend.vue';
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import { required, length } from 'vee-validate/dist/rules';
 import { extend } from 'vee-validate';
-
+import vuetify from './plugins/vuetify';
 extend('required', required);
 extend('length', length);
 
+// import Vuetify from 'vuetify';
+// import 'vuetify/dist/vuetify.min.css';
+
 Vue.use(Buefy, {});
+// Vue.use(Vuetify, {});
 Vue.use(VueCompositionApi);
 
 Vue.config.productionTip = false;
@@ -43,15 +47,16 @@ Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 
 // Entry Componenty
-Vue.component('v-input', InputComponent);
-Vue.component('v-select', SelectComponent);
-Vue.component('v-date', DateTimeComponent);
-Vue.component('v-datetime', DateTimePickerComponent);
-Vue.component('v-checkbox', CheckboxComponent);
-Vue.component('v-legend', LegendComponent);
+Vue.component('v-icell-input', InputComponent);
+Vue.component('v-icell-select', SelectComponent);
+Vue.component('v-icell-date', DateTimeComponent);
+Vue.component('v-icell-datetime', DateTimePickerComponent);
+Vue.component('v-icell-checkbox', CheckboxComponent);
+Vue.component('v-icell-legend', LegendComponent);
 
 new Vue({
   router,
   store,
+  vuetify,
   render: (h) => h(App)
 }).$mount('#app');

@@ -7,7 +7,7 @@
           <!--Component container-->
           <component
             v-for="(item, index) in config"
-            v-bind:is="`v-${item.type}`"
+            v-bind:is="`v-icell-${item.type}`"
             v-bind:key="index"
             :type="item.subType"
             :value="item.value"
