@@ -18,6 +18,10 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-implicit-any': 'off',
     'no-explicit-any': 'off',
+    '@typescript-eslint/no-implicit-any': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/ban-types': 'off'
   }
 };
