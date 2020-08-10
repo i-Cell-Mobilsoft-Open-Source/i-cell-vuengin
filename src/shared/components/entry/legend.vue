@@ -1,5 +1,4 @@
 <template>
-  <!--:key="asKey(content, index)"-->
   <h3 :class="classes" class="is-size-5">
     {{ caption || name }}
   </h3>

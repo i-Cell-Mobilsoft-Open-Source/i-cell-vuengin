@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 import { MetadataKeys } from '@/core/enums';
 export const LAYOUT_META = 'layout:metadata';
 

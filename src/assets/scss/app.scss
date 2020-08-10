@@ -1,75 +1,80 @@
-@import '~bulma/sass/utilities/initial-variables';
-@import '~bulma/sass/utilities/functions';
-// 1. Set your own initial variables and derived
-//    variables in _variables.scss
-@import 'variables';
-
-// 2. Setup your Custom Colors
-$linkedin: #0077b5;
-$linkedin-invert: findColorInvert($linkedin);
-$twitter: #55acee;
-$twitter-invert: findColorInvert($twitter);
-$github: #333;
-$github-invert: findColorInvert($github);
-
-@import '~bulma/sass/utilities/derived-variables';
-
-// 3. Add new color variables to the color map.
-$addColors: (
-  'twitter': (
-    $twitter,
-    $twitter-invert
-  ),
-  'linkedin': (
-    $linkedin,
-    $linkedin-invert
-  ),
-  'github': (
-    $github,
-    $github-invert
-  )
-);
-$colors: map-merge($colors, $addColors);
-
-@import '~bulma';
-@import '~@flnf/buefy/src/scss/buefy';
-
-// 4. Provide custom buefy overrides and site styles here
-
-.box.is-parent {
-  margin-left: $size-small;
-  margin-right: $size-small;
-  margin-bottom: $size-small;
+body {
+  //background-color: whitesmoke;
 }
 
-.box.tile:not(.is-parent):not(:last-child) {
-  margin-right: $size-small;
-}
-
-.box.tile {
-  margin-bottom: initial;
-}
-
-.tile.is-ancestor {
-  margin: initial;
-}
-
-.tile.is-parent {
-  margin-right: $size-small;
-  &:last-child {
-    padding-top: 0;
-    margin-right: 0;
+.navbar-item {
+  img {
+    max-height: 2.75rem !important;
   }
 }
 
-.tile.is-vertical > .tile.is-child:not(:last-child) {
-  margin-bottom: initial !important;
-}
 
-input.is-text-right {
-  text-align: right;
-}
-
-.v-application--wrap{
+.v-application--wrap {
   min-height: inherit !important;
+}
+
+.submit-content {
+  text-align: right;
+
+  .v-application--wrap {
+    align-items: flex-end;
+  }
+
+}
+
+.buefy-content {
+  .input-item {
+    padding-bottom: 15px;
+  }
+}
+
+.form-validate {
+  padding-bottom: 15px;
+}
+
+.navbar-end {
+  align-items: center;
+}
+
+$headerHeight: 70px;
+$navBgColor: #f5f5f5;
+.nav-content {
+  display: flex;
+  height: $headerHeight;
+  align-items: center;
+  background-color: $navBgColor;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.32);
+  //box-shadow: 0 2px 5px 1px rgba(0,0,0,0.18);
+  //box-shadow: 0 1px 10px 1px rgba(0,0,0,0.38);
+  .navbar {
+    min-height: inherit !important;
+    background-color: $navBgColor;
+  }
+  .logo-title {
+    font-weight: 500;
+  }
+}
+
+.box {
+  box-shadow: 2px 6px 14px -3px rgba(0, 0, 0, 0.22);
+}
+
+.page-content {
+  padding-top: $headerHeight;
+}
+
+.vuetify-content {
+  font-family: Roboto, sans-serif;
+
+  .container {
+    position: inherit !important;
+  }
+
+  .title {
+    font-weight: 400;
+  }
 }

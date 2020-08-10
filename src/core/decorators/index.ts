@@ -11,3 +11,4 @@ export * from './Required';
 export * from './Row';
 export * from './Text';
 export * from './Numeric';
+export * from './UI';

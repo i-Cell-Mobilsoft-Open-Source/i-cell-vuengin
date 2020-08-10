@@ -1,14 +1,16 @@
 <template>
   <div class="checkboxComponent">
-    <div class="label-content">
-      <strong>{{ label }}</strong>
-      <div class="required-icon" v-if="required">*</div>
-    </div>
-    <b-field>
-      <b-checkbox :disabled="disabled" v-model="model">
-        {{ model }}
-      </b-checkbox>
-    </b-field>
+    <template v-if="ui === 'material'">
+      <v-app>
+        <v-checkbox :label="label" v-model="model"></v-checkbox>
+      </v-app>
+    </template>
+
+    <template v-else>
+      <b-field :label="label">
+        <b-checkbox :disabled="disabled" v-model="model">{{ model }} </b-checkbox>
+      </b-field>
+    </template>
   </div>
 </template>
 
@@ -18,6 +20,7 @@ import { ref } from '@vue/composition-api';
 export default {
   name: 'v-icell-checkbox',
   props: {
+    ui: String,
     label: String,
     type: String,
     required: Boolean,
@@ -36,12 +39,8 @@ export default {
 </script>
 
 <style scoped>
-.required-icon {
-  margin-left: 5px;
-  color: red;
-}
 .label-content {
-  display: flex;
-  align-content: center;
+  /*display: flex;*/
+  /*align-content: center;*/
 }
 </style>

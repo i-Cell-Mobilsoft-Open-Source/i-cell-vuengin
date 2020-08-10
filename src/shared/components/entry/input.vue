@@ -1,25 +1,37 @@
 <template>
   <div class="inputComponent" :class="classes">
     <ValidationProvider :rules="isRequired()" v-slot="">
-      <div class="label-content">
-        <strong>{{ label }}</strong>
-        <div class="required-icon" v-if="required">*</div>
-      </div>
-      <b-field>
-        <b-input
-          v-model="model"
-          :type="type"
-          :capitalize="capitalize"
-          :custom-class="customClass"
-          :label-for="labelFor"
-          :disabled="disabled"
-          :id="id"
-          :name="name"
-          :placeholder="placeHolder"
-          :required="required"
-          @input.native="onInputChange($event)"
-        />
-      </b-field>
+      <template v-if="ui === 'material'">
+        <v-app>
+          <v-text-field
+            v-model="model"
+            :type="type"
+            :label="label"
+            :disabled="disabled"
+            :placeholder="placeHolder"
+            :rules="isRequired() ? [!!model || isRequired()] : []"
+          >
+          </v-text-field>
+        </v-app>
+      </template>
+
+      <template v-if="!ui">
+        <b-field :label="label" :label-for="id">
+          <b-input
+            v-model="model"
+            :type="type"
+            :capitalize="capitalize"
+            :custom-class="customClass"
+            :label-for="labelFor"
+            :disabled="disabled"
+            :id="id"
+            :name="name"
+            :placeholder="placeHolder"
+            :required="required"
+            @input.native="onInputChange($event)"
+          />
+        </b-field>
+      </template>
     </ValidationProvider>
   </div>
 </template>
@@ -30,10 +42,11 @@ import { ref } from '@vue/composition-api';
 export default {
   name: 'v-icell-input',
   props: {
+    ui: String,
     type: String,
     value: [String, Number, Object, Date],
     name: String,
-    id: String,
+    id: [String, Number],
     classes: String,
     label: String,
     labelFor: String,
@@ -59,13 +72,19 @@ export default {
 };
 </script>
 
-<style scoped>
-.required-icon {
-  margin-left: 5px;
-  color: red;
-}
-.label-content {
-  display: flex;
-  align-content: center;
-}
-</style>
+<style scoped></style>
+
+<!--<template v-if="ui === 'boostrap'">
+  <b-form-group
+    :label="label"
+    :label-for="id">
+    <b-form-input
+      v-model="model"
+      :id="id"
+      :type="type"
+      :disabled="disabled"
+      :name="name"
+      :placeholder="placeHolder"
+    ></b-form-input>
+  </b-form-group>
+</template>-->

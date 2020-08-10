@@ -5,35 +5,20 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
-    name: 'Home',
-    component: () => import('@/views/Home.vue')
+    path: '/layout-form',
+    name: 'layout-form',
+    component: () => import('@/views/LayoutForm.vue')
   },
   {
-    path: '/form',
-    name: 'Form',
-    component: () => import('@/views/Form.vue')
+    path: '/basic-form',
+    name: 'Basic Form',
+    component: () => import('@/views/BasicForm.vue')
   },
   {
     path: '/dynamic-form',
     name: 'Dynamic Form',
     component: () => import('@/views/DynamicForm.vue')
   }
-  /*{
-    path: '/vuex',
-    name: 'Vuex',
-    component: () => import('@/views/Vuex.vue')
-  },*/
-  /*{
-    path: '/dynamic-component',
-    name: 'DynamicComponent',
-    component: () => import('@/views/ContainerComponent.vue')
-  },*/
-  /* {
-    path: '/playground',
-    name: 'Playground',
-    component: () => import('@/views/PlayGround.vue')
-  }*/
 ];
 
 const router = new VueRouter({
@@ -43,3 +28,19 @@ const router = new VueRouter({
 });
 
 export default router;
+
+/*{
+  path: '/vuex',
+  name: 'Vuex',
+  component: () => import('@/views/Vuex.vue')
+},*/
+/*{
+  path: '/dynamic-component',
+  name: 'DynamicComponent',
+  component: () => import('@/views/ContainerComponent.vue')
+},*/
+/* {
+  path: '/playground',
+  name: 'Playground',
+  component: () => import('@/views/PlayGround.vue')
+}*/

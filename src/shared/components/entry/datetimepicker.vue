@@ -1,11 +1,7 @@
 <template>
   <div class="dateTimePickerComponent" :class="classes">
     <ValidationProvider :rules="isRequired()" v-slot="">
-      <div class="label-content">
-        <strong>{{ label }}</strong>
-        <div class="required-icon" v-if="required">*</div>
-      </div>
-      <b-field>
+      <b-field :label="label" :label-for="id">
         <b-datetimepicker
           v-model="model"
           :show-week-number="false"
@@ -26,7 +22,7 @@ import { ref } from '@vue/composition-api';
 
 export default {
   name: 'v-icell-datetime',
-  props: ['label', 'placeHolder', 'required', 'value', 'disabled', 'classes'],
+  props: ['id', 'label', 'placeHolder', 'required', 'value', 'disabled', 'classes'],
   setup(props: any, attr: any) {
     const model = props.value ? ref(props.value) : null;
     const isRequired = () => (props.required ? 'required' : '');

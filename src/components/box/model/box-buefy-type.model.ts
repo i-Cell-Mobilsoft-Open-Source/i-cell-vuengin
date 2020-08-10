@@ -1,8 +1,8 @@
-import { DateTimePicker, Disabled, Numeric, Classes, LayoutModel, Legend, Order, Required, Row, Text } from '@/core/decorators';
+import { DateTimePicker, Disabled, Numeric, Classes, LayoutModel, Legend, Order, Required, Row, Text, UI } from '@/core/decorators';
 
 @LayoutModel('GeneralData')
 @Legend('GeneralData')
-export class BoxTypeModel {
+export class BoxBuefyTypeModel {
   // identifier ----------------------------------------------------------------
   /**
    * serviceProviderId
@@ -107,7 +107,7 @@ export class BoxTypeModel {
   public paymentTerm = 0;
 
   public static factory(obj: any) {
-    const instance = new BoxTypeModel();
+    const instance = new BoxBuefyTypeModel();
     instance.name = obj.name;
     instance.serviceProviderId = obj.serviceProviderId;
     instance.settlementPeriodLength = obj.settlementPeriodLength;

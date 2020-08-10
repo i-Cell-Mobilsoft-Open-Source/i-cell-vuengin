@@ -17,6 +17,7 @@
         :id="asKey(content, index)"
         :labelFor="asKey(content, index)"
         :name="content.name"
+        :ui="content.ui"
         :classes="content.classes"
         :caption="content.caption"
         :label="content.subtype !== 'checkbox' && (content.caption || content.name)"
