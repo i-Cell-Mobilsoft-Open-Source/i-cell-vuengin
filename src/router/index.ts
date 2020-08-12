@@ -5,19 +5,28 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/layout-form',
-    name: 'layout-form',
-    component: () => import('@/views/LayoutForm.vue')
+    path: '/input',
+    name: 'Input View',
+    component: () => import('@/views/input-container.vue')
   },
   {
-    path: '/basic-form',
-    name: 'Basic Form',
-    component: () => import('@/views/BasicForm.vue')
+    path: '/datepicker',
+    name: 'Datepicker View',
+    component: () => import('@/views/datepicker-container.vue')
   },
   {
-    path: '/dynamic-form',
-    name: 'Dynamic Form',
-    component: () => import('@/views/DynamicForm.vue')
+    path: '/datetimepicker',
+    name: 'Datetimepicker View',
+    component: () => import('@/views/datetimepicker-container.vue')
+  },
+  {
+    path: '/table',
+    name: 'Table View',
+    component: () => import('@/views/table-container.vue')
+  },
+  {
+    path: '/*',
+    redirect: '/input'
   }
 ];
 
@@ -28,19 +37,3 @@ const router = new VueRouter({
 });
 
 export default router;
-
-/*{
-  path: '/vuex',
-  name: 'Vuex',
-  component: () => import('@/views/Vuex.vue')
-},*/
-/*{
-  path: '/dynamic-component',
-  name: 'DynamicComponent',
-  component: () => import('@/views/ContainerComponent.vue')
-},*/
-/* {
-  path: '/playground',
-  name: 'Playground',
-  component: () => import('@/views/PlayGround.vue')
-}*/

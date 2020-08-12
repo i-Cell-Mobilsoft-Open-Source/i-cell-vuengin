@@ -1,6 +1,6 @@
 <template>
-  <div class="vuexComponent">
-    Working progress..
+  <div>
+    Datepicker
   </div>
 </template>
 

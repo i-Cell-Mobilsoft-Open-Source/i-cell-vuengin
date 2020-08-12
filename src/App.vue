@@ -9,9 +9,10 @@
             </b-navbar-item>
           </template>
           <template slot="end">
-            <b-navbar-item tag="router-link" :to="{ path: '/basic-form' }">Basic Form</b-navbar-item>
-            <b-navbar-item tag="router-link" :to="{ path: '/dynamic-form' }">Dynamic Form</b-navbar-item>
-            <b-navbar-item tag="router-link" :to="{ path: '/layout-form' }">Layout Form</b-navbar-item>
+            <b-navbar-item tag="router-link" :to="{ path: '/table' }">Table</b-navbar-item>
+            <b-navbar-item tag="router-link" :to="{ path: '/input' }">Input</b-navbar-item>
+            <b-navbar-item tag="router-link" :to="{ path: '/datepicker' }">Datepicker</b-navbar-item>
+            <b-navbar-item tag="router-link" :to="{ path: '/datetimepicker' }">Datetimepicker</b-navbar-item>
           </template>
           <template slot="start">
             <b-navbar-item class="logo-title title is-5">Icell Vue Component</b-navbar-item>
@@ -24,10 +25,3 @@
     </div>
   </div>
 </template>
-
-<!--<div id="nav">
-<router-link to="/">Home</router-link> |
-<router-link to="/form">Forms</router-link> |
-<router-link to="/dynamic-form">Dynamic Form</router-link>  |
-<router-link to="/playground">Playground</router-link> |
-</div>-->
