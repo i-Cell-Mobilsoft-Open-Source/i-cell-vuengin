@@ -1,37 +1,21 @@
 <template>
-  <div class="inputComponent" :class="classes">
+  <div :class="classes">
     <ValidationProvider :rules="isRequired()" v-slot="">
-      <template v-if="ui === 'material'">
-        <v-app>
-          <v-text-field
-            v-model="model"
-            :type="type"
-            :label="label"
-            :disabled="disabled"
-            :placeholder="placeHolder"
-            :rules="isRequired() ? [!!model || isRequired()] : []"
-          >
-          </v-text-field>
-        </v-app>
-      </template>
-
-      <template v-if="!ui">
-        <b-field :label="label" :label-for="id">
-          <b-input
-            v-model="model"
-            :type="type"
-            :capitalize="capitalize"
-            :custom-class="customClass"
-            :label-for="labelFor"
-            :disabled="disabled"
-            :id="id"
-            :name="name"
-            :placeholder="placeHolder"
-            :required="required"
-            @input.native="onInputChange($event)"
-          />
-        </b-field>
-      </template>
+      <b-field :label="label" :label-for="id">
+        <b-input
+          v-model="model"
+          :type="type"
+          :capitalize="capitalize"
+          :custom-class="customClass"
+          :label-for="labelFor"
+          :disabled="disabled"
+          :id="id"
+          :name="name"
+          :placeholder="placeHolder"
+          :required="required"
+          @input.native="onInputChange($event)"
+        />
+      </b-field>
     </ValidationProvider>
   </div>
 </template>
@@ -44,7 +28,6 @@ export default {
   props: {
     ui: String,
     type: String,
-    value: [String, Number, Object, Date],
     name: String,
     id: [String, Number],
     classes: String,
@@ -55,7 +38,8 @@ export default {
     placeHolder: String,
     validationPattern: Function,
     required: Boolean,
-    disabled: Boolean
+    disabled: Boolean,
+    value: [String, Number, Object, Date]
   },
   setup(props: any, attr: any) {
     const model = ref(props.value);
@@ -71,20 +55,4 @@ export default {
   }
 };
 </script>
-
 <style scoped></style>
-
-<!--<template v-if="ui === 'boostrap'">
-  <b-form-group
-    :label="label"
-    :label-for="id">
-    <b-form-input
-      v-model="model"
-      :id="id"
-      :type="type"
-      :disabled="disabled"
-      :name="name"
-      :placeholder="placeHolder"
-    ></b-form-input>
-  </b-form-group>
-</template>-->

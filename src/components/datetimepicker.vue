@@ -1,5 +1,5 @@
 <template>
-  <div class="dateTimePickerComponent" :class="classes">
+  <div :class="classes">
     <ValidationProvider :rules="isRequired()" v-slot="">
       <b-field :label="label" :label-for="id">
         <b-datetimepicker
@@ -38,14 +38,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.required-icon {
-  margin-left: 5px;
-  color: red;
-}
-
-.label-content {
-  display: flex;
-  align-content: center;
-}
-</style>
+<style scoped></style>

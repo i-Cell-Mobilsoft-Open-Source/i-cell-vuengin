@@ -7,22 +7,22 @@ const routes: Array<RouteConfig> = [
   {
     path: '/input',
     name: 'Input View',
-    component: () => import('@/views/input-container.vue')
+    component: () => import('@/views/ViewInput.vue')
   },
   {
     path: '/datepicker',
     name: 'Datepicker View',
-    component: () => import('@/views/datepicker-container.vue')
+    component: () => import('@/views/ViewDatepicker.vue')
   },
   {
     path: '/datetimepicker',
     name: 'Datetimepicker View',
-    component: () => import('@/views/datetimepicker-container.vue')
+    component: () => import('@/views/ViewDatetimepicker.vue')
   },
   {
     path: '/table',
     name: 'Table View',
-    component: () => import('@/views/table-container.vue')
+    component: () => import('@/views/ViewTable.vue')
   },
   {
     path: '/*',

@@ -1,43 +1,18 @@
 <template>
-  <div class="datePickerComponent" :class="classes">
+  <div :class="classes">
     <ValidationProvider :rules="isRequired()" v-slot="">
-      <template v-if="ui === 'material'">
-        <v-app>
-          <v-menu
-            ref="menu"
-            v-model="menu"
-            :close-on-content-click="false"
-            :return-value.sync="model"
-            transition="scale-transition"
-            offset-y
-            min-width="290px"
-          >
-            <template v-slot:activator="{ on, attrs }">
-              <v-text-field v-model="model" :label="label" v-bind="attrs" v-on="on" readonly></v-text-field>
-            </template>
-            <v-date-picker v-model="model" no-title scrollable>
-              <v-spacer></v-spacer>
-              <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
-              <v-btn text color="primary" @click="$refs.menu.save(model)">OK</v-btn>
-            </v-date-picker>
-          </v-menu>
-        </v-app>
-      </template>
-
-      <template v-else>
-        <b-field :label="label" :label-for="id">
-          <b-datepicker
-            icon="calendar-today"
-            v-model="model"
-            :show-week-number="false"
-            :placeholder="placeHolder"
-            :disabled="disabled"
-            @input="onInputChange($event)"
-            trap-focus
-          >
-          </b-datepicker>
-        </b-field>
-      </template>
+      <b-field :label="label" :label-for="id">
+        <b-datepicker
+          icon="calendar-today"
+          v-model="model"
+          :show-week-number="false"
+          :placeholder="placeHolder"
+          :disabled="disabled"
+          @input="onInputChange($event)"
+          trap-focus
+        >
+        </b-datepicker>
+      </b-field>
     </ValidationProvider>
   </div>
 </template>

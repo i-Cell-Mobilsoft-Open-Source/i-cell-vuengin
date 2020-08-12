@@ -1,30 +1,12 @@
 <template>
   <ValidationProvider :rules="isRequired()" v-slot="">
-    <!--<template v-if="ui === 'boostrap'">
-    </template>-->
-
-    <template v-if="ui === 'material'">
-      <v-app>
-        <v-select
-          v-model="model"
-          :label="label"
-          :placeholder="placeHolder"
-          :items="option"
-          :id="id"
-          :rules="isRequired() ? [!!model || isRequired()] : []"
-        ></v-select>
-      </v-app>
-    </template>
-
-    <template v-else>
-      <b-field :label="label" :label-for="id">
-        <b-select v-model="model" :id="id" :placeholder="placeHolder" :expanded="expanded">
-          <option v-for="(item, index) in option" :value="item" :key="index">
-            {{ item }}
-          </option>
-        </b-select>
-      </b-field>
-    </template>
+    <b-field :label="label" :label-for="id">
+      <b-select v-model="model" :id="id" :placeholder="placeHolder" :expanded="expanded">
+        <option v-for="(item, index) in option" :value="item" :key="index">
+          {{ item }}
+        </option>
+      </b-select>
+    </b-field>
   </ValidationProvider>
 </template>
 <script lang="ts">
@@ -55,14 +37,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.required-icon {
-  margin-left: 5px;
-  color: red;
-}
-
-.label-content {
-  display: flex;
-  align-content: center;
-}
-</style>
+<style scoped></style>

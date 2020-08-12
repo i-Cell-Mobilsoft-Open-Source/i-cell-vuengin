@@ -1,17 +1,7 @@
 <template>
-  <div class="checkboxComponent">
-    <template v-if="ui === 'material'">
-      <v-app>
-        <v-checkbox :label="label" v-model="model"></v-checkbox>
-      </v-app>
-    </template>
-
-    <template v-else>
-      <b-field :label="label">
-        <b-checkbox :disabled="disabled" v-model="model">{{ model }} </b-checkbox>
-      </b-field>
-    </template>
-  </div>
+  <b-field :label="label">
+    <b-checkbox :disabled="disabled" v-model="model">{{ model }}</b-checkbox>
+  </b-field>
 </template>
 
 <script lang="ts">
@@ -25,7 +15,7 @@ export default {
     type: String,
     required: Boolean,
     disabled: Boolean,
-    value: Boolean || String || Number || Object
+    value: [Boolean, String, Number, Object]
   },
   setup(props: any) {
     const model = props.value ? ref(props.value) : false;
@@ -38,9 +28,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.label-content {
-  /*display: flex;*/
-  /*align-content: center;*/
-}
-</style>
+<style scoped></style>
