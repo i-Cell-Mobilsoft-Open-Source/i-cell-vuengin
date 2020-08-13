@@ -19,6 +19,8 @@ import DateTimePickerComponent from '@/components/datetimepicker.vue';
 import CheckboxComponent from '@/components/checkbox.vue';
 import LegendComponent from '@/components/legend.vue';
 import ButtonComponent from '@/components/button.vue';
+import TableComponent from '@/components/table.vue';
+import CollapseComponent from '@/shared/components/collapse.vue';
 
 // Validation
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
@@ -35,7 +37,10 @@ Vue.config.productionTip = false;
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 
-// Entry Componenty
+// Shared Components
+Vue.component('v-collapse', CollapseComponent);
+
+// Entry Components
 Vue.component('v-icell-input', InputComponent);
 Vue.component('v-icell-select', SelectComponent);
 Vue.component('v-icell-date', DateTimeComponent);
@@ -43,6 +48,7 @@ Vue.component('v-icell-datetime', DateTimePickerComponent);
 Vue.component('v-icell-checkbox', CheckboxComponent);
 Vue.component('v-icell-legend', LegendComponent);
 Vue.component('v-icell-button', ButtonComponent);
+Vue.component('v-icell-table', TableComponent);
 
 new Vue({
   router,

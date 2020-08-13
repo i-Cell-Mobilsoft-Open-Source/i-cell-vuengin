@@ -1,3 +1,39 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+// CUSTOM
+/*
+// Set your colors
+$primary: #8c67ef;
+$primary-invert: findColorInvert($primary);
+$twitter: #4099FF;
+$twitter-invert: findColorInvert($twitter);
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: (
+        "white": ($white, $black),
+        "black": ($black, $white),
+        "light": ($light, $light-invert),
+        "dark": ($dark, $dark-invert),
+        "primary": ($primary, $primary-invert),
+        "info": ($info, $info-invert),
+        "success": ($success, $success-invert),
+        "warning": ($warning, $warning-invert),
+        "danger": ($danger, $danger-invert),
+        "twitter": ($twitter, $twitter-invert)
+);
+
+// Links
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+*/
+
+$navbar-breakpoint: 560px;
+
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
 body {
   //background-color: whitesmoke;
 }
@@ -48,12 +84,12 @@ $navBgColor: #f5f5f5;
   right: 0;
   z-index: 30;
   box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.32);
-  //box-shadow: 0 2px 5px 1px rgba(0,0,0,0.18);
-  //box-shadow: 0 1px 10px 1px rgba(0,0,0,0.38);
+
   .navbar {
     min-height: inherit !important;
     background-color: $navBgColor;
   }
+
   .logo-title {
     font-weight: 500;
   }
@@ -61,20 +97,85 @@ $navBgColor: #f5f5f5;
 
 .box {
   box-shadow: 2px 6px 14px -3px rgba(0, 0, 0, 0.22);
+  padding: 0;
+  .title{
+    margin-bottom: 10px !important;
+    font-weight: 500;
+  }
+
+}
+
+.box:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.padding-content {
+  padding: 20px 20px 0 20px;
 }
 
 .page-content {
   padding-top: $headerHeight;
 }
 
-.vuetify-content {
-  font-family: Roboto, sans-serif;
 
-  .container {
-    position: inherit !important;
+.b-tabs:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.b-tabs {
+  margin-bottom: 0;
+
+  .tab-content {
+    padding: 0;
   }
 
-  .title {
-    font-weight: 400;
+  .tabs {
+    li {
+      color: #363636;
+      cursor: pointer;
+      border-radius: 1px;
+      background-color: whitesmoke;
+      border-width: 1px;
+      justify-content: center;
+      padding: 5px 15px;
+
+      &:hover {
+        background-color: #eeeeee;
+      }
+
+      &.is-active {
+        a {
+          color: #363636;
+        }
+      }
+
+      a {
+        padding: 0;
+        text-decoration: none;
+        border: 0;
+      }
+    }
   }
+
+  .tabs li.is-active a {
+    color: inherit;
+  }
+}
+
+.collapse-container {
+  //text-align: right;
+  span {
+    width: 100%;
+    cursor: pointer;
+    outline: 0;
+
+    box-shadow: none;
+    border-radius: 0;
+  }
+  pre {
+    padding-top: 0;
+    text-align: left;
+    font-size: 13px;
+  }
+
 }
