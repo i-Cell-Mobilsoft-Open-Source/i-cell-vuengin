@@ -63,7 +63,7 @@ export default {
   },
   setup() {
     const code = ref(
-      '<template>\n' + '  <b-table\n' + '    :data="data"\n' + '    :columns="columns">\n' + '  </b-table>\n' + '</template>'
+      '<template>\n' + '  <v-icell-table\n' + '    :data="data"\n' + '    :columns="columns">\n' + '  </v-icell-table>\n' + '</template>'
     );
     return {
       code
