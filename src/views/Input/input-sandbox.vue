@@ -10,7 +10,7 @@
               :label="'Falhasználó neve'"
               :name="'userName'"
               :placeHolder="'Felhasználó neve'"
-              :value="'Jóska'"
+              :value="formGroup.name"
             ></v-icell-input>
           </div>
           <v-collapse
@@ -26,7 +26,13 @@
         <div class="box">
           <div class="padding-content">
             <div class="title">Input - Password</div>
-            <v-icell-input :type="'password'" :label="'Jelszó'" :name="'password'" :placeHolder="'jelszó'"></v-icell-input>
+            <v-icell-input
+              :type="'password'"
+              :label="'Jelszó'"
+              :name="'password'"
+              :placeHolder="'jelszó'"
+              :value="formGroup.password"
+            ></v-icell-input>
           </div>
           <v-collapse
             class="collapse-container"
@@ -39,15 +45,23 @@
         </div>
       </div>
     </div>
+    {{ formGroup }}
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { ref, reactive, computed } from '@vue/composition-api';
 
 export default {
   name: 'InputComomentDemo',
   setup() {
+    const formGroup = reactive({
+      name: 'Béla',
+      password: ''
+    });
+
+    const formData = computed(() => formGroup);
+
     const code_SampleA = ref(
       '<template>\n' +
         '  <v-icell-input\n' +
@@ -55,7 +69,7 @@ export default {
         '    :label="Falhasználó neve"\n' +
         '    :name="userName"\n' +
         '    :placeHolder="Felhasználó neve">\n' +
-        '    :value="Jóska"\n' +
+        '    :value="formGroup.name"\n' +
         '  </v-icell-input>\n' +
         '</template>'
     );
@@ -72,6 +86,8 @@ export default {
     );
 
     return {
+      formGroup,
+      formData,
       code_SampleA,
       code_SampleB
     };
