@@ -29,153 +29,99 @@ $link-invert: $primary-invert;
 $link-focus-border: $primary;
 */
 
-$navbar-breakpoint: 560px;
-
+$navbar-breakpoint: 772px;
+$desktop: 960px;
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
-body {
-  //background-color: whitesmoke;
+@media screen and (max-width: $desktop){
+  .bd-lead {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
 }
 
-.navbar-item {
-  img {
-    max-height: 2.75rem !important;
+@media screen and (max-width: $navbar-breakpoint){
+  .bd-lead {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
 
-.v-application--wrap {
-  min-height: inherit !important;
-}
-
-.submit-content {
-  text-align: right;
-
-  .v-application--wrap {
-    align-items: flex-end;
-  }
-
-}
-
-.buefy-content {
-  .input-item {
-    padding-bottom: 15px;
-  }
-}
-
-.form-validate {
-  padding-bottom: 15px;
-}
-
-.navbar-end {
-  align-items: center;
-}
-
-$headerHeight: 70px;
+$headerHeight: 55px;
 $navBgColor: #f5f5f5;
-.nav-content {
-  display: flex;
-  height: $headerHeight;
-  align-items: center;
-  background-color: $navBgColor;
+.header-content {
   position: fixed;
+  top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
+  height: $headerHeight;
   z-index: 30;
-  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.32);
+  background-color: whitesmoke;
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.25);
 
   .navbar {
-    min-height: inherit !important;
-    background-color: $navBgColor;
-  }
+    height: $headerHeight;
+    background-color: transparent;
 
-  .logo-title {
-    font-weight: 500;
+    img {
+      max-height: 2.5rem;
+    }
   }
+}
+
+.navbar-burger {
+  height: inherit;
+}
+
+.main-content {
+  margin-top: $headerHeight;
 }
 
 .box {
   box-shadow: 2px 6px 14px -3px rgba(0, 0, 0, 0.22);
   padding: 0;
-  .title{
+
+  .title {
     margin-bottom: 10px !important;
     font-weight: 500;
   }
-
 }
-
-.box:not(:last-child) {
-  margin-bottom: 0;
-}
-
 .padding-content {
-  padding: 20px 20px 0 20px;
+  padding: 1.25rem 1.25rem 0 1.25rem;
 }
-
-.page-content {
-  padding-top: $headerHeight;
+.switcher-content{
+  padding: 30px 0;
 }
-
-
-.b-tabs:not(:last-child) {
-  margin-bottom: 0;
+.code-content{
+  line-height: initial;
 }
-
-.b-tabs {
-  margin-bottom: 0;
-
-  .tab-content {
-    padding: 0;
-  }
-
-  .tabs {
-    li {
-      color: #363636;
-      cursor: pointer;
-      border-radius: 1px;
-      background-color: whitesmoke;
-      border-width: 1px;
-      justify-content: center;
-      padding: 5px 15px;
-
-      &:hover {
-        background-color: #eeeeee;
-      }
-
-      &.is-active {
-        a {
-          color: #363636;
-        }
-      }
-
-      a {
-        padding: 0;
-        text-decoration: none;
-        border: 0;
-      }
-    }
-  }
-
-  .tabs li.is-active a {
-    color: inherit;
-  }
-}
-
 .collapse-container {
-  //text-align: right;
   span {
     width: 100%;
     cursor: pointer;
     outline: 0;
-
     box-shadow: none;
     border-radius: 0;
+    background-color: rgba(245, 245, 245, .5);
+    transition: all .1s ease-out;
+
+    &.active {
+      background-color: rgba(245, 245, 245, 1);
+    }
+
+    &:hover {
+      background-color: rgba(245, 245, 245, 1);
+    }
   }
+
   pre {
+    line-height: 1.5;
+    font-size: 13px;
     padding-top: 0;
     text-align: left;
-    font-size: 13px;
+    max-height: 300px;
   }
 
 }

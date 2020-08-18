@@ -1,78 +1,22 @@
 <template>
-  <div class="container">
-    <div class="columns">
-      <div class="column is-12">
-        <div class="box">
-          <div class="padding-content">
-            <div class="title">Table</div>
-            <v-icell-table :bordered="false" :data="data" :columns="columns"></v-icell-table>
-          </div>
-          <v-collapse
-            class="collapse-container"
-            :classes="'is-small is-light'"
-            :label="'show code'"
-            :hideLabel="'hide source'"
-            :contentId="'basic-table'"
-            :content="code"
-          ></v-collapse>
-        </div>
-      </div>
+  <div class="columns">
+    <div class="column is-12">
+      <table-1></table-1>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import table1 from './components/table1/table-1.vue';
+import Table2 from './components/table1/table-2.vue';
 
 export default {
-  data() {
-    return {
-      data: [
-        { id: 1, first_name: 'Jesse', last_name: 'Simmons', date: '2016-10-15 13:43:27', gender: 'Male' },
-        { id: 2, first_name: 'John', last_name: 'Jacobs', date: '2016-12-15 06:00:53', gender: 'Male' },
-        { id: 3, first_name: 'Tina', last_name: 'Gilbert', date: '2016-04-26 06:26:28', gender: 'Female' },
-        { id: 4, first_name: 'Clarence', last_name: 'Flores', date: '2016-04-10 10:28:46', gender: 'Male' },
-        { id: 5, first_name: 'Anne', last_name: 'Lee', date: '2016-12-06 14:38:38', gender: 'Female' }
-      ],
-      columns: [
-        {
-          field: 'id',
-          label: 'ID',
-          width: '40',
-          numeric: true
-        },
-        {
-          field: 'first_name',
-          label: 'First Name'
-        },
-        {
-          field: 'last_name',
-          label: 'Last Name'
-        },
-        {
-          field: 'date',
-          label: 'Date',
-          centered: true
-        },
-        {
-          field: 'gender',
-          label: 'Gender'
-        }
-      ]
-    };
+  components: {
+    'table-1': table1
+    // 'table-2': Table2
   },
   setup() {
-    const code = ref(
-      '<template>\n' + '  <b-table\n' + '    :data="data"\n' + '    :columns="columns">\n' + '  </b-table>\n' + '</template>'
-    );
-    return {
-      code
-    };
+    return {};
   }
 };
 </script>
-<!--
-<b-tabs :size="'is-small'">
-<b-tab-item label="table"></b-tab-item>
-<b-tab-item label="code"></b-tab-item>
-</b-tabs>-->
