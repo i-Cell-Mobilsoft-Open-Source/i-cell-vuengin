@@ -45,7 +45,7 @@ export default {
     const model = ref(props.value);
     const isRequired = () => (props.required ? 'required' : '');
     const onInputChange = (ev: InputEvent) => {
-      attr.emit('getInputAction', ev); // TODO: valueChange
+      attr.emit('valueChange', ev); // TODO: valueChange
     };
     return {
       isRequired,
