@@ -9,6 +9,8 @@
           :disabled="disabled"
           icon="calendar-today"
           @input="onInputChange($event)"
+          @change-month="onChangeMonth($event)"
+          @change-year="onChangeYear($event)"
           trap-focus
         >
         </b-datetimepicker>
@@ -26,12 +28,24 @@ export default {
   setup(props: any, attr: any) {
     const model = props.value ? ref(props.value) : null;
     const isRequired = () => (props.required ? 'required' : '');
+
     const onInputChange = (ev: InputEvent) => {
-      attr.emit('getDateTimeAction', ev); // TODO: valueChange
+      attr.emit('valueChange', ev); // TODO: valueChange
     };
+
+    const onChangeMonth = (month: number) => {
+      attr.emit('changeMonth', month);
+    };
+
+    const onChangeYear = (year: number) => {
+      attr.emit('changeYear', year);
+    };
+
     return {
       isRequired,
       onInputChange,
+      onChangeMonth,
+      onChangeYear,
       model
     };
   }
