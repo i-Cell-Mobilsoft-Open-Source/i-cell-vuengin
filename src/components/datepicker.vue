@@ -1,21 +1,28 @@
 <template>
   <div :class="classes">
-    <ValidationProvider :rules="isRequired()" v-slot="">
-      <b-field :label="label" :label-for="id">
+    <ValidationProvider :rules="isRequired()" v-slot="error">
+      <b-field :label="label" :label-for="id" :type="setFieldType(error)">
         <b-datepicker
           icon="calendar-today"
           v-model="model"
           :show-week-number="false"
           :placeholder="placeHolder"
           :disabled="disabled"
-          :month-names="hungaryMonthNames"
-          :day-names="huungaryDayNames"
-          :first-day-of-week="1"
+          :min-date="minDate"
+          :max-date="maxDate"
           @input="onInputChange($event)"
           @change-month="onChangeMonth($event)"
           @change-year="onChangeYear($event)"
-          trap-focus
         >
+          <button class="button is-primary" @click="model = new Date()">
+            <b-icon icon="calendar-today"></b-icon>
+            <span>Mai nap</span>
+          </button>
+
+          <button class="button is-danger" @click="model = null">
+            <b-icon icon="close"></b-icon>
+            <span>Törlés</span>
+          </button>
         </b-datepicker>
       </b-field>
     </ValidationProvider>
@@ -24,26 +31,15 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
+import 'buefy/src/utils/config';
 
 export default {
   name: 'v-icell-date',
-  props: ['ui', 'label', 'placeHolder', 'required', 'value', 'disabled', 'classes', 'id'],
+  props: ['ui', 'label', 'placeHolder', 'required', 'value', 'disabled', 'classes', 'id', 'minDate', 'maxDate'],
+
   setup(props: any, attr: any) {
-    const hungaryMonthNames = [
-      'Január',
-      'Február',
-      'Március',
-      'Április',
-      'Május',
-      'Június',
-      'Júlis',
-      'Augusztus',
-      'Szeptember',
-      'Október',
-      'November',
-      'December'
-    ];
-    const huungaryDayNames = ['V', 'H', 'K', 'Sze', 'C', 'P', 'Szo'];
+    console.log('props', props);
+    console.log('attr', attr);
     const model = props.value ? ref(props.value) : null;
     const isRequired = () => (props.required ? 'required' : '');
 
@@ -59,13 +55,16 @@ export default {
       attr.emit('changeYear', year);
     };
 
+    const setFieldType = (error: any) => {
+      return !error.valid ? 'is-danger' : 'is-success';
+    };
+
     return {
-      huungaryDayNames,
-      hungaryMonthNames,
       isRequired,
       onInputChange,
       onChangeMonth,
       onChangeYear,
+      setFieldType,
       model
     };
   }

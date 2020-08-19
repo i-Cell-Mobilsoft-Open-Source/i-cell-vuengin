@@ -29,7 +29,26 @@ import { extend } from 'vee-validate';
 extend('required', required);
 extend('length', length);
 
-Vue.use(Buefy);
+Vue.use(Buefy, {
+  defaultDayNames: ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'],
+  defaultMonthNames: [
+    'Január',
+    'Február',
+    'Március',
+    'Április',
+    'Május',
+    'Június',
+    'Július',
+    'Augusztus',
+    'Szeptember',
+    'Október',
+    'November',
+    'December'
+  ],
+  defaultFirstDayOfWeek: 1,
+  defaultTrapFocus: true,
+  defaultDatepickerYearsRange: [-100, 60]
+});
 Vue.use(VueCompositionApi);
 
 Vue.config.productionTip = false;

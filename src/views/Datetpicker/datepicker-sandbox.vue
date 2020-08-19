@@ -6,8 +6,10 @@
           <div class="padding-content">
             <div class="title">Date Picker</div>
             <v-icell-date
-              :label="'Beteg felvétel dátuma dátuma'"
+              :label="'Beteg felvétel dátuma'"
               :placeHolder="'Felvételi dátum'"
+              :minDate="formGroup.customMinDate"
+              :maxDate="formGroup.customMaxDate"
               v-model="formGroup.patientDate"
               @valueChange="customValueChange($event)"
               @changeMonth="changeMonth($event)"
@@ -41,22 +43,27 @@ export default {
   setup() {
     const formGroup = reactive({
       patientDate: moment().toDate(), // moment('1981.03.08', 'YYYY.MM.DD').toDate(),
+      customMinDate: moment().subtract(5, 'days').toDate(),
+      customMaxDate: moment().add(5, 'days').toDate(),
       selectedMonth: 0,
       selectedYear: 0
     });
 
+    console.log(formGroup);
+
     const formData = computed(() => formGroup);
 
     const code_SampleA = ref(
-      '<template>\n' +
-        '  <v-icell-input\n' +
-        '    :type="text"\n' +
-        '    :label="Falhasználó neve"\n' +
-        '    :name="userName"\n' +
-        '    :placeHolder="Felhasználó neve">\n' +
-        '    :value="formGroup.name"\n' +
-        '  </v-icell-input>\n' +
-        '</template>'
+      `<v-icell-date
+        :label="'Beteg felvétel dátuma'"
+        :placeHolder="'Felvételi dátum'"
+        :minDate="formGroup.customMinDate"
+        :maxDate="formGroup.customMaxDate"
+        v-model="formGroup.patientDate"
+        @valueChange="customValueChange($event)"
+        @changeMonth="changeMonth($event)"
+        @changeYear="changeYear($event)"
+      ></v-icell-date>`
     );
 
     const customValueChange = (dateTime: any) => {
