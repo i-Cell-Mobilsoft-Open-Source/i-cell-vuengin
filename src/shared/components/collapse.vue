@@ -4,7 +4,7 @@
       <template v-if="hideLabel">{{ !open ? label : hideLabel }}</template>
       <template v-else>{{ label }}</template>
     </span>
-    <b-collapse :open="open" :aria-id="contentId">
+    <b-collapse :animation="'none'" :open="open" :aria-id="contentId">
       <pre>{{ content }}</pre>
     </b-collapse>
   </section>
@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
+
 export default {
   name: 'v-collapse',
   props: {
