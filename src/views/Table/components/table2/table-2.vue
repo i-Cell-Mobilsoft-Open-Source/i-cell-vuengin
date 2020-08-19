@@ -1,60 +1,90 @@
 <template>
   <div class="box">
     <div class="padding-content">
-      <div class="title is-4">Basic</div>
-      <v-icell-table :data="data" :bordered="false" :columns="columns"> </v-icell-table>
+      <div class="title is-4">Table - Selection</div>
+      <v-icell-table :data="data" :columns="columns" :selected="isSelected ? selectedValue : null" @onSelectChange="onSelectChange($event)">
+      </v-icell-table>
+      <div class="setting-content">
+        <b-field grouped group-multiline>
+          <div class="control">
+            <b-switch v-model="isSelected" :size="'is-small'">Selected</b-switch>
+          </div>
+        </b-field>
+      </div>
     </div>
-    <v-collapse
-      class="collapse-container"
-      :classes="'is-small'"
-      :label="'show code'"
-      :hideLabel="'hide source'"
-      :contentId="'basic-table'"
-      :content="code"
-    ></v-collapse>
+
+    <div class="code-content">
+      <v-collapse
+        class="collapse-container"
+        :classes="'is-small'"
+        :label="'show code'"
+        :hideLabel="'hide source'"
+        :contentId="'basic-table'"
+        :content="selectedValue"
+      ></v-collapse>
+    </div>
+
+    <div class="code-content">
+      <v-collapse
+        class="collapse-container"
+        :classes="'is-small'"
+        :label="'show code'"
+        :hideLabel="'hide source'"
+        :contentId="'basic-table'"
+        :content="code"
+      ></v-collapse>
+    </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from '@vue/composition-api';
-import { tableData } from './data';
-import { tableCode } from './code';
+import { schema } from '../table2/schema';
+import { data } from '../data';
+
+export const columns = [
+  {
+    field: 'id',
+    label: 'ID',
+    width: '40'
+  },
+  {
+    field: 'first_name',
+    label: 'First Name'
+  },
+  {
+    field: 'last_name',
+    label: 'Last Name'
+  },
+  {
+    field: 'date',
+    label: 'Date'
+  },
+  {
+    field: 'gender',
+    label: 'Gender'
+  }
+];
 
 export default {
   data() {
     return {
-      data: tableData,
-      columns: [
-        {
-          field: 'id',
-          label: 'ID',
-          width: '40',
-          numeric: true
-        },
-        {
-          field: 'first_name',
-          label: 'First Name'
-        },
-        {
-          field: 'last_name',
-          label: 'Last Name'
-        },
-        {
-          field: 'date',
-          label: 'Date',
-          centered: true
-        },
-        {
-          field: 'gender',
-          label: 'Gender'
-        }
-      ]
+      data: data,
+      columns: columns
     };
   },
   setup() {
-    const code = ref(tableCode);
+    const code = ref(schema);
+    const isSelected = ref(true);
+    const selectedValue = ref(data[0]);
+    const onSelectChange = (value: any) => {
+      selectedValue.value = value;
+    };
     return {
-      code
+      code,
+      selectedValue,
+      isSelected,
+      onSelectChange
     };
   }
 };

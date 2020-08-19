@@ -2,14 +2,15 @@
   <b-table
     :data="data"
     :bordered="bordered"
-    :columns="columns"
     :striped="striped"
     :hoverable="hoverable"
     :focusable="focusable"
     :loading="loading"
     :narrowed="narrowed"
-    :selected="selectValue"
+    :mobile-cards="mobileCards"
+    :selected="selected ? selectValue : {}"
     @select="onSelect"
+    :columns="columns"
   >
   </b-table>
 </template>
@@ -20,132 +21,53 @@ import { ref } from '@vue/composition-api';
 export default {
   name: 'v-table',
   props: {
-    data: {
-      type: Array,
-      default: () => []
-    },
-    columns: {
-      type: Array,
-      default: () => []
-    },
+    data: Array,
+    columns: Array,
+
     bordered: Boolean,
     striped: Boolean,
     narrowed: Boolean,
     hoverable: Boolean,
     loading: Boolean,
+    focusable: Boolean,
+
     detailed: Boolean,
     checkable: Boolean,
-    headerCheckable: {
-      type: Boolean,
-      default: true
-    },
-    checkboxPosition: {
-      type: String,
-      default: 'left',
-      validator: (value) => {
-        return ['left', 'right'].indexOf(value) >= 0;
-      }
-    },
+    headerCheckable: Boolean,
+    checkboxPosition: String,
     selected: Object,
-    isRowSelectable: {
-      type: Function,
-      default: () => true
-    },
-    focusable: Boolean,
+    isRowSelectable: Function,
     customIsChecked: Function,
-    isRowCheckable: {
-      type: Function,
-      default: () => true
-    },
-    checkedRows: {
-      type: Array,
-      default: () => []
-    },
-    mobileCards: {
-      type: Boolean,
-      default: true
-    },
+    isRowCheckable: Function,
+    checkedRows: Array,
+    mobileCards: Boolean,
     defaultSort: [String, Array],
-    defaultSortDirection: {
-      type: String,
-      default: 'asc'
-    },
-    sortIcon: {
-      type: String,
-      default: 'arrow-up'
-    },
-    sortIconSize: {
-      type: String,
-      default: 'is-small'
-    },
-    sortMultiple: {
-      type: Boolean,
-      default: false
-    },
-    sortMultipleData: {
-      type: Array,
-      default: () => []
-    },
-    sortMultipleKey: {
-      type: String,
-      default: null
-    },
+    defaultSortDirection: String,
+    sortIcon: String,
+    sortIconSize: String,
+    sortMultiple: Boolean,
+    sortMultipleData: Array,
+    sortMultipleKey: String,
     paginated: Boolean,
-    currentPage: {
-      type: Number,
-      default: 1
-    },
-    perPage: {
-      type: [Number, String],
-      default: 20
-    },
-    showDetailIcon: {
-      type: Boolean,
-      default: true
-    },
+    currentPage: Number,
+    perPage: [Number, String],
+    showDetailIcon: Boolean,
     paginationSimple: Boolean,
     paginationSize: String,
-    paginationPosition: {
-      type: String,
-      default: 'bottom',
-      validator: (value) => {
-        return ['bottom', 'top', 'both'].indexOf(value) >= 0;
-      }
-    },
+    paginationPosition: String,
     backendSorting: Boolean,
     backendFiltering: Boolean,
-    rowClass: {
-      type: Function,
-      default: () => ''
-    },
-    openedDetailed: {
-      type: Array,
-      default: () => []
-    },
-    hasDetailedVisible: {
-      type: Function,
-      default: () => true
-    },
-    detailKey: {
-      type: String,
-      default: ''
-    },
-    customDetailRow: {
-      type: Boolean,
-      default: false
-    },
+    rowClass: Function,
+    openedDetailed: Array,
+    hasDetailedVisible: Function,
+    detailKey: String,
+    customDetailRow: Boolean,
     backendPagination: Boolean,
-    total: {
-      type: [Number, String],
-      default: 0
-    },
+    total: [Number, String],
     iconPack: String,
     mobileSortPlaceholder: String,
     customRowKey: String,
-    draggable: {
-      type: Boolean,
-      default: false
-    },
+    draggable: Boolean,
     scrollable: Boolean,
     ariaNextLabel: String,
     ariaPreviousLabel: String,
@@ -153,17 +75,15 @@ export default {
     ariaCurrentLabel: String,
     stickyHeader: Boolean,
     height: [Number, String],
-    filtersEvent: {
-      type: String,
-      default: ''
-    },
+    filtersEvent: String,
     cardLayout: Boolean
   },
 
-  setup(props) {
+  setup(props: any, attr: any) {
     const selectValue = ref(props.selected);
-    const onSelect = (value) => {
+    const onSelect = (value: any) => {
       selectValue.value = value;
+      attr.emit('onSelectChange', value);
     };
     return {
       onSelect,

@@ -20,7 +20,7 @@ export default {
     label: String,
     hideLabel: String,
     contentId: String,
-    content: String,
+    content: [Object, String, Number, Array],
     isOpen: Boolean
   },
   setup(props: any) {

@@ -1,4 +1,4 @@
-export const tableCode =
+export const schema =
   '<template>\n' +
   '    <div class="columns">\n' +
   '      <div class="column is-12">\n' +

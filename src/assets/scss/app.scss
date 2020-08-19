@@ -1,53 +1,25 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
-
-// CUSTOM
-/*
-// Set your colors
-$primary: #8c67ef;
-$primary-invert: findColorInvert($primary);
-$twitter: #4099FF;
-$twitter-invert: findColorInvert($twitter);
-
-// Setup $colors to use as bulma classes (e.g. 'is-twitter')
-$colors: (
-        "white": ($white, $black),
-        "black": ($black, $white),
-        "light": ($light, $light-invert),
-        "dark": ($dark, $dark-invert),
-        "primary": ($primary, $primary-invert),
-        "info": ($info, $info-invert),
-        "success": ($success, $success-invert),
-        "warning": ($warning, $warning-invert),
-        "danger": ($danger, $danger-invert),
-        "twitter": ($twitter, $twitter-invert)
-);
-
-// Links
-$link: $primary;
-$link-invert: $primary-invert;
-$link-focus-border: $primary;
-*/
-
 $navbar-breakpoint: 772px;
 $desktop: 960px;
+$tag-radius: 0;
+
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
-@media screen and (max-width: $desktop){
+@media screen and (max-width: $desktop) {
   .bd-lead {
     padding-left: 1.75rem;
     padding-right: 1.75rem;
   }
 }
 
-@media screen and (max-width: $navbar-breakpoint){
+@media screen and (max-width: $navbar-breakpoint) {
   .bd-lead {
     padding-left: 0;
     padding-right: 0;
   }
 }
-
 
 $headerHeight: 55px;
 $navBgColor: #f5f5f5;
@@ -64,7 +36,6 @@ $navBgColor: #f5f5f5;
   .navbar {
     height: $headerHeight;
     background-color: transparent;
-
     img {
       max-height: 2.5rem;
     }
@@ -77,26 +48,47 @@ $navBgColor: #f5f5f5;
 
 .main-content {
   margin-top: $headerHeight;
+
 }
 
 .box {
-  box-shadow: 2px 6px 14px -3px rgba(0, 0, 0, 0.22);
+  box-shadow: 3px 6px 15px -4px rgba(0, 0, 0, 0.35);
   padding: 0;
+  border-radius: 10px;
 
   .title {
-    margin-bottom: 10px !important;
-    font-weight: 500;
+    //font-weight: 500;
   }
 }
+
 .padding-content {
-  padding: 1.25rem 1.25rem 0 1.25rem;
+  padding: 1.25rem
 }
-.switcher-content{
-  padding: 30px 0;
+.setting-content{
+  padding-top: 1.25rem;
 }
-.code-content{
-  line-height: initial;
+
+.title-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .title-label{
+    color: #363636;
+    font-size: 30px;
+    font-weight: 400;
+  }
+  .tags-content{
+    display: flex;
+    .tag{
+      //height: inherit;
+      //padding: 2px 4px;
+      &.is-delete{
+        margin: 0;
+      }
+    }
+  }
 }
+
 .collapse-container {
   span {
     width: 100%;
@@ -123,5 +115,42 @@ $navBgColor: #f5f5f5;
     text-align: left;
     max-height: 300px;
   }
+}
 
+.b-tabs {
+  .tab-content {
+    padding: 0;
+  }
+
+  .tabs {
+    ul {
+      border: 0;
+      li {
+        a {
+          border:0;
+          padding:0;
+          margin: 0;
+          //font-size: 0.75rem;
+        }
+
+        &.is-active {
+          a {
+            color: #212121;
+            border-bottom-color: #212121;
+          }
+        }
+      }
+    }
+  }
+}
+.tag-btn{
+  cursor: pointer;
+  font-size: 0.75rem;
+  height: 2em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  border-radius: 4px;
+  &.active{
+    //opacity: 0.2;
+  }
 }
