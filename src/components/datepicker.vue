@@ -6,10 +6,12 @@
           icon="calendar-today"
           v-model="model"
           :show-week-number="false"
+          :type="type"
           :placeholder="placeHolder"
           :disabled="disabled"
           :min-date="minDate"
           :max-date="maxDate"
+          :range="range"
           @input="onInputChange($event)"
           @change-month="onChangeMonth($event)"
           @change-year="onChangeYear($event)"
@@ -31,16 +33,18 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
-import 'buefy/src/utils/config';
 
 export default {
   name: 'v-icell-date',
-  props: ['ui', 'label', 'placeHolder', 'required', 'value', 'disabled', 'classes', 'id', 'minDate', 'maxDate'],
+  props: ['ui', 'label', 'placeHolder', 'required', 'value', 'disabled', 'classes', 'id', 'minDate', 'maxDate', 'type', 'range'],
 
   setup(props: any, attr: any) {
-    console.log('props', props);
-    console.log('attr', attr);
+    if (props.range === undefined) {
+      props.range === false;
+    }
+
     const model = props.value ? ref(props.value) : null;
+
     const isRequired = () => (props.required ? 'required' : '');
 
     const onInputChange = (ev: InputEvent) => {
