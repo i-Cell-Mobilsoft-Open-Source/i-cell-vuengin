@@ -1,103 +1,96 @@
 <template>
   <div class="box">
     <div class="padding-content">
+      <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Table</div>
+        <div class="title-label">Playground</div>
         <div class="tags-content">
-          <span class="tag is-light" @click="isOpenSetting = !isOpenSetting">
-            code
-            <!--<i class="mdi mdi-cog"></i>-->
+          <span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
+            <i class="mdi mdi-cog"></i>
           </span>
-
-          <!--FOlyt köv!!-->
-          <!--<button class="delete is-small"></button>-->
+          <!--<span class="tag is-light"
+                @click="isOpenData = !isOpenData"
+                :class="isOpenData ? 'active' : ''">
+            <i class="mdi mdi-code-greater-than"></i>
+          </span>-->
+          <span class="tag is-light" @click="isOpenCode = !isOpenCode" :class="isOpenCode ? 'active' : ''">
+            <i class="mdi mdi-code-tags"></i>
+          </span>
         </div>
       </div>
 
-      <v-icell-table
-        :data="data"
-        :columns="columns"
-        :bordered="isBordered"
-        :striped="isStriped"
-        :narrowed="isNarrowed"
-        :loading="isLoading"
-        :hoverable="isHoverable"
-        :focusable="isFocusable"
-        :mobileCards="isMobilCards"
-      >
-      </v-icell-table>
+      <!-- Table -->
+      <div class="table-content">
+        <v-icell-table
+          :data="data"
+          :columns="columns"
+          :bordered="isBordered"
+          :striped="isStriped"
+          :narrowed="isNarrowed"
+          :loading="isLoading"
+          :hoverable="isHoverable"
+          :focusable="isFocusable"
+          :mobileCards="isMobilCards"
+        >
+        </v-icell-table>
+      </div>
 
-      <b-field grouped group-multiline>
-        <div class="">
-          <b-switch v-model="isBordered" :size="switcherClass">Bordered</b-switch>
+      <!-- Settings -->
+      <b-collapse :open="isOpenSetting">
+        <div class="setting-content">
+          <b-field grouped group-multiline>
+            <div class="">
+              <b-switch v-model="isBordered" :size="switcherClass">Bordered</b-switch>
+            </div>
+            <div class="">
+              <b-switch v-model="isStriped" :size="switcherClass">Striped</b-switch>
+            </div>
+            <div class="">
+              <b-switch v-model="isNarrowed" :size="switcherClass">Narrowed</b-switch>
+            </div>
+            <div class="">
+              <b-switch v-model="isHoverable" :size="switcherClass">Hoverable</b-switch>
+            </div>
+            <div class="">
+              <b-switch v-model="isFocusable" :size="switcherClass">Focusable</b-switch>
+            </div>
+            <div class="">
+              <b-switch v-model="isLoading" :size="switcherClass">Spinner</b-switch>
+            </div>
+            <div class="">
+              <b-switch v-model="isMobilCards" :size="switcherClass">Mobile cards</b-switch>
+            </div>
+          </b-field>
         </div>
-        <div class="">
-          <b-switch v-model="isStriped" :size="switcherClass">Striped</b-switch>
-        </div>
-        <div class="">
-          <b-switch v-model="isNarrowed" :size="switcherClass">Narrowed</b-switch>
-        </div>
-        <div class="">
-          <b-switch v-model="isHoverable" :size="switcherClass">Hoverable</b-switch>
-        </div>
-        <div class="">
-          <b-switch v-model="isFocusable" :size="switcherClass">Focusable</b-switch>
-        </div>
-        <div class="">
-          <b-switch v-model="isLoading" :size="switcherClass">Spinner</b-switch>
-        </div>
-        <div class="">
-          <b-switch v-model="isMobilCards" :size="switcherClass">Mobile cards</b-switch>
-        </div>
-      </b-field>
+      </b-collapse>
     </div>
-    <b-collapse :animation="'none'" :open="isOpenSetting">
-      <div class="collapse-container">
-        <pre>{{ code }}</pre>
+
+    <!-- Data -->
+    <!--<div class="data-content">
+      <div class="code-content">
+        <b-collapse :open="isOpenData">
+          <div class="collapse-container">
+            <pre></pre>
+          </div>
+        </b-collapse>
       </div>
-    </b-collapse>
-    <!--  <div class="data-content">
-        <v-collapse
-          class="collapse-container"
-          :classes="'is-small'"
-          :label="'show code'"
-          :open="true"
-          :hideLabel="'hide source'"
-          :contentId="'basic-table'"
-          :content="code"
-        ></v-collapse>
-      </div>-->
+    </div>-->
+
+    <!-- Code -->
+    <div class="code-content">
+      <b-collapse :open="isOpenCode">
+        <div class="collapse-container">
+          <pre>{{ code }}</pre>
+        </div>
+      </b-collapse>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
 import { schema } from './schema';
-import { data } from '../data';
-
-const columns = [
-  {
-    field: 'id',
-    label: 'ID'
-    // width: '40'
-  },
-  {
-    field: 'first_name',
-    label: 'First Name'
-  },
-  {
-    field: 'last_name',
-    label: 'Last Name'
-  },
-  {
-    field: 'date',
-    label: 'Date'
-  },
-  {
-    field: 'gender',
-    label: 'Gender'
-  }
-];
+import { data, columns } from '../data';
 
 export default {
   data() {
@@ -111,7 +104,10 @@ export default {
       isFocusable: false,
       isLoading: false,
       isMobilCards: true,
-      isOpenSetting: false
+
+      isOpenSetting: false,
+      isOpenCode: false,
+      isOpenData: false
     };
   },
   setup() {
@@ -130,22 +126,11 @@ export default {
 </script>
 <style scoped></style>
 
-<!--  <b-tabs v-model="tabIndex">
-     <b-tab-item>
-       item 1
-     </b-tab-item>
-     <b-tab-item>
-       item 2
-     </b-tab-item>
-   </b-tabs>-->
-
-<!--:selected="selected"-->
-<!--@onSelectChange="selectChange($event)"-->
-
-<!-- <b-button
-   :class="`tag-btn ${tabIndex ? 'active' : ''}`"
-   :type="'is-light'"
-   :label="tabIndex ? '< back' : 'code'"
-   :hovered="tabIndex"
-   @click="onChangeTab">
- </b-button>-->
+<!--<b-tabs v-model="tabIndex">
+<b-tab-item>
+  item 1
+</b-tab-item>
+<b-tab-item>
+  item 2
+</b-tab-item>
+</b-tabs>-->

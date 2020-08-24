@@ -1,5 +1,6 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
+
 $navbar-breakpoint: 772px;
 $desktop: 960px;
 $tag-radius: 0;
@@ -36,6 +37,7 @@ $navBgColor: #f5f5f5;
   .navbar {
     height: $headerHeight;
     background-color: transparent;
+
     img {
       max-height: 2.5rem;
     }
@@ -55,34 +57,60 @@ $navBgColor: #f5f5f5;
   box-shadow: 3px 6px 15px -4px rgba(0, 0, 0, 0.35);
   padding: 0;
   border-radius: 10px;
+}
 
-  .title {
-    //font-weight: 500;
+$hoverColor: #E0E0E0;
+.tags-content {
+  display: flex;
+
+  .tag {
+    margin-right: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $hoverColor;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.active {
+      background-color: $hoverColor;
+
+      &:hover {
+        background-color: $hoverColor;
+      }
+    }
   }
+
 }
 
 .padding-content {
   padding: 1.25rem
 }
-.setting-content{
-  padding-top: 1.25rem;
+
+.setting-content {
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
-.title-content{
+.title-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  .title-label{
+
+  .title-label {
     color: #363636;
     font-size: 30px;
     font-weight: 400;
   }
-  .tags-content{
-    display: flex;
-    .tag{
-      //height: inherit;
-      //padding: 2px 4px;
-      &.is-delete{
+
+  .tags-content {
+
+    .tag {
+      &.is-delete {
         margin: 0;
       }
     }
@@ -111,9 +139,10 @@ $navBgColor: #f5f5f5;
   pre {
     line-height: 1.5;
     font-size: 13px;
-    padding-top: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
     text-align: left;
-    max-height: 300px;
+    max-height: 200px;
   }
 }
 
@@ -125,10 +154,11 @@ $navBgColor: #f5f5f5;
   .tabs {
     ul {
       border: 0;
+
       li {
         a {
-          border:0;
-          padding:0;
+          border: 0;
+          padding: 0;
           margin: 0;
           //font-size: 0.75rem;
         }
@@ -143,14 +173,16 @@ $navBgColor: #f5f5f5;
     }
   }
 }
-.tag-btn{
+
+.tag-btn {
   cursor: pointer;
   font-size: 0.75rem;
   height: 2em;
   padding-left: 0.75em;
   padding-right: 0.75em;
   border-radius: 4px;
-  &.active{
+
+  &.active {
     //opacity: 0.2;
   }
 }
