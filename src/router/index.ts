@@ -25,6 +25,11 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/Table/table-sandbox.vue')
   },
   {
+    path: '/select',
+    name: 'Select Sandbox',
+    component: () => import('@/views/Select/select-sandbox.vue')
+  },
+  {
     path: '/*',
     redirect: '/table'
   }

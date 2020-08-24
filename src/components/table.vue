@@ -42,7 +42,7 @@ export default {
     checkboxPosition: {
       type: String,
       default: 'left',
-      validator: (value) => {
+      validator: (value: any) => {
         return ['left', 'right'].indexOf(value) >= 0;
       }
     },
@@ -108,7 +108,7 @@ export default {
     paginationPosition: {
       type: String,
       default: 'bottom',
-      validator: (value) => {
+      validator: (value: any) => {
         return ['bottom', 'top', 'both'].indexOf(value) >= 0;
       }
     },
@@ -160,9 +160,9 @@ export default {
     cardLayout: Boolean
   },
 
-  setup(props) {
+  setup(props: any) {
     const selectValue = ref(props.selected);
-    const onSelect = (value) => {
+    const onSelect = (value: any) => {
       selectValue.value = value;
     };
     return {

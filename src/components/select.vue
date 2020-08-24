@@ -1,7 +1,14 @@
 <template>
   <ValidationProvider :rules="isRequired()" v-slot="">
     <b-field :label="label" :label-for="id">
-      <b-select v-model="model" :id="id" :placeholder="placeHolder" :expanded="expanded">
+      <b-select
+        v-model="model"
+        :id="id"
+        :placeholder="placeholder"
+        :expanded="expanded"
+        :multiple="multiple"
+        @input="onSelectChange($event)"
+      >
         <option v-for="(item, index) in option" :value="item" :key="index">
           {{ item }}
         </option>
@@ -18,19 +25,26 @@ export default {
     ui: String,
     label: String,
     id: [String, Number],
-    placeHolder: String,
+    placeholder: String,
     name: String,
     option: Array,
     expanded: Boolean,
     required: Boolean,
     disabled: Boolean,
+    multiple: Boolean,
     value: [String, Number, Object, Array]
   },
-  setup(props: any) {
+  setup(props: any, attr: any) {
     const model = props.value ? ref(props.value) : null;
     const isRequired = () => (props.required ? 'required' : '');
+
+    const onSelectChange = (ev: InputEvent) => {
+      attr.emit('valueChange', ev);
+    };
+
     return {
       isRequired,
+      onSelectChange,
       model
     };
   }

@@ -63,26 +63,23 @@ export default {
     const formData = computed(() => formGroup);
 
     const code_SampleA = ref(
-      '<template>\n' +
-        '  <v-icell-input\n' +
-        '    :type="text"\n' +
-        '    :label="Falhasználó neve"\n' +
-        '    :name="userName"\n' +
-        '    :placeHolder="Felhasználó neve">\n' +
-        '    :value="formGroup.name"\n' +
-        '  </v-icell-input>\n' +
-        '</template>'
+      `<v-icell-input
+        :type="'text'"
+        :label="'Falhasználó neve'"
+        :name="'userName'"
+        :placeHolder="'Felhasználó neve'"
+        :value="formGroup.name"
+></v-icell-input>`
     );
 
     const code_SampleB = ref(
-      '<template>\n' +
-        '  <v-icell-input\n' +
-        '    :type="password"\n' +
-        '    :label="Jelszó"\n' +
-        '    :name="password"\n' +
-        '    :placeHolder="jelszó">\n' +
-        '  </v-icell-input>\n' +
-        '</template>'
+      `<v-icell-input
+        :type="'password'"
+        :label="'Jelszó'"
+        :name="'password'"
+        :placeHolder="'jelszó'"
+        :value="formGroup.password"
+></v-icell-input>`
     );
 
     return {

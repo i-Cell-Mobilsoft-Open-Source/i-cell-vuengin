@@ -17,8 +17,9 @@
               </template>
               <template slot="end">
                 <b-navbar-item tag="router-link" :to="{ path: '/input' }">Input</b-navbar-item>
+                <b-navbar-item tag="router-link" :to="{ path: '/select' }">Datepicker</b-navbar-item>
                 <b-navbar-item tag="router-link" :to="{ path: '/datepicker' }">Datepicker</b-navbar-item>
-                <b-navbar-item tag="router-link" :to="{ path: '/datetimepicker' }">Datetimepicker</b-navbar-item>
+                <b-navbar-item tag="router-link" :to="{ path: '/select' }">Select</b-navbar-item>
                 <b-navbar-item tag="router-link" :to="{ path: '/table' }">Table</b-navbar-item>
               </template>
             </b-navbar>
