@@ -10,6 +10,12 @@
     :mobile-cards="mobileCards"
     :selected="selected ? selectValue : {}"
     @select="onSelect"
+    :checkable="checkable"
+    :checkbox-position="checkboxPosition"
+    :checked-rows="checkedRows ? checkedRowsValue : []"
+    :is-row-checkable="isRowCheckable"
+    :header-checkable="headerCheckable"
+    @check="onCheck"
     :columns="columns"
   >
   </b-table>
@@ -17,7 +23,7 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
-
+// onUpdated, onUnmounted, watchEffect
 export default {
   name: 'v-table',
   props: {
@@ -31,15 +37,19 @@ export default {
     loading: Boolean,
     focusable: Boolean,
 
+    /* Checkbox */
     detailed: Boolean,
     checkable: Boolean,
-    headerCheckable: Boolean,
     checkboxPosition: String,
+    checkedRows: Array,
+    isRowCheckable: Function,
+    headerCheckable: Boolean,
+    customIsChecked: Function,
+
+    /* Select */
     selected: Object,
     isRowSelectable: Function,
-    customIsChecked: Function,
-    isRowCheckable: Function,
-    checkedRows: Array,
+
     mobileCards: Boolean,
     defaultSort: [String, Array],
     defaultSortDirection: String,
@@ -81,16 +91,34 @@ export default {
 
   setup(props: any, attr: any) {
     const selectValue = ref(props.selected);
+    const checkedRowsValue = ref(props.checkedRows);
+
     const onSelect = (value: any) => {
       selectValue.value = value;
       attr.emit('onSelectChange', value);
     };
+    const onCheck = (value: any) => {
+      checkedRowsValue.value = value;
+      attr.emit('onCheckedChange', value);
+    };
+
     return {
       onSelect,
-      selectValue
+      onCheck,
+      selectValue,
+      checkedRowsValue
     };
   }
 };
 </script>
 
 <style scoped></style>
+
+<!-- onUpdated(() => {});-->
+<!-- onUnmounted(() => {});-->
+<!--
+const stopWatchEffect = watchEffect(() => {
+if (props.selected) {
+selectValue.value = props.selected;
+}
+});-->
