@@ -35,7 +35,7 @@ export default {
     value: [String, Number, Object, Array]
   },
   setup(props: any, attr: any) {
-    const model = props.value ? ref(props.value) : null;
+    const model = props.value ? ref(props.value) : [];
     const isRequired = () => (props.required ? 'required' : '');
 
     const onSelectChange = (ev: InputEvent) => {
