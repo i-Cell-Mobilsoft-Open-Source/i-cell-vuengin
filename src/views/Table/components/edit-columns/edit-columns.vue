@@ -3,13 +3,10 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Select</div>
+        <div class="title-label">Edit columns</div>
         <div class="tags-content">
           <span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
-          </span>
-          <span class="tag is-light" @click="isOpenData = !isOpenData" :class="isOpenData ? 'active' : ''">
-            <i class="mdi mdi-code-greater-than"></i>
           </span>
           <span class="tag is-light" @click="isOpenCode = !isOpenCode" :class="isOpenCode ? 'active' : ''">
             <i class="mdi mdi-code-tags"></i>
@@ -19,21 +16,17 @@
 
       <!-- Content -->
       <div class="table-content">
-        <v-icell-table
-          :data="data"
-          :columns="columns"
-          :selected="isSelected ? selectedValue : null"
-          @onSelectChange="onSelectChange($event)"
-        >
-        </v-icell-table>
+        <v-icell-table :data="data" :columns="columns"> </v-icell-table>
       </div>
 
       <!-- Settings -->
       <b-collapse :open="isOpenSetting">
         <div class="settings-content">
           <b-field grouped group-multiline>
-            <div class="">
-              <b-switch v-model="isSelected" :size="'is-small'">Selected</b-switch>
+            <div class="settings-item" v-for="(column, index) in columns" :key="index">
+              <b-switch v-model="column.visible" :size="'is-small'">
+                {{ column.label }}
+              </b-switch>
             </div>
           </b-field>
         </div>
@@ -45,7 +38,7 @@
       <div class="code-content">
         <b-collapse :open="isOpenData">
           <div class="collapse-container">
-            <pre>{{ selectedValue }}</pre>
+            <pre>{{ checkedRows }}</pre>
           </div>
         </b-collapse>
       </div>
@@ -64,31 +57,43 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
-import { schema } from './schema';
-import { data, columns } from '../data';
+import { templateCode } from './template-code';
+import { data, columnsEdit } from '@/views/Table/components/data';
 
 export default {
   data() {
     return {
       data: data,
-      columns: columns,
+      columns: columnsEdit,
       isOpenSetting: false,
       isOpenCode: false,
       isOpenData: false
     };
   },
   setup() {
-    const code = ref(schema);
-    const isSelected = ref(true);
-    const selectedValue = ref(data[0]);
-    const onSelectChange = (value: any) => {
-      selectedValue.value = value;
+    const code = ref(templateCode);
+    const checkedRows = ref([data[0], data[2]]);
+    const checkboxPosition = ref('left');
+    const onCheckedChange = (value: any) => {
+      checkedRows.value = value;
+    };
+    const onCheckboxPosition = (value: string) => {
+      checkboxPosition.value = value === 'left' ? 'right' : 'left';
+    };
+    const onEnabledFirstRowCheckable = (row: any) => {
+      return row.id !== 0;
+    };
+    const onDisabledFirstRowCheckable = (row: any) => {
+      return row.id !== 1; // first row = data[0].id
     };
     return {
       code,
-      selectedValue,
-      isSelected,
-      onSelectChange
+      checkedRows,
+      checkboxPosition,
+      onCheckedChange,
+      onCheckboxPosition,
+      onEnabledFirstRowCheckable,
+      onDisabledFirstRowCheckable
     };
   }
 };

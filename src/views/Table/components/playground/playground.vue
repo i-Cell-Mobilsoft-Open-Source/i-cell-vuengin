@@ -3,7 +3,7 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Pagination</div>
+        <div class="title-label">Playground</div>
         <div class="tags-content">
           <span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
@@ -14,52 +14,46 @@
         </div>
       </div>
 
-      <!-- Content -->
+      <!-- Table -->
       <div class="table-content">
         <v-icell-table
           :data="data"
           :columns="columns"
-          :paginated="isPaginated"
-          :pagination-simple="isPaginationSimple"
-          :pagination-position="paginationPosition"
-          :pagination-size="paginationSize"
-          :per-page="perPage"
+          :bordered="isBordered"
+          :striped="isStriped"
+          :narrowed="isNarrowed"
+          :loading="isLoading"
+          :hoverable="isHoverable"
+          :focusable="isFocusable"
+          :mobileCards="isMobilCards"
         >
         </v-icell-table>
       </div>
 
       <!-- Settings -->
       <b-collapse :open="isOpenSetting">
-        <div class="select-content"></div>
         <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="settings-item">
-              <b-select v-model="perPage" :size="'is-small'">
-                <option value="5">5 per page</option>
-                <option value="10">10 per page</option>
-                <option value="15">15 per page</option>
-                <option value="20">20 per page</option>
-              </b-select>
+              <b-switch v-model="isBordered" :size="switcherClass">Bordered</b-switch>
             </div>
-
             <div class="settings-item">
-              <b-select v-model="paginationPosition" :size="'is-small'">
-                <option value="bottom">pagination: bottom</option>
-                <option value="top">pagination: top</option>
-                <option value="both">pagination: both</option>
-              </b-select>
+              <b-switch v-model="isStriped" :size="switcherClass">Striped</b-switch>
             </div>
-
             <div class="settings-item">
-              <b-switch v-model="isPaginated" :size="'is-small'">
-                Paginated
-              </b-switch>
+              <b-switch v-model="isNarrowed" :size="switcherClass">Narrowed</b-switch>
             </div>
-
             <div class="settings-item">
-              <b-switch v-model="isPaginationSimple" :size="'is-small'">
-                Pagination {{ !isPaginationSimple ? 'basic' : 'simple' }}
-              </b-switch>
+              <b-switch v-model="isHoverable" :size="switcherClass">Hoverable</b-switch>
+            </div>
+            <div class="settings-item">
+              <b-switch v-model="isFocusable" :size="switcherClass">Focusable</b-switch>
+            </div>
+            <div class="settings-item">
+              <b-switch v-model="isLoading" :size="switcherClass">Spinner</b-switch>
+            </div>
+            <div class="settings-item">
+              <b-switch v-model="isMobilCards" :size="switcherClass">Mobile cards</b-switch>
             </div>
           </b-field>
         </div>
@@ -79,29 +73,35 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
-import { schema } from '@/views/Table/components/paginated/schema';
-import { dataBig, columnsBigConfig } from '@/views/Table/components/data';
+import { templateCode } from './template-code';
+import { data, columns } from '@/views/Table/components/data';
 
 export default {
   data() {
     return {
-      data: dataBig,
-      columns: columnsBigConfig,
+      data: data,
+      columns: columns,
+      isBordered: false,
+      isStriped: false,
+      isNarrowed: false,
+      isHoverable: false,
+      isFocusable: false,
+      isLoading: false,
+      isMobilCards: true,
+
       isOpenSetting: false,
       isOpenCode: false,
-
-      isPaginated: true,
-      isPaginationSimple: true,
-
-      paginationPosition: 'bottom',
-      paginationSize: 'is-small',
-      perPage: 5
+      isOpenData: false
     };
   },
   setup() {
-    const code = ref(schema);
+    const switcherClass = 'is-small';
+    const tabIndex = ref(0);
+    const code = ref(templateCode);
     return {
-      code
+      code,
+      switcherClass,
+      tabIndex
     };
   }
 };

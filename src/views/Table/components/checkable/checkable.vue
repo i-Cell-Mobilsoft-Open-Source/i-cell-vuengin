@@ -36,19 +36,19 @@
       <b-collapse :open="isOpenSetting">
         <div class="settings-content">
           <b-field grouped group-multiline>
-            <div class="">
+            <div class="settings-item">
               <b-switch v-model="checkable" :size="'is-small'">Checkable</b-switch>
             </div>
-            <div class="">
+            <div class="settings-item">
               <b-switch v-model="headerCheckable" :size="'is-small'">Header checkable</b-switch>
             </div>
-            <div class="">
+            <div class="settings-item">
               <b-switch @input="onCheckboxPosition(checkboxPosition)" :size="'is-small'"
                 >Checkbox position:
                 {{ checkboxPosition }}
               </b-switch>
             </div>
-            <div class="">
+            <div class="settings-item">
               <b-switch v-model="isFirstRowDisabled" :size="'is-small'"
                 >First row:
                 {{ isFirstRowDisabled ? 'disable' : 'enable' }}
@@ -83,7 +83,7 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
-import { schema } from './schema';
+import { templateCode } from './template-code';
 import { data, columns } from '../data';
 
 export default {
@@ -102,7 +102,7 @@ export default {
     };
   },
   setup() {
-    const code = ref(schema);
+    const code = ref(templateCode);
     const checkedRows = ref([data[0], data[2]]);
     const checkboxPosition = ref('left');
     const onCheckedChange = (value: any) => {

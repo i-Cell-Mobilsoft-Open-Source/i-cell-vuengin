@@ -3,10 +3,13 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Searchable</div>
+        <div class="title-label">Selection</div>
         <div class="tags-content">
           <span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
+          </span>
+          <span class="tag is-light" @click="isOpenData = !isOpenData" :class="isOpenData ? 'active' : ''">
+            <i class="mdi mdi-code-greater-than"></i>
           </span>
           <span class="tag is-light" @click="isOpenCode = !isOpenCode" :class="isOpenCode ? 'active' : ''">
             <i class="mdi mdi-code-tags"></i>
@@ -16,7 +19,13 @@
 
       <!-- Content -->
       <div class="table-content">
-        <v-icell-table :data="data" :columns="columns"></v-icell-table>
+        <v-icell-table
+          :data="data"
+          :columns="columns"
+          :selected="isSelected ? selectedValue : null"
+          @onSelectChange="onSelectChange($event)"
+        >
+        </v-icell-table>
       </div>
 
       <!-- Settings -->
@@ -24,18 +33,22 @@
         <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="settings-item">
-              <b-switch v-model="idSearch" :size="'is-small'">
-                ID
-              </b-switch>
-            </div>
-            <div class="settings-item">
-              <b-switch v-model="firstNameSearch" :size="'is-small'">
-                First Name
-              </b-switch>
+              <b-switch v-model="isSelected" :size="'is-small'">Selected</b-switch>
             </div>
           </b-field>
         </div>
       </b-collapse>
+    </div>
+
+    <!-- Data -->
+    <div class="data-content">
+      <div class="code-content">
+        <b-collapse :open="isOpenData">
+          <div class="collapse-container">
+            <pre>{{ selectedValue }}</pre>
+          </div>
+        </b-collapse>
+      </div>
     </div>
 
     <!-- Code -->
@@ -50,53 +63,32 @@
 </template>
 
 <script lang="ts">
-import { ref, computed } from '@vue/composition-api';
-import { schema } from '@/views/Table/components/table5/schema';
-import { data } from '@/views/Table/components/data';
+import { ref } from '@vue/composition-api';
+import { templateCode } from './template-code';
+import { data, columns } from '@/views/Table/components/data';
 
 export default {
   data() {
     return {
       data: data,
+      columns: columns,
       isOpenSetting: false,
-      isOpenCode: false
+      isOpenCode: false,
+      isOpenData: false
     };
   },
   setup() {
-    const code = ref(schema);
-    const idSearch = ref(false);
-    const firstNameSearch = ref(false);
-    const columns = computed(() => {
-      return [
-        {
-          field: 'id',
-          label: 'ID',
-          searchable: idSearch.value
-        },
-        {
-          field: 'first_name',
-          label: 'First Name',
-          searchable: firstNameSearch.value
-        },
-        {
-          field: 'last_name',
-          label: 'Last Name'
-        },
-        {
-          field: 'date',
-          label: 'Date'
-        },
-        {
-          field: 'gender',
-          label: 'Gender'
-        }
-      ];
-    });
+    const code = ref(templateCode);
+    const isSelected = ref(true);
+    const selectedValue = ref(data[0]);
+    const onSelectChange = (value: any) => {
+      selectedValue.value = value;
+    };
     return {
       code,
-      columns,
-      idSearch,
-      firstNameSearch
+      selectedValue,
+      isSelected,
+      onSelectChange
     };
   }
 };

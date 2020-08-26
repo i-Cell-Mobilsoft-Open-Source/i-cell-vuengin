@@ -20,6 +20,7 @@
     :pagination-size="paginationSize"
     :current-page="currentPage"
     :per-page="perPage"
+    @page-change="onPageChange"
     @select="onSelect"
     @check="onCheck"
   >
@@ -31,6 +32,7 @@
           :label="column.label"
           :meta="column.meta"
           :searchable="column.searchable"
+          :sortable="column.sortable"
           :visible="column.visible"
         >
           {{ props.row[column.field] }}
@@ -120,10 +122,14 @@ export default {
       checkedRowsValue.value = value;
       attr.emit('onCheckedChange', value);
     };
+    const onPageChange = (page: number) => {
+      attr.emit('pageChange', page);
+    };
 
     return {
       onSelect,
       onCheck,
+      onPageChange,
       selectValue,
       checkedRowsValue
     };

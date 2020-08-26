@@ -28,7 +28,35 @@ export const columns = [
     label: 'Gender'
   }
 ];
-export const columnsEditConfig = [
+
+export const columnsSorting = [
+  {
+    field: 'id',
+    label: 'ID',
+    sortable: true
+  },
+  {
+    field: 'first_name',
+    label: 'First Name',
+    sortable: true
+  },
+  {
+    field: 'last_name',
+    label: 'Last Name',
+    sortable: true
+  },
+  {
+    field: 'date',
+    label: 'Date',
+    sortable: true
+  },
+  {
+    field: 'gender',
+    label: 'Gender'
+  }
+];
+
+export const columnsEdit = [
   {
     field: 'id',
     label: 'ID',
@@ -56,7 +84,7 @@ export const columnsEditConfig = [
   }
 ];
 
-export const columnsBigConfig = [
+export const columnsBig = [
   {
     field: 'id',
     label: 'ID'

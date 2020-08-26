@@ -1,24 +1,29 @@
 <template>
   <section>
     <div class="columns">
-      <div class="column is-6">
-        <table-1></table-1>
-      </div>
-      <div class="column is-6">
-        <table-2></table-2>
+      <div class="column is-12">
+        <table-playground></table-playground>
       </div>
     </div>
     <div class="columns">
       <div class="column is-6">
-        <table-4></table-4>
+        <table-selection></table-selection>
       </div>
       <div class="column is-6">
-        <table-3></table-3>
+        <table-sorting></table-sorting>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-6">
+        <table-checkable></table-checkable>
+      </div>
+      <div class="column is-6">
+        <table-edit-columns></table-edit-columns>
       </div>
     </div>
     <div class="columns">
       <div class="column is-12">
-        <table-5></table-5>
+        <table-searchable></table-searchable>
       </div>
     </div>
     <div class="columns">
@@ -30,21 +35,23 @@
 </template>
 
 <script lang="ts">
-import table1 from './components/table1/table-1.vue';
-import table2 from './components/table2/table-2.vue';
-import table3 from './components/table3/table-3.vue';
-import table4 from './components/table4/table-4.vue';
-import table5 from './components/table5/table-5.vue';
-import paginated from './components/paginated/paginated.vue';
+import playgroundComponent from './components/playground/playground.vue';
+import selectionComponent from './components/selection/selection.vue';
+import checkableComponent from './components/checkable/checkable.vue';
+import editColumnsComponent from './components/edit-columns/edit-columns.vue';
+import searchableComponent from './components/searchable/searchable.vue';
+import paginationComponent from './components/pagination/pagination.vue';
+import sortingComponent from './components/sorting/sorting.vue';
 
 export default {
   components: {
-    'table-1': table1,
-    'table-2': table2,
-    'table-3': table3,
-    'table-4': table4,
-    'table-5': table5,
-    'table-paginated': paginated
+    'table-playground': playgroundComponent,
+    'table-selection': selectionComponent,
+    'table-checkable': checkableComponent,
+    'table-edit-columns': editColumnsComponent,
+    'table-searchable': searchableComponent,
+    'table-paginated': paginationComponent,
+    'table-sorting': sortingComponent
   }
 };
 </script>
