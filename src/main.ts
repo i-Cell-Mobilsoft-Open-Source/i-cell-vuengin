@@ -12,7 +12,6 @@ import Buefy from 'buefy';
 import './assets/scss/app.scss';
 
 // Import Components
-// import InputComponent from '@/components/input/input.vue';
 
 import InputPlugin from '@/components/input/input';
 

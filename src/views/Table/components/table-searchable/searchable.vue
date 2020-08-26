@@ -51,7 +51,7 @@
 
 <script lang="ts">
 import { ref, computed } from '@vue/composition-api';
-import { templateCode } from '@/views/Table/components/searchable/template-code';
+import { templateCode } from '@/views/Table/components/table-searchable/template-code';
 import { data } from '@/views/Table/components/data';
 
 export default {

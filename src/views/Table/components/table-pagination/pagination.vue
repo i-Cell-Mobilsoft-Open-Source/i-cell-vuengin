@@ -36,6 +36,18 @@
         <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="settings-item">
+              <b-switch v-model="isPaginated" :size="'is-small'">
+                Paginated
+              </b-switch>
+            </div>
+
+            <div class="settings-item">
+              <b-switch v-model="isPaginationSimple" :size="'is-small'">
+                Pagination {{ !isPaginationSimple ? 'basic' : 'simple' }}
+              </b-switch>
+            </div>
+
+            <div class="settings-item">
               <b-select v-model="perPage" :size="'is-small'">
                 <option value="5">5 per page</option>
                 <option value="10">10 per page</option>
@@ -51,21 +63,8 @@
                 <option value="both">pagination: both</option>
               </b-select>
             </div>
-
             <div class="settings-item">
               <b-button :label="'Set page to 2'" :size="'is-small'" @click="currentPage = 2"> </b-button>
-            </div>
-
-            <div class="settings-item">
-              <b-switch v-model="isPaginated" :size="'is-small'">
-                Paginated
-              </b-switch>
-            </div>
-
-            <div class="settings-item">
-              <b-switch v-model="isPaginationSimple" :size="'is-small'">
-                Pagination {{ !isPaginationSimple ? 'basic' : 'simple' }}
-              </b-switch>
             </div>
           </b-field>
         </div>
@@ -85,7 +84,7 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
-import { templateCode } from '@/views/Table/components/pagination/template-code';
+import { templateCode } from '@/views/Table/components/table-pagination/template-code';
 import { dataBig, columnsBig } from '@/views/Table/components/data';
 
 export default {

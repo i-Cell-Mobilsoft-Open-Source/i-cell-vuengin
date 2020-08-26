@@ -34,7 +34,7 @@
     </div>
 
     <!-- Data -->
-    <div class="data-content">
+    <!-- <div class="data-content">
       <div class="code-content">
         <b-collapse :open="isOpenData">
           <div class="collapse-container">
@@ -42,7 +42,7 @@
           </div>
         </b-collapse>
       </div>
-    </div>
+    </div>-->
 
     <!-- Code -->
     <div class="code-content">
@@ -72,28 +72,8 @@ export default {
   },
   setup() {
     const code = ref(templateCode);
-    const checkedRows = ref([data[0], data[2]]);
-    const checkboxPosition = ref('left');
-    const onCheckedChange = (value: any) => {
-      checkedRows.value = value;
-    };
-    const onCheckboxPosition = (value: string) => {
-      checkboxPosition.value = value === 'left' ? 'right' : 'left';
-    };
-    const onEnabledFirstRowCheckable = (row: any) => {
-      return row.id !== 0;
-    };
-    const onDisabledFirstRowCheckable = (row: any) => {
-      return row.id !== 1; // first row = data[0].id
-    };
     return {
-      code,
-      checkedRows,
-      checkboxPosition,
-      onCheckedChange,
-      onCheckboxPosition,
-      onEnabledFirstRowCheckable,
-      onDisabledFirstRowCheckable
+      code
     };
   }
 };

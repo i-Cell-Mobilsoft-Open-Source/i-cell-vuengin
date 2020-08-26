@@ -1,93 +1,30 @@
 <template>
-  <div class="container">
+  <section>
     <div class="columns">
-      <div class="column is-12">
-        <div class="box">
-          <div class="padding-content">
-            <div class="title">Input</div>
-            <v-icell-input
-              :type="'text'"
-              :label="'Falhasználó neve'"
-              :name="'userName'"
-              :placeHolder="'Felhasználó neve'"
-              :value="formGroup.name"
-            ></v-icell-input>
-          </div>
-          <v-collapse
-            class="collapse-container"
-            :classes="'is-small is-light'"
-            :label="'show code'"
-            :hideLabel="'hide source'"
-            :contentId="'basic-table'"
-            :content="code_SampleA"
-          ></v-collapse>
-        </div>
-
-        <div class="box">
-          <div class="padding-content">
-            <div class="title">Input - Password</div>
-            <v-icell-input
-              :type="'password'"
-              :label="'Jelszó'"
-              :name="'password'"
-              :placeHolder="'jelszó'"
-              :value="formGroup.password"
-            ></v-icell-input>
-          </div>
-          <v-collapse
-            class="collapse-container"
-            :classes="'is-small is-light'"
-            :label="'show code'"
-            :hideLabel="'hide source'"
-            :contentId="'basic-table'"
-            :content="code_SampleB"
-          ></v-collapse>
-        </div>
+      <div class="column is-6">
+        <input-playground></input-playground>
+      </div>
+      <div class="column is-6">
+        <input-password></input-password>
       </div>
     </div>
-    {{ formGroup }}
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
-import { ref, reactive, computed } from '@vue/composition-api';
+import playgroundComponent from './components/input-playground/input-playground.vue';
+import passwordComponent from './components/input-password/input-password.vue';
+// import checkableComponent from './components/table-checkable/table-checkable.vue';
+// import editColumnsComponent from './components/table-edit-columns/table-edit-columns.vue';
+// import searchableComponent from './components/table-searchable/table-searchable.vue';
+// import paginationComponent from './components/table-pagination/table-pagination.vue';
+// import sortingComponent from './components/table-sorting/table-sorting.vue';
+// import stickyComponent from './components/table-sticky/table-sticky.vue';
 
 export default {
-  name: 'InputComomentDemo',
-  setup() {
-    const formGroup = reactive({
-      name: 'Béla',
-      password: ''
-    });
-
-    const formData = computed(() => formGroup);
-
-    const code_SampleA = ref(
-      `<v-icell-input
-        :type="'text'"
-        :label="'Falhasználó neve'"
-        :name="'userName'"
-        :placeHolder="'Felhasználó neve'"
-        :value="formGroup.name"
-></v-icell-input>`
-    );
-
-    const code_SampleB = ref(
-      `<v-icell-input
-        :type="'password'"
-        :label="'Jelszó'"
-        :name="'password'"
-        :placeHolder="'jelszó'"
-        :value="formGroup.password"
-></v-icell-input>`
-    );
-
-    return {
-      formGroup,
-      formData,
-      code_SampleA,
-      code_SampleB
-    };
+  components: {
+    'input-playground': playgroundComponent,
+    'input-password': passwordComponent
   }
 };
 </script>

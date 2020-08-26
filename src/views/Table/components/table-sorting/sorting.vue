@@ -13,22 +13,10 @@
           </span>
         </div>
       </div>
-
       <!-- Content -->
       <div class="table-content">
         <v-icell-table :data="data" :columns="columns"> </v-icell-table>
       </div>
-
-      <!-- Settings -->
-      <!--<b-collapse :open="isOpenSetting">
-        <div class="settings-content">
-          <b-field grouped group-multiline>
-            <div class="settings-item">
-              <b-switch v-model="isSortable" :size="'is-small'">Sortable</b-switch>
-            </div>
-          </b-field>
-        </div>
-      </b-collapse>-->
     </div>
 
     <!-- Code -->

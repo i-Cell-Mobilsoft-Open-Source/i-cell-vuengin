@@ -1,19 +1,23 @@
 <template>
   <div :class="classes">
     <ValidationProvider :rules="isRequired()" v-slot="">
-      <b-field :label="label" :label-for="id">
+      <b-field :label="label" :type="fieldType" :label-for="id">
         <b-input
           v-model="model"
           :type="type"
           :capitalize="capitalize"
           :custom-class="customClass"
-          :label-for="labelFor"
           :disabled="disabled"
           :id="id"
           :name="name"
           :placeholder="placeHolder"
+          :loading="loading"
+          :rounded="rounded"
+          :size="size"
           :required="required"
-          @input.native="onInputChange($event)"
+          :expanded="expanded"
+          :password-reveal="passwordReveal"
+          @input.native="onInput($event)"
         />
       </b-field>
     </ValidationProvider>
@@ -33,6 +37,7 @@ export default {
   name: 'v-icell-input',
   props: {
     ui: String,
+    fieldType: String,
     type: String,
     name: String,
     id: [String, Number],
@@ -45,17 +50,23 @@ export default {
     validationPattern: Function,
     required: Boolean,
     disabled: Boolean,
+    loading: Boolean,
+    expanded: Boolean,
+    rounded: Boolean,
+    passwordReveal: Boolean,
+    size: String,
+    inputData: String,
     value: [String, Number, Object, Date]
   },
   setup(props: any, attr: any) {
     const model = ref(props.value);
     const isRequired = () => (props.required ? 'required' : '');
-    const onInputChange = (ev: InputEvent) => {
-      attr.emit('valueChange', ev); // TODO: valueChange
+    const onInput = (ev: InputEvent) => {
+      attr.emit('onInput', ev, model.value);
     };
     return {
       isRequired,
-      onInputChange,
+      onInput,
       model
     };
   }
