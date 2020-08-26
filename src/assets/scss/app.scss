@@ -145,8 +145,8 @@ $hoverColor: #E0E0E0;
   pre {
     line-height: 1.5;
     font-size: 13px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: left;
     max-height: 200px;
   }
@@ -167,17 +167,14 @@ $hoverColor: #E0E0E0;
   .tab-content {
     padding: 0;
   }
-
   .tabs {
     ul {
       border: 0;
-
       li {
         a {
           border: 0;
           padding: 0;
           margin: 0;
-          //font-size: 0.75rem;
         }
 
         &.is-active {
@@ -198,8 +195,4 @@ $hoverColor: #E0E0E0;
   padding-left: 0.75em;
   padding-right: 0.75em;
   border-radius: 4px;
-
-  &.active {
-    //opacity: 0.2;
-  }
 }

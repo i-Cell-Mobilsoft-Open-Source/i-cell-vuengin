@@ -20,6 +20,7 @@
     :pagination-size="paginationSize"
     :current-page="currentPage"
     :per-page="perPage"
+    :sticky-header="stickyHeader"
     @page-change="onPageChange"
     @select="onSelect"
     @check="onCheck"

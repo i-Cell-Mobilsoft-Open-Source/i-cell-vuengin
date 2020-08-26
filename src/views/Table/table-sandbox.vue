@@ -2,6 +2,11 @@
   <section>
     <div class="columns">
       <div class="column is-12">
+        <table-sticky></table-sticky>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-12">
         <table-playground></table-playground>
       </div>
     </div>
@@ -42,6 +47,7 @@ import editColumnsComponent from './components/edit-columns/edit-columns.vue';
 import searchableComponent from './components/searchable/searchable.vue';
 import paginationComponent from './components/pagination/pagination.vue';
 import sortingComponent from './components/sorting/sorting.vue';
+import stickyComponent from './components/sticky/sticky.vue';
 
 export default {
   components: {
@@ -51,7 +57,8 @@ export default {
     'table-edit-columns': editColumnsComponent,
     'table-searchable': searchableComponent,
     'table-paginated': paginationComponent,
-    'table-sorting': sortingComponent
+    'table-sorting': sortingComponent,
+    'table-sticky': stickyComponent
   }
 };
 </script>
