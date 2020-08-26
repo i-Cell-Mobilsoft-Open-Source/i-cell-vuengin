@@ -21,14 +21,14 @@
 
       <!-- Settings -->
       <b-collapse :open="isOpenSetting">
-        <div class="setting-content">
+        <div class="settings-content">
           <b-field grouped group-multiline>
-            <div class="switch-item">
+            <div class="settings-item">
               <b-switch v-model="idSearch" :size="'is-small'">
                 ID
               </b-switch>
             </div>
-            <div class="switch-item">
+            <div class="settings-item">
               <b-switch v-model="firstNameSearch" :size="'is-small'">
                 First Name
               </b-switch>
@@ -65,9 +65,8 @@ export default {
   setup() {
     const code = ref(schema);
     const idSearch = ref(false);
-    const firstNameSearch = ref(true);
+    const firstNameSearch = ref(false);
     const columns = computed(() => {
-      // console.log('hello', ro);
       return [
         {
           field: 'id',

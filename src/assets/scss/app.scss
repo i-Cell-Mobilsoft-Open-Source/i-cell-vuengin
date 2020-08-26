@@ -1,8 +1,8 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
-//$navbar-breakpoint: 772px;
-//$desktop: 960px;
+$pagination-current-background-color: #00d1b2;
+$pagination-focus-color: transparentize;
 $tag-radius: 0;
 
 @import "~bulma";
@@ -93,11 +93,13 @@ $hoverColor: #E0E0E0;
   padding: 1.25rem
 }
 
-.setting-content {
-  padding-top: 20px;
-  padding-bottom: 10px;
+.settings-content {
+  //padding-top: 20px;
+  //padding-bottom: 10px;
+  .settings-item {
+    display: flex;
+  }
 }
-
 .title-content {
   display: flex;
   align-items: center;
@@ -147,7 +149,18 @@ $hoverColor: #E0E0E0;
     max-height: 200px;
   }
 }
+.b-table{
+  .table-wrapper{
+    margin-bottom: 0;
+  }
+  .level{
+    margin-bottom: 0;
+    &:not(.top){
+      padding-bottom: 0;
+    }
+  }
 
+}
 .b-tabs {
   .tab-content {
     padding: 0;

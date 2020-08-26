@@ -21,6 +21,11 @@
         <table-5></table-5>
       </div>
     </div>
+    <div class="columns">
+      <div class="column is-12">
+        <table-paginated></table-paginated>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -30,6 +35,7 @@ import table2 from './components/table2/table-2.vue';
 import table3 from './components/table3/table-3.vue';
 import table4 from './components/table4/table-4.vue';
 import table5 from './components/table5/table-5.vue';
+import paginated from './components/paginated/paginated.vue';
 
 export default {
   components: {
@@ -37,7 +43,8 @@ export default {
     'table-2': table2,
     'table-3': table3,
     'table-4': table4,
-    'table-5': table5
+    'table-5': table5,
+    'table-paginated': paginated
   }
 };
 </script>

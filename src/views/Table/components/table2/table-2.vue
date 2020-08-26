@@ -30,7 +30,7 @@
 
       <!-- Settings -->
       <b-collapse :open="isOpenSetting">
-        <div class="setting-content">
+        <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="">
               <b-switch v-model="isSelected" :size="'is-small'">Selected</b-switch>

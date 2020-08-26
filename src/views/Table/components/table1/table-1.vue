@@ -37,7 +37,7 @@
 
       <!-- Settings -->
       <b-collapse :open="isOpenSetting">
-        <div class="setting-content">
+        <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="">
               <b-switch v-model="isBordered" :size="switcherClass">Bordered</b-switch>

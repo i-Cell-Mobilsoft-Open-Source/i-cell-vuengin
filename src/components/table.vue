@@ -14,13 +14,25 @@
     :checked-rows="checkedRows ? checkedRowsValue : []"
     :is-row-checkable="isRowCheckable"
     :header-checkable="headerCheckable"
+    :paginated="paginated"
+    :pagination-simple="paginationSimple"
+    :pagination-position="paginationPosition"
+    :pagination-size="paginationSize"
+    :current-page="currentPage"
+    :per-page="perPage"
     @select="onSelect"
     @check="onCheck"
   >
-    <!--:columns="columns"-->
     <template v-slot="props">
       <template v-for="(column, index) in columns">
-        <b-table-column :key="index" :field="column.field" :label="column.label" :searchable="column.searchable" :visible="column.visible">
+        <b-table-column
+          :key="index"
+          :field="column.field"
+          :label="column.label"
+          :meta="column.meta"
+          :searchable="column.searchable"
+          :visible="column.visible"
+        >
           {{ props.row[column.field] }}
         </b-table-column>
       </template>
@@ -30,7 +42,7 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
-// onUpdated, onUnmounted, watchEffect
+
 export default {
   name: 'v-table',
   props: {

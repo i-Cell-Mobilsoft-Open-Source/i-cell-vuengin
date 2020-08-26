@@ -21,9 +21,9 @@
 
       <!-- Settings -->
       <b-collapse :open="isOpenSetting">
-        <div class="setting-content">
+        <div class="settings-content">
           <b-field grouped group-multiline>
-            <div class="switch-item" v-for="(column, index) in columns" :key="index">
+            <div class="settings-item" v-for="(column, index) in columns" :key="index">
               <b-switch v-model="column.visible" :size="'is-small'">
                 {{ column.label }}
               </b-switch>
