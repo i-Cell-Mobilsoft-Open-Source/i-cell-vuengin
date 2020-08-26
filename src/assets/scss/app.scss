@@ -94,10 +94,12 @@ $hoverColor: #E0E0E0;
 }
 
 .settings-content {
-  //padding-top: 20px;
-  //padding-bottom: 10px;
   .settings-item {
+    padding: 20px 10px 10px 0;
     display: flex;
+    label{
+      margin-right: 0;
+    }
   }
 }
 .title-content {
