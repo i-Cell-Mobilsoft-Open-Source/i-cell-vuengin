@@ -33,17 +33,17 @@ export const columnsSearchableConfig = [
   {
     field: 'id',
     label: 'ID',
-    searchable: false
+    searchable: true
   },
   {
     field: 'first_name',
     label: 'First Name',
-    searchable: true
+    searchable: false
   },
   {
     field: 'last_name',
     label: 'Last Name',
-    searchable: true
+    searchable: false
   },
   {
     field: 'date',

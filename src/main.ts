@@ -12,7 +12,10 @@ import Buefy from 'buefy';
 import './assets/scss/app.scss';
 
 // Import Components
-import InputComponent from '@/components/input.vue';
+// import InputComponent from '@/components/input/input.vue';
+
+import InputPlugin from '@/components/input/input';
+
 import SelectComponent from '@/components/select.vue';
 import DateTimeComponent from '@/components/datepicker.vue';
 import DateTimePickerComponent from '@/components/datetimepicker.vue';
@@ -50,6 +53,7 @@ Vue.use(Buefy, {
   defaultDatepickerYearsRange: [-100, 60]
 });
 Vue.use(VueCompositionApi);
+Vue.use(InputPlugin);
 
 Vue.config.productionTip = false;
 
@@ -60,7 +64,7 @@ Vue.component('ValidationObserver', ValidationObserver);
 Vue.component('v-collapse', CollapseComponent);
 
 // Entry Components
-Vue.component('v-icell-input', InputComponent);
+// Vue.component('v-icell-input', InputComponent);
 Vue.component('v-icell-select', SelectComponent);
 Vue.component('v-icell-date', DateTimeComponent);
 Vue.component('v-icell-datetime', DateTimePickerComponent);

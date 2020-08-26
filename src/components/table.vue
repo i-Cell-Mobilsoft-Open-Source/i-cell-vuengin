@@ -20,7 +20,7 @@
     <!--:columns="columns"-->
     <template v-slot="props">
       <template v-for="(column, index) in columns">
-        <b-table-column :key="index" :field="column.field" :searchable="column.searchable" :label="column.label" :visible="column.visible">
+        <b-table-column :key="index" :field="column.field" :label="column.label" :searchable="column.searchable" :visible="column.visible">
           {{ props.row[column.field] }}
         </b-table-column>
       </template>

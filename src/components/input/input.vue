@@ -22,8 +22,14 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
+import { BField } from 'buefy/src/components/field';
+import { BInput } from 'buefy/src/components/input';
 
 export default {
+  components: {
+    [BField.name]: BField,
+    [BInput.name]: BInput
+  },
   name: 'v-icell-input',
   props: {
     ui: String,

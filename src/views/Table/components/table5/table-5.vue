@@ -5,10 +5,9 @@
       <div class="title-content">
         <div class="title-label">Searchable</div>
         <div class="tags-content">
-          <!-- <span class="tag is-light"
-                @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
+          <span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
-          </span>-->
+          </span>
           <span class="tag is-light" @click="isOpenCode = !isOpenCode" :class="isOpenCode ? 'active' : ''">
             <i class="mdi mdi-code-tags"></i>
           </span>
@@ -17,40 +16,27 @@
 
       <!-- Content -->
       <div class="table-content">
-        <v-icell-table :data="data" :columns="columns"> </v-icell-table>
+        <v-icell-table :data="data" :columns="columns"></v-icell-table>
       </div>
 
       <!-- Settings -->
-      <!--<div class="setting-content">
-        <b-collapse :open="isOpenSetting">
+      <b-collapse :open="isOpenSetting">
+        <div class="setting-content">
           <b-field grouped group-multiline>
-            <div
-              class="switch-item"
-              v-for="(column, index) in columns"
-              :key="index">
-              <b-switch
-                v-model="column.searchable"
-                @input="onSwitch"
-                :size="'is-small'">
-                {{ column.label }}
+            <div class="switch-item">
+              <b-switch v-model="idSearch" :size="'is-small'">
+                ID
+              </b-switch>
+            </div>
+            <div class="switch-item">
+              <b-switch v-model="firstNameSearch" :size="'is-small'">
+                First Name
               </b-switch>
             </div>
           </b-field>
-        </b-collapse>
-      </div>
--->
+        </div>
+      </b-collapse>
     </div>
-
-    <!-- Data -->
-    <!--<div class="data-content">
-      <div class="code-content">
-        <b-collapse :open="isOpenData">
-          <div class="collapse-container">
-            <pre>{{ checkedRows }}</pre>
-          </div>
-        </b-collapse>
-      </div>
-    </div>-->
 
     <!-- Code -->
     <div class="code-content">
@@ -64,30 +50,54 @@
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
-import { schema } from './schema';
-import { data, columnsSearchableConfig } from '@/views/Table/components/data';
+import { ref, computed } from '@vue/composition-api';
+import { schema } from '@/views/Table/components/table5/schema';
+import { data } from '@/views/Table/components/data';
 
 export default {
   data() {
     return {
       data: data,
-      columns: columnsSearchableConfig,
       isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false
+      isOpenCode: false
     };
   },
   setup() {
     const code = ref(schema);
-    /*const columns = ref(columnsSearchableConfig);
-    const onSwitch = (value: any) => {
-      columns.value[1].searchable = value
-      console.log('value', columns.value[1]);
-    };*/
+    const idSearch = ref(false);
+    const firstNameSearch = ref(true);
+    const columns = computed(() => {
+      // console.log('hello', ro);
+      return [
+        {
+          field: 'id',
+          label: 'ID',
+          searchable: idSearch.value
+        },
+        {
+          field: 'first_name',
+          label: 'First Name',
+          searchable: firstNameSearch.value
+        },
+        {
+          field: 'last_name',
+          label: 'Last Name'
+        },
+        {
+          field: 'date',
+          label: 'Date'
+        },
+        {
+          field: 'gender',
+          label: 'Gender'
+        }
+      ];
+    });
     return {
-      code
-      // onSwitch,
+      code,
+      columns,
+      idSearch,
+      firstNameSearch
     };
   }
 };
