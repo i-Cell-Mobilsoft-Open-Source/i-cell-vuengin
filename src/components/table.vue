@@ -9,15 +9,22 @@
     :narrowed="narrowed"
     :mobile-cards="mobileCards"
     :selected="selected ? selectValue : {}"
-    @select="onSelect"
     :checkable="checkable"
     :checkbox-position="checkboxPosition"
     :checked-rows="checkedRows ? checkedRowsValue : []"
     :is-row-checkable="isRowCheckable"
     :header-checkable="headerCheckable"
+    @select="onSelect"
     @check="onCheck"
-    :columns="columns"
   >
+    <!--:columns="columns"-->
+    <template v-slot="props">
+      <template v-for="(column, index) in columns">
+        <b-table-column :key="index" :field="column.field" :searchable="column.searchable" :label="column.label" :visible="column.visible">
+          {{ props.row[column.field] }}
+        </b-table-column>
+      </template>
+    </template>
   </b-table>
 </template>
 

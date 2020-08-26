@@ -21,11 +21,65 @@ export const columns = [
   },
   {
     field: 'date',
-    label: 'Date',
-    width: '150'
+    label: 'Date'
   },
   {
     field: 'gender',
     label: 'Gender'
+  }
+];
+
+export const columnsSearchableConfig = [
+  {
+    field: 'id',
+    label: 'ID',
+    searchable: false
+  },
+  {
+    field: 'first_name',
+    label: 'First Name',
+    searchable: true
+  },
+  {
+    field: 'last_name',
+    label: 'Last Name',
+    searchable: true
+  },
+  {
+    field: 'date',
+    label: 'Date',
+    searchable: false
+  },
+  {
+    field: 'gender',
+    label: 'Gender',
+    searchable: false
+  }
+];
+export const columnsEditConfig = [
+  {
+    field: 'id',
+    label: 'ID',
+    visible: true
+  },
+  {
+    field: 'first_name',
+    label: 'First Name',
+    visible: true
+  },
+  {
+    field: 'last_name',
+    label: 'Last Name',
+    visible: true
+  },
+  {
+    field: 'date',
+    label: 'Date',
+    visible: true
+  },
+  {
+    field: 'gender',
+    label: 'Gender',
+    visible: true
   }
 ];
