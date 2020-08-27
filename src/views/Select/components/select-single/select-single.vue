@@ -3,9 +3,9 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Picker - date</div>
+        <div class="title-label">Select - single</div>
         <div class="tags-content">
-          <!-- <span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
+          <!--<span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
           </span>-->
           <span class="tag is-light" @click="isOpenData = !isOpenData" :class="isOpenData ? 'active' : ''">
@@ -19,18 +19,18 @@
 
       <!-- Content -->
       <div class="input-content">
-        <v-icell-date
+        <v-icell-select
           :label="state.label"
           :placeHolder="state.placeHolder"
-          :minDate="state.minDate"
-          :maxDate="state.maxDate"
-          v-model="state.value"
-          @input="onInput($event)"
-        ></v-icell-date>
+          :option="state.option"
+          :expanded="state.expanded"
+          :value="state.value"
+          @input="onInput"
+        ></v-icell-select>
       </div>
 
       <!-- Settings -->
-      <!--<b-collapse :open="isOpenSetting">
+      <b-collapse :open="isOpenSetting">
         <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="settings-item">
@@ -38,7 +38,7 @@
             </div>
           </b-field>
         </div>
-      </b-collapse>-->
+      </b-collapse>
     </div>
 
     <!-- Data -->
@@ -64,7 +64,6 @@
 </template>
 
 <script lang="ts">
-import moment from 'moment';
 import { ref, reactive } from '@vue/composition-api';
 import { templateCode } from './template-code';
 
@@ -79,11 +78,11 @@ export default {
   setup() {
     const code = ref(templateCode);
     const state = reactive({
-      label: 'Date',
-      placeHolder: 'Choose date',
-      minDate: moment().subtract(5, 'days').toDate(),
-      maxDate: moment().add(5, 'days').toDate(),
-      value: moment().toDate()
+      label: '',
+      placeHolder: 'Placeholder',
+      expanded: true,
+      option: ['Palvin Barbi', 'Mihalik Enikő', 'Ördög Nóra', 'Szabó Erika'],
+      value: ''
     });
     const onInput = (value: any) => {
       state.value = value;

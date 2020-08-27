@@ -3,7 +3,7 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Month Picker</div>
+        <div class="title-label">Picker - month</div>
         <div class="tags-content">
           <!-- <span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
              <i class="mdi mdi-cog"></i>
@@ -47,7 +47,7 @@
       <div class="code-content">
         <b-collapse :open="isOpenData">
           <div class="collapse-container">
-            <pre>Month: {{ state.value }}</pre>
+            <pre>{{ state.value }}</pre>
           </div>
         </b-collapse>
       </div>

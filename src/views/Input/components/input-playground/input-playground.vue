@@ -78,7 +78,7 @@
       <div class="code-content">
         <b-collapse :open="isOpenData">
           <div class="collapse-container">
-            <pre>value: {{ state.value }}</pre>
+            <pre>{{ state.value }}</pre>
           </div>
         </b-collapse>
       </div>
