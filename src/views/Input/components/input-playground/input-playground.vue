@@ -19,7 +19,6 @@
 
       <!-- Content -->
       <div class="input-content">
-        <!--:label="state.label ? 'Label' : ''"-->
         <v-icell-input
           :label="label"
           :place-holder="placeHolder"

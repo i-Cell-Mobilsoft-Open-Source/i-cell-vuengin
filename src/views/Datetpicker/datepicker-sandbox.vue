@@ -1,158 +1,31 @@
 <template>
-  <div class="container">
+  <section>
     <div class="columns">
-      <div class="column is-12">
-        <div class="box">
-          <div class="padding-content">
-            <div class="title">Date Picker</div>
-            <v-icell-date
-              :label="'Beteg felvétel dátuma'"
-              :placeHolder="'Felvételi dátum'"
-              :minDate="formGroup.customMinDate"
-              :maxDate="formGroup.customMaxDate"
-              v-model="formGroup.patientDate"
-              @valueChange="customValueChange($event)"
-              @changeMonth="changeMonth($event)"
-              @changeYear="changeYear($event)"
-            ></v-icell-date>
-          </div>
-          <v-collapse
-            class="collapse-container"
-            :classes="'is-small is-light'"
-            :label="'show code'"
-            :hideLabel="'hide source'"
-            :contentId="'basic-table'"
-            :content="code_SampleA"
-          ></v-collapse>
-        </div>
-
-        <div class="box">
-          <div class="padding-content">
-            <div class="title">Month Picker</div>
-            <v-icell-date
-              :label="'Autóbiztosítás lejárati dátuma'"
-              :placeHolder="'lejárati dátum'"
-              :type="'month'"
-              v-model="formGroup.patientDate"
-            ></v-icell-date>
-          </div>
-          <v-collapse
-            class="collapse-container"
-            :classes="'is-small is-light'"
-            :label="'show code'"
-            :hideLabel="'hide source'"
-            :contentId="'basic-table'"
-            :content="code_SampleB"
-          ></v-collapse>
-        </div>
-
-        <div class="box">
-          <div class="padding-content">
-            <div class="title">Date Range</div>
-            <v-icell-date
-              :label="'Szabadság intervallum'"
-              :placeHolder="'intervallum'"
-              :range="true"
-              v-model="formGroup.holidyInterval"
-              @valueChange="customIntervalChange($event)"
-            ></v-icell-date>
-          </div>
-          <v-collapse
-            class="collapse-container"
-            :classes="'is-small is-light'"
-            :label="'show code'"
-            :hideLabel="'hide source'"
-            :contentId="'basic-table'"
-            :content="code_SampleC"
-          ></v-collapse>
-        </div>
+      <div class="column is-6">
+        <datepicker-date></datepicker-date>
+      </div>
+      <div class="column is-6">
+        <datepicker-month></datepicker-month>
       </div>
     </div>
-    {{ formGroup }}
-  </div>
+    <div class="columns">
+      <div class="column is-12">
+        <datepicker-range></datepicker-range>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
-import { ref, reactive, computed } from '@vue/composition-api';
-import moment from 'moment';
+import datePickerComponent from './components/date-picker/date-picker.vue';
+import monthPickerComponent from './components/month-picker/month-picker.vue';
+import rangePickerComponent from './components/range-picker/range-picker.vue';
 
 export default {
-  /*
- 
-  */
-  name: 'DateTimePickerDemo',
-  setup() {
-    const formGroup = reactive({
-      patientDate: moment().toDate(), // moment('1981.03.08', 'YYYY.MM.DD').toDate(),
-      customMinDate: moment().subtract(5, 'days').toDate(),
-      customMaxDate: moment().add(5, 'days').toDate(),
-      holidyInterval: [moment().subtract(3, 'days').toDate(), moment().add(2, 'days').toDate()],
-      selectedMonth: 0,
-      selectedYear: 0
-    });
-
-    console.log(formGroup);
-
-    const formData = computed(() => formGroup);
-
-    const code_SampleA = ref(
-      `<v-icell-date
-        :label="'Beteg felvétel dátuma'"
-        :placeHolder="'Felvételi dátum'"
-        :minDate="formGroup.customMinDate"
-        :maxDate="formGroup.customMaxDate"
-        v-model="formGroup.patientDate"
-        @valueChange="customValueChange($event)"
-        @changeMonth="changeMonth($event)"
-        @changeYear="changeYear($event)"
-></v-icell-date>`
-    );
-
-    const code_SampleB = ref(
-      `<v-icell-date
-        :label="'Autóbiztosítás lejárati dátuma'"
-        :placeHolder="'lejárati dátum'"
-        :type="'month'"
-        v-model="formGroup.patientDate"              
-></v-icell-date>`
-    );
-
-    const code_SampleC = ref(
-      `<v-icell-date
-      :label="'Szabadság intervallum'"
-      :placeHolder="'intervallum'"
-      :range="true"
-      v-model="formGroup.holidyInterval"              
-></v-icell-date>`
-    );
-
-    const customValueChange = (dateTime: any) => {
-      formGroup.patientDate = dateTime;
-    };
-
-    const changeMonth = ($month: number) => {
-      formGroup.selectedMonth = $month;
-    };
-
-    const changeYear = ($year: number) => {
-      formGroup.selectedYear = $year;
-    };
-
-    const customIntervalChange = ($dates: Date[]) => {
-      formGroup.holidyInterval = $dates;
-    };
-
-    return {
-      formGroup,
-      formData,
-      customValueChange,
-      customIntervalChange,
-      changeMonth,
-      changeYear,
-      code_SampleA,
-      code_SampleB,
-      code_SampleC
-    };
+  components: {
+    'datepicker-date': datePickerComponent,
+    'datepicker-month': monthPickerComponent,
+    'datepicker-range': rangePickerComponent
   }
 };
 </script>

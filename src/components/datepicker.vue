@@ -1,7 +1,8 @@
 <template>
   <div :class="classes">
-    <ValidationProvider :rules="isRequired()" v-slot="error">
-      <b-field :label="label" :label-for="id" :type="setFieldType(error)">
+    <ValidationProvider :rules="isRequired()" v-slot="">
+      <b-field :label="label" :label-for="id">
+        <!--:type="setFieldType(error)"-->
         <b-datepicker
           icon="calendar-today"
           v-model="model"
@@ -12,16 +13,16 @@
           :min-date="minDate"
           :max-date="maxDate"
           :range="range"
-          @input="onInputChange($event)"
+          @input="onInput($event)"
           @change-month="onChangeMonth($event)"
           @change-year="onChangeYear($event)"
         >
-          <button class="button is-primary" @click="model = new Date()">
+          <button class="button is-primary" @click="setToDate">
             <b-icon icon="calendar-today"></b-icon>
             <span>Mai nap</span>
           </button>
 
-          <button class="button is-danger" @click="model = null">
+          <button class="button is-danger" @click="setClearDate">
             <b-icon icon="close"></b-icon>
             <span>Törlés</span>
           </button>
@@ -39,18 +40,12 @@ export default {
   props: ['ui', 'label', 'placeHolder', 'required', 'value', 'disabled', 'classes', 'id', 'minDate', 'maxDate', 'type', 'range'],
 
   setup(props: any, attr: any) {
-    if (props.range === undefined) {
-      props.range === false;
-    }
-
     const model = props.value ? ref(props.value) : null;
-
     const isRequired = () => (props.required ? 'required' : '');
 
-    const onInputChange = (ev: InputEvent) => {
-      attr.emit('valueChange', ev); // TODO: valueChange
+    const onInput = (ev: InputEvent) => {
+      attr.emit('input', ev);
     };
-
     const onChangeMonth = (month: number) => {
       attr.emit('changeMonth', month);
     };
@@ -59,16 +54,27 @@ export default {
       attr.emit('changeYear', year);
     };
 
-    const setFieldType = (error: any) => {
+    /*const setFieldType = (error: any) => {
       return !error.valid ? 'is-danger' : 'is-success';
+    };*/
+
+    const setClearDate = () => {
+      model.value = null;
+      attr.emit('input', model.value);
     };
 
+    const setToDate = () => {
+      model.value = new Date();
+      attr.emit('input', model.value);
+    };
     return {
       isRequired,
-      onInputChange,
+      onInput,
       onChangeMonth,
       onChangeYear,
-      setFieldType,
+      // setFieldType,
+      setClearDate,
+      setToDate,
       model
     };
   }
