@@ -3,7 +3,7 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Edit columns</div>
+        <div class="title-label">Sticky header</div>
         <div class="tags-content">
           <span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
@@ -16,63 +16,48 @@
 
       <!-- Content -->
       <div class="table-content">
-        <v-icell-table :data="data" :columns="columns"> </v-icell-table>
+        <v-icell-table :data="state.data" :columns="state.columns" :sticky-header="state.stickyHeader"> </v-icell-table>
       </div>
 
       <!-- Settings -->
       <b-collapse :open="isOpenSetting">
         <div class="settings-content">
           <b-field grouped group-multiline>
-            <div class="settings-item" v-for="(column, index) in columns" :key="index">
-              <b-switch v-model="column.visible" :size="'is-small'">
-                {{ column.label }}
-              </b-switch>
+            <div class="settings-item">
+              <b-switch v-model="state.stickyHeader" :size="'is-small'">Sticky header</b-switch>
             </div>
           </b-field>
         </div>
       </b-collapse>
     </div>
-
-    <!-- Data -->
-    <!-- <div class="data-content">
-      <div class="code-content">
-        <b-collapse :open="isOpenData">
-          <div class="collapse-container">
-            <pre>{{ checkedRows }}</pre>
-          </div>
-        </b-collapse>
-      </div>
-    </div>-->
-
     <!-- Code -->
     <div class="code-content">
-      <b-collapse :open="isOpenCode">
-        <div class="collapse-container">
-          <pre>{{ code }}</pre>
-        </div>
-      </b-collapse>
+      <code-box :open="isOpenCode" :code="code" :copy="true"></code-box>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { ref, reactive } from '@vue/composition-api';
 import { templateCode } from './template-code';
-import { data, columnsEdit } from '@/views/Table/components/data';
+import { dataBig, columnsBig } from '@/views/Table/components/data';
 
 export default {
   data() {
     return {
-      data: data,
-      columns: columnsEdit,
       isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false
+      isOpenCode: false
     };
   },
   setup() {
     const code = ref(templateCode);
+    const state = reactive({
+      data: dataBig,
+      columns: columnsBig,
+      stickyHeader: true
+    });
     return {
+      state,
       code
     };
   }

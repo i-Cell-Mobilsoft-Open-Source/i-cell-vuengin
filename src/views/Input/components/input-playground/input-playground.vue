@@ -72,43 +72,31 @@
         </div>
       </b-collapse>
     </div>
-
     <!-- Data -->
     <div class="data-content">
-      <div class="code-content">
-        <b-collapse :open="isOpenData">
-          <div class="collapse-container">
-            <pre>{{ state.value }}</pre>
-          </div>
-        </b-collapse>
-      </div>
+      <code-box :open="isOpenData" :code="state.value"></code-box>
     </div>
-
     <!-- Code -->
     <div class="code-content">
-      <b-collapse :open="isOpenCode">
-        <div class="collapse-container">
-          <pre>{{ code }}</pre>
-        </div>
-      </b-collapse>
+      <code-box :open="isOpenCode" :code="code" :copy="true"></code-box>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, computed, reactive } from '@vue/composition-api';
+import { computed, reactive } from '@vue/composition-api';
 import { templateCode } from './template-code';
 
 export default {
   data() {
     return {
+      code: templateCode,
       isOpenSetting: false,
       isOpenCode: false,
       isOpenData: false
     };
   },
   setup() {
-    const code = ref(templateCode);
     const state = reactive({
       rounded: false,
       disabled: false,
@@ -125,7 +113,6 @@ export default {
       state.value = value;
     };
     return {
-      code,
       state,
       label,
       placeHolder,

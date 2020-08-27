@@ -17,15 +17,15 @@
       <!-- Table -->
       <div class="table-content">
         <v-icell-table
-          :data="data"
-          :columns="columns"
-          :bordered="isBordered"
-          :striped="isStriped"
-          :narrowed="isNarrowed"
-          :loading="isLoading"
-          :hoverable="isHoverable"
-          :focusable="isFocusable"
-          :mobileCards="isMobilCards"
+          :data="state.data"
+          :columns="state.columns"
+          :bordered="state.bordered"
+          :striped="state.striped"
+          :narrowed="state.narrowed"
+          :loading="state.loading"
+          :hoverable="state.hoverable"
+          :focusable="state.focusable"
+          :mobileCards="state.mobileCards"
         >
         </v-icell-table>
       </div>
@@ -35,73 +35,67 @@
         <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="settings-item">
-              <b-switch v-model="isBordered" :size="switcherClass">Bordered</b-switch>
+              <b-switch v-model="state.bordered" :size="switcherClass">Bordered</b-switch>
             </div>
             <div class="settings-item">
-              <b-switch v-model="isStriped" :size="switcherClass">Striped</b-switch>
+              <b-switch v-model="state.striped" :size="switcherClass">Striped</b-switch>
             </div>
             <div class="settings-item">
-              <b-switch v-model="isNarrowed" :size="switcherClass">Narrowed</b-switch>
+              <b-switch v-model="state.narrowed" :size="switcherClass">Narrowed</b-switch>
             </div>
             <div class="settings-item">
-              <b-switch v-model="isHoverable" :size="switcherClass">Hoverable</b-switch>
+              <b-switch v-model="state.hoverable" :size="switcherClass">Hoverable</b-switch>
             </div>
             <div class="settings-item">
-              <b-switch v-model="isFocusable" :size="switcherClass">Focusable</b-switch>
+              <b-switch v-model="state.focusable" :size="switcherClass">Focusable</b-switch>
             </div>
             <div class="settings-item">
-              <b-switch v-model="isLoading" :size="switcherClass">Spinner</b-switch>
+              <b-switch v-model="state.loading" :size="switcherClass">Loading</b-switch>
             </div>
             <div class="settings-item">
-              <b-switch v-model="isMobilCards" :size="switcherClass">Mobile cards</b-switch>
+              <b-switch v-model="state.mobileCards" :size="switcherClass">Mobile cards</b-switch>
             </div>
           </b-field>
         </div>
       </b-collapse>
     </div>
-
     <!-- Code -->
     <div class="code-content">
-      <b-collapse :open="isOpenCode">
-        <div class="collapse-container">
-          <pre>{{ code }}</pre>
-        </div>
-      </b-collapse>
+      <code-box :open="isOpenCode" :code="code" :copy="true"></code-box>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { ref, reactive } from '@vue/composition-api';
 import { templateCode } from './template-code';
 import { data, columns } from '@/views/Table/components/data';
 
 export default {
   data() {
     return {
-      data: data,
-      columns: columns,
-      isBordered: false,
-      isStriped: false,
-      isNarrowed: false,
-      isHoverable: false,
-      isFocusable: false,
-      isLoading: false,
-      isMobilCards: true,
-
       isOpenSetting: false,
       isOpenCode: false,
-      isOpenData: false
+      isOpenData: false,
+      switcherClass: 'is-small'
     };
   },
   setup() {
-    const switcherClass = 'is-small';
-    const tabIndex = ref(0);
     const code = ref(templateCode);
+    const state = reactive({
+      data: data,
+      columns: columns,
+      bordered: false,
+      striped: false,
+      narrowed: false,
+      hoverable: false,
+      focusable: false,
+      loading: false,
+      mobileCards: true
+    });
     return {
       code,
-      switcherClass,
-      tabIndex
+      state
     };
   }
 };

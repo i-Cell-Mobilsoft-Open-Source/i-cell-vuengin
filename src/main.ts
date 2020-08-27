@@ -11,10 +11,10 @@ import Buefy from 'buefy';
 // Import Style
 import './assets/scss/app.scss';
 
-// Import Components
-
+// Import Plugins
 import InputPlugin from '@/components/input/input';
 
+// Import Components
 import SelectComponent from '@/components/select.vue';
 import DateTimeComponent from '@/components/datepicker.vue';
 import DateTimePickerComponent from '@/components/datetimepicker.vue';
@@ -22,7 +22,7 @@ import CheckboxComponent from '@/components/checkbox.vue';
 import LegendComponent from '@/components/legend.vue';
 import ButtonComponent from '@/components/button.vue';
 import TableComponent from '@/components/table.vue';
-import CollapseComponent from '@/shared/components/collapse.vue';
+import CodeBoxComponent from '@/shared/components/code-box.vue';
 
 // Validation
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
@@ -60,7 +60,7 @@ Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 
 // Shared Components
-Vue.component('v-collapse', CollapseComponent);
+Vue.component('code-box', CodeBoxComponent);
 
 // Entry Components
 // Vue.component('v-icell-input', InputComponent);

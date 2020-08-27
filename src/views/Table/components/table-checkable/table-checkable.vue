@@ -20,13 +20,13 @@
       <!-- Content -->
       <div class="table-content">
         <v-icell-table
-          :data="data"
-          :columns="columns"
-          :checkable="checkable"
-          :checked-rows="checkedRows"
-          :header-checkable="headerCheckable"
-          :checkbox-position="checkboxPosition"
-          :is-row-checkable="isFirstRowDisabled ? onEnabledFirstRowCheckable : onDisabledFirstRowCheckable"
+          :data="state.data"
+          :columns="state.columns"
+          :checkable="state.checkable"
+          :checked-rows="state.checkedRows"
+          :header-checkable="state.headerCheckable"
+          :checkbox-position="state.checkboxPosition"
+          :is-row-checkable="state.isRowCheckable ? onEnabledFirstRowCheckable : onDisabledFirstRowCheckable"
           @onCheckedChange="onCheckedChange"
         >
         </v-icell-table>
@@ -37,90 +37,78 @@
         <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="settings-item">
-              <b-switch v-model="checkable" :size="'is-small'">Checkable</b-switch>
+              <b-switch v-model="state.checkable" :size="'is-small'">Checkable</b-switch>
             </div>
             <div class="settings-item">
-              <b-switch v-model="headerCheckable" :size="'is-small'">Header checkable</b-switch>
+              <b-switch v-model="state.headerCheckable" :size="'is-small'">Header checkable</b-switch>
             </div>
             <div class="settings-item">
-              <b-switch @input="onCheckboxPosition(checkboxPosition)" :size="'is-small'"
+              <b-switch @input="onCheckboxPosition(state.checkboxPosition)" :size="'is-small'"
                 >Checkbox position:
-                {{ checkboxPosition }}
+                {{ state.checkboxPosition }}
               </b-switch>
             </div>
             <div class="settings-item">
-              <b-switch v-model="isFirstRowDisabled" :size="'is-small'"
+              <b-switch v-model="state.isRowCheckable" :size="'is-small'"
                 >First row:
-                {{ isFirstRowDisabled ? 'disable' : 'enable' }}
+                {{ state.isRowCheckable ? 'disable' : 'enable' }}
               </b-switch>
             </div>
           </b-field>
         </div>
       </b-collapse>
     </div>
-
     <!-- Data -->
     <div class="data-content">
-      <div class="code-content">
-        <b-collapse :open="isOpenData">
-          <div class="collapse-container">
-            <pre>{{ checkedRows }}</pre>
-          </div>
-        </b-collapse>
-      </div>
+      <code-box :open="isOpenData" :code="state.checkedRows"></code-box>
     </div>
-
     <!-- Code -->
     <div class="code-content">
-      <b-collapse :open="isOpenCode">
-        <div class="collapse-container">
-          <pre>{{ code }}</pre>
-        </div>
-      </b-collapse>
+      <code-box :open="isOpenCode" :code="code" :copy="true"></code-box>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { reactive, ref } from '@vue/composition-api';
 import { templateCode } from './template-code';
-import { data, columns } from '../data';
+import { data, columns } from '@/views/Table/components/data';
 
 export default {
   data() {
     return {
-      data: data,
-      columns: columns,
-      checkable: true,
-      headerCheckable: true,
-
       isOpenSetting: false,
       isOpenCode: false,
-      isOpenData: false,
-      isCheckable: true,
-      isFirstRowDisabled: true
+      isOpenData: false
     };
   },
   setup() {
     const code = ref(templateCode);
-    const checkedRows = ref([data[0], data[2]]);
-    const checkboxPosition = ref('left');
+    const state = reactive({
+      data: data,
+      columns: columns,
+      isRowCheckable: true,
+      checkable: true,
+      checkboxPosition: 'left',
+      headerCheckable: true,
+      checkedRows: [data[0], data[2]]
+    });
+
     const onCheckedChange = (value: any) => {
-      checkedRows.value = value;
+      state.checkedRows = value;
     };
     const onCheckboxPosition = (value: string) => {
-      checkboxPosition.value = value === 'left' ? 'right' : 'left';
+      state.checkboxPosition = value === 'left' ? 'right' : 'left';
     };
     const onEnabledFirstRowCheckable = (row: any) => {
       return row.id !== 0;
     };
     const onDisabledFirstRowCheckable = (row: any) => {
-      return row.id !== 1; // first row = data[0].id
+      return row.id !== 1;
     };
     return {
       code,
-      checkedRows,
-      checkboxPosition,
+      state,
       onCheckedChange,
       onCheckboxPosition,
       onEnabledFirstRowCheckable,

@@ -31,7 +31,7 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: '/*',
-    redirect: '/table'
+    redirect: '/input'
   }
 ];
 

@@ -20,9 +20,9 @@
       <!-- Content -->
       <div class="table-content">
         <v-icell-table
-          :data="data"
-          :columns="columns"
-          :selected="isSelected ? selectedValue : null"
+          :data="state.data"
+          :columns="state.columns"
+          :selected="isSelected ? state.selected : null"
           @onSelectChange="onSelectChange($event)"
         >
         </v-icell-table>
@@ -42,36 +42,23 @@
 
     <!-- Data -->
     <div class="data-content">
-      <div class="code-content">
-        <b-collapse :open="isOpenData">
-          <div class="collapse-container">
-            <pre>{{ selectedValue }}</pre>
-          </div>
-        </b-collapse>
-      </div>
+      <code-box :open="isOpenData" :code="state.selected"></code-box>
     </div>
-
     <!-- Code -->
     <div class="code-content">
-      <b-collapse :open="isOpenCode">
-        <div class="collapse-container">
-          <pre>{{ code }}</pre>
-        </div>
-      </b-collapse>
+      <code-box :open="isOpenCode" :code="code" :copy="true"></code-box>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { reactive, ref } from '@vue/composition-api';
 import { templateCode } from './template-code';
 import { data, columns } from '@/views/Table/components/data';
 
 export default {
   data() {
     return {
-      data: data,
-      columns: columns,
       isOpenSetting: false,
       isOpenCode: false,
       isOpenData: false
@@ -80,13 +67,17 @@ export default {
   setup() {
     const code = ref(templateCode);
     const isSelected = ref(true);
-    const selectedValue = ref(data[0]);
+    const state = reactive({
+      data: data,
+      columns: columns,
+      selected: data[0]
+    });
     const onSelectChange = (value: any) => {
-      selectedValue.value = value;
+      state.selected = value;
     };
     return {
       code,
-      selectedValue,
+      state,
       isSelected,
       onSelectChange
     };

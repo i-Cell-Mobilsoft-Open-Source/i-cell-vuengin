@@ -3,7 +3,7 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Sticky header</div>
+        <div class="title-label">Edit columns</div>
         <div class="tags-content">
           <span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
@@ -16,15 +16,17 @@
 
       <!-- Content -->
       <div class="table-content">
-        <v-icell-table :data="data" :columns="columns" :sticky-header="isStickyHeader"> </v-icell-table>
+        <v-icell-table :data="state.data" :columns="state.columns"> </v-icell-table>
       </div>
 
       <!-- Settings -->
       <b-collapse :open="isOpenSetting">
         <div class="settings-content">
           <b-field grouped group-multiline>
-            <div class="settings-item">
-              <b-switch v-model="isStickyHeader" :size="'is-small'">Sticky header</b-switch>
+            <div class="settings-item" v-for="(column, index) in state.columns" :key="index">
+              <b-switch v-model="column.visible" :size="'is-small'">
+                {{ column.label }}
+              </b-switch>
             </div>
           </b-field>
         </div>
@@ -33,33 +35,32 @@
 
     <!-- Code -->
     <div class="code-content">
-      <b-collapse :open="isOpenCode">
-        <div class="collapse-container">
-          <pre>{{ code }}</pre>
-        </div>
-      </b-collapse>
+      <code-box :open="isOpenCode" :code="code" :copy="true"></code-box>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { reactive, ref } from '@vue/composition-api';
 import { templateCode } from './template-code';
-import { dataBig, columnsBig } from '@/views/Table/components/data';
+import { data, columnsEdit } from '@/views/Table/components/data';
 
 export default {
   data() {
     return {
-      data: dataBig,
-      columns: columnsBig,
       isOpenSetting: false,
       isOpenCode: false,
-      isStickyHeader: true
+      isOpenData: false
     };
   },
   setup() {
     const code = ref(templateCode);
+    const state = reactive({
+      data: data,
+      columns: columnsEdit
+    });
     return {
+      state,
       code
     };
   }
