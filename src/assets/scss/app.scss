@@ -39,16 +39,20 @@ $navBgColor: #f5f5f5;
   .navbar {
     height: $headerHeight;
     background-color: transparent;
-
     img {
       max-height: 2.5rem;
     }
+    .navbar-start{
+      align-items: center;
+    }
   }
+
+  .navbar-burger {
+    height: inherit;
+  }
+
 }
 
-.navbar-burger {
-  height: inherit;
-}
 
 .main-content {
   margin-top: $headerHeight;

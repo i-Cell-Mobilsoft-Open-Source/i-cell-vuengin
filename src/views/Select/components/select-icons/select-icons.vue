@@ -3,11 +3,11 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Select - single</div>
+        <div class="title-label">Select - icons</div>
         <div class="tags-content">
-          <!--<span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
+          <span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
-          </span>-->
+          </span>
           <span class="tag is-light" @click="isOpenData = !isOpenData" :class="isOpenData ? 'active' : ''">
             <i class="mdi mdi-code-greater-than"></i>
           </span>
@@ -24,21 +24,27 @@
           :placeHolder="state.placeHolder"
           :option="state.option"
           :expanded="state.expanded"
+          :icon="state.icon"
           :value="state.value"
           @input="onInput"
         ></v-icell-select>
       </div>
 
       <!-- Settings -->
-      <!--<b-collapse :open="isOpenSetting">
+      <b-collapse :open="isOpenSetting">
         <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="settings-item">
-              <b-switch v-model="state.passwordReveal" :size="'is-small'">Password reveal</b-switch>
+              <b-select v-model="state.icon" :size="'is-small'" @input="onIconSelect">
+                <option value="">Icon: off</option>
+                <option value="account">Icon: account</option>
+                <option value="earth">Icon: earth</option>
+                <option value="apple-icloud">Icon: apple-icloud</option>
+              </b-select>
             </div>
           </b-field>
         </div>
-      </b-collapse>-->
+      </b-collapse>
     </div>
     <!-- Data -->
     <div class="data-content">
@@ -67,18 +73,23 @@ export default {
     const code = ref(templateCode);
     const state = reactive({
       label: '',
-      placeHolder: 'Select name',
       expanded: true,
-      option: ['Palvin Barbi', 'Mihalik Enikő', 'Ördög Nóra', 'Szabó Erika'],
+      icon: 'earth',
+      placeHolder: 'earth',
+      option: ['Option 1', 'Option 2', 'Option 3'],
       value: null
     });
     const onInput = (value: any) => {
       state.value = value;
     };
+    const onIconSelect = (value: string) => {
+      state.placeHolder = value;
+    };
     return {
       code,
       state,
-      onInput
+      onInput,
+      onIconSelect
     };
   }
 };

@@ -47,7 +47,7 @@
     </div>
     <!-- Code -->
     <div class="code-content">
-      <code-box :open="isOpenCode" :code="code" :copy="true"></code-box>
+      <code-box :open="isOpenCode" :code="code" copy></code-box>
     </div>
   </div>
 </template>

@@ -26,9 +26,9 @@
           :size="state.size"
           :disabled="state.disabled"
           :loading="state.loading"
-          :field-type="state.fieldType"
+          :style-type="state.styleType"
           :value="state.value"
-          @onInput="onInput"
+          @input="onInput"
         ></v-icell-input>
       </div>
 
@@ -52,12 +52,12 @@
               <b-switch v-model="state.loading" :size="'is-small'">Loading</b-switch>
             </div>
             <div class="settings-item">
-              <b-select v-model="state.fieldType" :size="'is-small'">
-                <option value="">Field type: Default</option>
-                <option value="is-success">Field type: Success</option>
-                <option value="is-info">Field type: Info</option>
-                <option value="is-warning">Field type: Warning</option>
-                <option value="is-danger">Field type: Error</option>
+              <b-select v-model="state.styleType" :size="'is-small'">
+                <option value="">Style: Default</option>
+                <option value="is-success">Style: Success</option>
+                <option value="is-info">Style: Info</option>
+                <option value="is-warning">Style: Warning</option>
+                <option value="is-danger">Style: Error</option>
               </b-select>
             </div>
             <div class="settings-item">
@@ -78,7 +78,7 @@
     </div>
     <!-- Code -->
     <div class="code-content">
-      <code-box :open="isOpenCode" :code="code" :copy="true"></code-box>
+      <code-box :open="isOpenCode" :code="code" copy></code-box>
     </div>
   </div>
 </template>
@@ -105,7 +105,7 @@ export default {
       placeHolder: true,
       size: '',
       value: '',
-      fieldType: ''
+      styleType: ''
     });
     const label = computed(() => (state.label ? 'Label' : ''));
     const placeHolder = computed(() => (state.placeHolder ? 'Placeholder' : ''));

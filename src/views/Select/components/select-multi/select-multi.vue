@@ -25,6 +25,7 @@
           :option="state.option"
           :expanded="state.expanded"
           :multiple="state.multiple"
+          :native-size="state.nativeSize"
           :value="state.value"
           @input="onInput"
         ></v-icell-select>
@@ -47,7 +48,7 @@
     </div>
     <!-- Code -->
     <div class="code-content">
-      <code-box :open="isOpenCode" :code="code" :copy="true"></code-box>
+      <code-box :open="isOpenCode" :code="code" copy></code-box>
     </div>
   </div>
 </template>
@@ -71,8 +72,9 @@ export default {
       placeHolder: '',
       expanded: true,
       multiple: true,
-      option: ['Palvin Barbi', 'Mihalik Enikő', 'Ördög Nóra', 'Szabó Erika'],
-      value: ''
+      nativeSize: 4,
+      option: ['Palvin Barbi', 'Mihalik Enikő', 'Ördög Nóra', 'Szabó Erika', 'Flint', 'Silver', 'Billy', 'Heisenberg'],
+      value: null
     });
     const onInput = (value: any) => {
       state.value = value;

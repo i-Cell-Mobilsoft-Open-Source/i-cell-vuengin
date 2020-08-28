@@ -7,7 +7,8 @@
   </b-collapse>
 </template>
 <script lang="ts">
-import { ToastProgrammatic as Toast } from 'buefy';
+import { inject } from '@vue/composition-api';
+
 export default {
   name: 'code-box',
   props: {
@@ -22,6 +23,7 @@ export default {
     }
   },
   setup(props: any) {
+    const toast = inject('toastService') as any;
     const copyToClipboard = () => {
       const el = document.createElement('textarea');
       el.value = props.code;
@@ -32,7 +34,7 @@ export default {
       el.select();
       document.execCommand('copy');
       document.body.removeChild(el);
-      Toast.open({ message: 'Code copied to clipboard!', type: 'is-primary' });
+      toast.open('Code copied to clipboard!');
     };
     return {
       copyToClipboard

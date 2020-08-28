@@ -3,11 +3,11 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Select - single</div>
+        <div class="title-label">Input - icons</div>
         <div class="tags-content">
-          <!--<span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
+          <span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
-          </span>-->
+          </span>
           <span class="tag is-light" @click="isOpenData = !isOpenData" :class="isOpenData ? 'active' : ''">
             <i class="mdi mdi-code-greater-than"></i>
           </span>
@@ -19,26 +19,36 @@
 
       <!-- Content -->
       <div class="input-content">
-        <v-icell-select
+        <v-icell-input
           :label="state.label"
-          :placeHolder="state.placeHolder"
-          :option="state.option"
-          :expanded="state.expanded"
           :value="state.value"
+          :type="state.type"
+          :place-holder="state.placeHolder"
+          :icon="state.icon"
+          :icon-clickable="state.iconClickable"
           @input="onInput"
-        ></v-icell-select>
+          @icon-click="onIconClick"
+        ></v-icell-input>
       </div>
 
       <!-- Settings -->
-      <!--<b-collapse :open="isOpenSetting">
+      <b-collapse :open="isOpenSetting">
         <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="settings-item">
-              <b-switch v-model="state.passwordReveal" :size="'is-small'">Password reveal</b-switch>
+              <b-switch v-model="state.iconClickable" :size="'is-small'">Icon clickable</b-switch>
+            </div>
+            <div class="settings-item">
+              <b-select v-model="state.icon" :size="'is-small'" @input="onIconSelect">
+                <option value="">Icon: off</option>
+                <option value="email">Icon: email</option>
+                <option value="magnify">Icon: magnify</option>
+                <option value="credit-card">Icon: credit card</option>
+              </b-select>
             </div>
           </b-field>
         </div>
-      </b-collapse>-->
+      </b-collapse>
     </div>
     <!-- Data -->
     <div class="data-content">
@@ -52,7 +62,7 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive } from '@vue/composition-api';
+import { ref, reactive, inject } from '@vue/composition-api';
 import { templateCode } from './template-code';
 
 export default {
@@ -65,20 +75,29 @@ export default {
   },
   setup() {
     const code = ref(templateCode);
+    const toast = inject('toastService') as any;
     const state = reactive({
       label: '',
-      placeHolder: 'Select name',
-      expanded: true,
-      option: ['Palvin Barbi', 'Mihalik Enikő', 'Ördög Nóra', 'Szabó Erika'],
-      value: null
+      placeHolder: 'email',
+      icon: 'email',
+      value: '',
+      iconClickable: false
     });
-    const onInput = (value: any) => {
+    const onIconClick = () => {
+      toast.open('Clicked on the icon!', 'is-info');
+    };
+    const onInput = (ev: InputEvent, value: any) => {
       state.value = value;
+    };
+    const onIconSelect = (value: string) => {
+      state.placeHolder = value;
     };
     return {
       code,
       state,
-      onInput
+      onInput,
+      onIconClick,
+      onIconSelect
     };
   }
 };

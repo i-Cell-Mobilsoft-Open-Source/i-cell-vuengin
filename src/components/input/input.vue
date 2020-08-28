@@ -1,7 +1,7 @@
 <template>
   <div :class="classes">
     <ValidationProvider :rules="isRequired()" v-slot="">
-      <b-field :label="label" :type="fieldType" :label-for="id">
+      <b-field :label="label" :type="styleType" :label-for="id">
         <b-input
           v-model="model"
           :type="type"
@@ -16,7 +16,14 @@
           :size="size"
           :required="required"
           :expanded="expanded"
+          :has-counter="hasCounter"
+          :maxlength="maxlength"
           :password-reveal="passwordReveal"
+          :icon="icon"
+          :icon-clickable="iconClickable"
+          :icon-right="iconRight"
+          :icon-pack="iconPack"
+          @icon-click="onIconClick"
           @input.native="onInput($event)"
         />
       </b-field>
@@ -37,7 +44,7 @@ export default {
   name: 'v-icell-input',
   props: {
     ui: String,
-    fieldType: String,
+    styleType: String,
     type: String,
     name: String,
     id: [String, Number],
@@ -55,18 +62,28 @@ export default {
     rounded: Boolean,
     passwordReveal: Boolean,
     size: String,
+    hasCounter: Boolean,
     inputData: String,
-    value: [String, Number, Object, Date]
+    value: [String, Number, Object, Date],
+    maxlength: [String, Number],
+    iconPack: String,
+    icon: String,
+    iconRight: String,
+    iconClickable: Boolean
   },
   setup(props: any, attr: any) {
     const model = ref(props.value);
     const isRequired = () => (props.required ? 'required' : '');
     const onInput = (ev: InputEvent) => {
-      attr.emit('onInput', ev, model.value);
+      attr.emit('input', ev, model.value);
+    };
+    const onIconClick = () => {
+      attr.emit('icon-click');
     };
     return {
       isRequired,
       onInput,
+      onIconClick,
       model
     };
   }

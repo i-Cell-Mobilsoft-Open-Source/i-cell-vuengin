@@ -1,7 +1,17 @@
 <template>
   <ValidationProvider :rules="isRequired()" v-slot="">
     <b-field :label="label" :label-for="id">
-      <b-select placeholder="Select a name" v-model="model" :id="id" :expanded="expanded" :multiple="multiple" @input="onInput($event)">
+      <b-select
+        :id="id"
+        :icon="icon"
+        :placeholder="placeHolder"
+        :icon-pack="iconPack"
+        :expanded="expanded"
+        :multiple="multiple"
+        :value="model"
+        :native-size="nativeSize"
+        @input="onInput($event)"
+      >
         <option v-for="(item, index) in option" :value="item" :key="index">
           {{ item }}
         </option>
@@ -25,19 +35,22 @@ export default {
     required: Boolean,
     disabled: Boolean,
     multiple: Boolean,
-    value: [String, Number, Object, Array]
+    icon: String,
+    iconPack: String,
+    value: [String, Number, Boolean, Object, Array, Function],
+    nativeSize: [String, Number]
   },
   setup(props: any, attr: any) {
-    const model = props.value ? ref(props.value) : [];
+    const defaultValue = props.multiple ? [] : null;
+    const model = props.value ? ref(props.value) : defaultValue;
     const isRequired = () => (props.required ? 'required' : '');
-    const onInput = (value: any) => {
+    const onInput = (value: string | any[]) => {
       attr.emit('input', value);
     };
-
     return {
+      model,
       isRequired,
-      onInput,
-      model
+      onInput
     };
   }
 };

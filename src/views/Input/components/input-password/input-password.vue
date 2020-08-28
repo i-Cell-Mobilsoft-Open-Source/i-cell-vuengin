@@ -24,7 +24,7 @@
           :value="state.value"
           :type="state.type"
           :password-reveal="state.passwordReveal"
-          @onInput="onInput"
+          @input="onInput"
         ></v-icell-input>
       </div>
 
@@ -45,7 +45,7 @@
     </div>
     <!-- Code -->
     <div class="code-content">
-      <code-box :open="isOpenCode" :code="code" :copy="true"></code-box>
+      <code-box :open="isOpenCode" :code="code" copy></code-box>
     </div>
   </div>
 </template>

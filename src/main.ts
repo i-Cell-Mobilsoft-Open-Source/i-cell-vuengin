@@ -22,7 +22,8 @@ import CheckboxComponent from '@/components/checkbox.vue';
 import LegendComponent from '@/components/legend.vue';
 import ButtonComponent from '@/components/button.vue';
 import TableComponent from '@/components/table.vue';
-import CodeBoxComponent from '@/shared/components/code-box.vue';
+import CodeBoxComponent from '@/shared/components/code-box/code-box.vue';
+import NavBarComponent from '@/views/Navbar/nav-bar.vue';
 
 // Validation
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
@@ -58,8 +59,10 @@ Vue.config.productionTip = false;
 
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
+Vue.component('ValidationObserver', ValidationObserver);
 
 // Shared Components
+Vue.component('bue-nav-bar', NavBarComponent);
 Vue.component('code-box', CodeBoxComponent);
 
 // Entry Components

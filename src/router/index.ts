@@ -6,27 +6,22 @@ Vue.use(VueRouter);
 const routes: Array<RouteConfig> = [
   {
     path: '/input',
-    name: 'Input Sandbox',
+    name: 'Input',
     component: () => import('@/views/Input/input-sandbox.vue')
   },
   {
     path: '/datepicker',
-    name: 'Datepicker Sandbox',
+    name: 'Datepicker',
     component: () => import('@/views/Datetpicker/datepicker-sandbox.vue')
   },
   {
-    path: '/datetimepicker',
-    name: 'Datetimepicker Sandbox',
-    component: () => import('@/views/Datetimepicker/datetimepicker-sandbox.vue')
-  },
-  {
     path: '/table',
-    name: 'Table Sandbox',
+    name: 'Table',
     component: () => import('@/views/Table/table-sandbox.vue')
   },
   {
     path: '/select',
-    name: 'Select Sandbox',
+    name: 'Select',
     component: () => import('@/views/Select/select-sandbox.vue')
   },
   {
