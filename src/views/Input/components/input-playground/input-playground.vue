@@ -84,41 +84,41 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive } from '@vue/composition-api';
-import { templateCode } from './template-code';
+  import { computed, reactive } from '@vue/composition-api';
+  import { templateCode } from './template-code';
 
-export default {
-  data() {
-    return {
-      code: templateCode,
-      isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false
-    };
-  },
-  setup() {
-    const state = reactive({
-      rounded: false,
-      disabled: false,
-      loading: false,
-      label: false,
-      placeHolder: true,
-      size: '',
-      value: '',
-      styleType: ''
-    });
-    const label = computed(() => (state.label ? 'Label' : ''));
-    const placeHolder = computed(() => (state.placeHolder ? 'Placeholder' : ''));
-    const onInput = (ev: InputEvent, value: any) => {
-      state.value = value;
-    };
-    return {
-      state,
-      label,
-      placeHolder,
-      onInput
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        code: templateCode,
+        isOpenSetting: false,
+        isOpenCode: false,
+        isOpenData: false,
+      };
+    },
+    setup() {
+      const state = reactive({
+        rounded: false,
+        disabled: false,
+        loading: false,
+        label: false,
+        placeHolder: true,
+        size: '',
+        value: '',
+        styleType: '',
+      });
+      const label = computed(() => (state.label ? 'Label' : ''));
+      const placeHolder = computed(() => (state.placeHolder ? 'Placeholder' : ''));
+      const onInput = (ev: InputEvent, value: any) => {
+        state.value = value;
+      };
+      return {
+        state,
+        label,
+        placeHolder,
+        onInput,
+      };
+    },
+  };
 </script>
 <style scoped></style>

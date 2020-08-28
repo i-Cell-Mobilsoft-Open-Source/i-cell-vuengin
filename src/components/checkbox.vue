@@ -5,27 +5,27 @@
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+  import { ref } from '@vue/composition-api';
 
-export default {
-  name: 'v-icell-checkbox',
-  props: {
-    ui: String,
-    label: String,
-    type: String,
-    required: Boolean,
-    disabled: Boolean,
-    value: [Boolean, String, Number, Object]
-  },
-  setup(props: any) {
-    const model = props.value ? ref(props.value) : false;
-    const isRequired = () => (props.required ? 'required' : '');
-    return {
-      isRequired,
-      model
-    };
-  }
-};
+  export default {
+    name: 'v-icell-checkbox',
+    props: {
+      ui: String,
+      label: String,
+      type: String,
+      required: Boolean,
+      disabled: Boolean,
+      value: [Boolean, String, Number, Object],
+    },
+    setup(props: any) {
+      const model = props.value ? ref(props.value) : false;
+      const isRequired = () => (props.required ? 'required' : '');
+      return {
+        isRequired,
+        model,
+      };
+    },
+  };
 </script>
 
 <style scoped></style>

@@ -58,40 +58,40 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive } from '@vue/composition-api';
-import { templateCode } from './template-code';
+  import { ref, reactive } from '@vue/composition-api';
+  import { templateCode } from './template-code';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const state = reactive({
-      label: '',
-      expanded: true,
-      icon: 'earth',
-      placeHolder: 'earth',
-      option: ['Option 1', 'Option 2', 'Option 3'],
-      value: null
-    });
-    const onInput = (value: any) => {
-      state.value = value;
-    };
-    const onIconSelect = (value: string) => {
-      state.placeHolder = value;
-    };
-    return {
-      code,
-      state,
-      onInput,
-      onIconSelect
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+        isOpenData: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const state = reactive({
+        label: '',
+        expanded: true,
+        icon: 'earth',
+        placeHolder: 'earth',
+        option: ['Option 1', 'Option 2', 'Option 3'],
+        value: null,
+      });
+      const onInput = (value: any) => {
+        state.value = value;
+      };
+      const onIconSelect = (value: string) => {
+        state.placeHolder = value;
+      };
+      return {
+        code,
+        state,
+        onInput,
+        onIconSelect,
+      };
+    },
+  };
 </script>
 <style scoped></style>

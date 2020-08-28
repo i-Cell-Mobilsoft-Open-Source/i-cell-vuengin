@@ -17,15 +17,15 @@
 </template>
 
 <script lang="ts">
-import playgroundComponent from './components/input-playground/input-playground.vue';
-import passwordComponent from './components/input-password/input-password.vue';
-import iconsComponent from './components/input-icons/input-icons.vue';
+  import playgroundComponent from './components/input-playground/input-playground.vue';
+  import passwordComponent from './components/input-password/input-password.vue';
+  import iconsComponent from './components/input-icons/input-icons.vue';
 
-export default {
-  components: {
-    'input-playground': playgroundComponent,
-    'input-password': passwordComponent,
-    'input-icons': iconsComponent
-  }
-};
+  export default {
+    components: {
+      'input-playground': playgroundComponent,
+      'input-password': passwordComponent,
+      'input-icons': iconsComponent,
+    },
+  };
 </script>

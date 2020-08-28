@@ -20,8 +20,8 @@ export function buildLayout(...models: any[]) {
           name: field.key,
           type: field.type || 'input',
           subtype: field.subtype || field.modelType.toLowerCase() || 'text',
-          data: `model.${meta.name}.${field.key}`
-        }))
+          data: `model.${meta.name}.${field.key}`,
+        })),
       };
     });
     if (meta.legend)
@@ -33,15 +33,15 @@ export function buildLayout(...models: any[]) {
           {
             type: 'legend',
             name: meta.legend,
-            classes: 'column is-12'
-          }
-        ]
+            classes: 'column is-12',
+          },
+        ],
       });
     layoutMeta.push({
       name: meta.name,
       type: 'box',
       /*classes: 'box tile is-parent is-vertical',*/
-      data: propMetas
+      data: propMetas,
     });
   });
   return { model: layoutModel, meta: layoutMeta };

@@ -33,52 +33,65 @@
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+  import { ref } from '@vue/composition-api';
 
-export default {
-  name: 'v-icell-date',
-  props: ['ui', 'label', 'placeHolder', 'required', 'value', 'disabled', 'classes', 'id', 'minDate', 'maxDate', 'type', 'range'],
+  export default {
+    name: 'v-icell-date',
+    props: [
+      'ui',
+      'label',
+      'placeHolder',
+      'required',
+      'value',
+      'disabled',
+      'classes',
+      'id',
+      'minDate',
+      'maxDate',
+      'type',
+      'range',
+    ],
 
-  setup(props: any, attr: any) {
-    const model = props.value ? ref(props.value) : null;
-    const isRequired = () => (props.required ? 'required' : '');
+    setup(props: any, attr: any) {
+      const model = props.value ? ref(props.value) : null;
+      const isRequired = () => (props.required ? 'required' : '');
 
-    const onInput = (ev: InputEvent) => {
-      attr.emit('input', ev);
-    };
-    const onChangeMonth = (month: number) => {
-      attr.emit('changeMonth', month);
-    };
+      const onInput = (ev: InputEvent) => {
+        attr.emit('input', ev);
+      };
+      const onChangeMonth = (month: number) => {
+        attr.emit('changeMonth', month);
+      };
 
-    const onChangeYear = (year: number) => {
-      attr.emit('changeYear', year);
-    };
+      const onChangeYear = (year: number) => {
+        attr.emit('changeYear', year);
+      };
 
-    /*const setFieldType = (error: any) => {
+      /*const setFieldType = (error: any) => {
       return !error.valid ? 'is-danger' : 'is-success';
     };*/
 
-    const setClearDate = () => {
-      model.value = null;
-      attr.emit('input', model.value);
-    };
+      const setClearDate = () => {
+        model.value = null;
+        attr.emit('input', model.value);
+      };
 
-    const setToDate = () => {
-      model.value = new Date();
-      attr.emit('input', model.value);
-    };
-    return {
-      isRequired,
-      onInput,
-      onChangeMonth,
-      onChangeYear,
-      // setFieldType,
-      setClearDate,
-      setToDate,
-      model
-    };
-  }
-};
+      const setToDate = () => {
+        model.value = new Date();
+        attr.emit('input', model.value);
+      };
+      return {
+        isRequired,
+        onInput,
+        onChangeMonth,
+        onChangeYear,
+        // setFieldType,
+        setClearDate,
+        setToDate,
+        model,
+      };
+    },
+  };
 </script>
 
 <style scoped></style>

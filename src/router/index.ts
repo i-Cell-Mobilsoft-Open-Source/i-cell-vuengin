@@ -7,33 +7,33 @@ const routes: Array<RouteConfig> = [
   {
     path: '/input',
     name: 'Input',
-    component: () => import('@/views/Input/input-sandbox.vue')
+    component: () => import('@/views/Input/input-sandbox.vue'),
   },
   {
     path: '/datepicker',
     name: 'Datepicker',
-    component: () => import('@/views/Datetpicker/datepicker-sandbox.vue')
+    component: () => import('@/views/Datetpicker/datepicker-sandbox.vue'),
   },
   {
     path: '/table',
     name: 'Table',
-    component: () => import('@/views/Table/table-sandbox.vue')
+    component: () => import('@/views/Table/table-sandbox.vue'),
   },
   {
     path: '/select',
     name: 'Select',
-    component: () => import('@/views/Select/select-sandbox.vue')
+    component: () => import('@/views/Select/select-sandbox.vue'),
   },
   {
     path: '/*',
-    redirect: '/input'
-  }
+    redirect: '/input',
+  },
 ];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;

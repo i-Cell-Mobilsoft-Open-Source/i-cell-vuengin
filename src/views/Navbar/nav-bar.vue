@@ -10,7 +10,13 @@
     </template>
     <template slot="end">
       <!--      <div v-for></div>-->
-      <b-navbar-item v-for="(item, index) in menuItem" tag="router-link" :key="index" :active="item.active" :to="{ path: item.path }">
+      <b-navbar-item
+        v-for="(item, index) in menuItem"
+        tag="router-link"
+        :key="index"
+        :active="item.active"
+        :to="{ path: item.path }"
+      >
         {{ item.name }}
       </b-navbar-item>
       <!--<b-navbar-item tag="router-link" :to="{ path: '/input' }">Input</b-navbar-item>
@@ -22,56 +28,56 @@
 </template>
 
 <script lang="ts">
-import router from '@/router';
-import { reactive, ref } from '@vue/composition-api';
+  import router from '@/router';
+  import { reactive, ref } from '@vue/composition-api';
 
-export default {
-  setup() {
-    const data = ref(['1', '2', '3']);
-    const menuItem = reactive({
-      input: {
-        path: '/input',
-        name: 'Input',
-        active: false
-      },
-      select: {
-        path: '/select',
-        name: 'Select',
-        active: false
-      },
-      datepicker: {
-        path: '/datepicker',
-        name: 'Datepicker',
-        active: false
-      },
-      table: {
-        path: '/table',
-        name: 'Table',
-        active: false
-      }
-    });
-
-    const changeMenuActivation = (item: any, active: boolean) => {
-      Object.assign(item, {
-        ...item,
-        active: active
+  export default {
+    setup() {
+      const data = ref(['1', '2', '3']);
+      const menuItem = reactive({
+        input: {
+          path: '/input',
+          name: 'Input',
+          active: false,
+        },
+        select: {
+          path: '/select',
+          name: 'Select',
+          active: false,
+        },
+        datepicker: {
+          path: '/datepicker',
+          name: 'Datepicker',
+          active: false,
+        },
+        table: {
+          path: '/table',
+          name: 'Table',
+          active: false,
+        },
       });
-    };
 
-    router.afterEach((to, from) => {
-      const routeFrom = from.path.slice(1);
-      const routeTo = to.path.slice(1);
-      if (routeFrom) {
-        changeMenuActivation(menuItem[routeFrom], false);
-      }
-      changeMenuActivation(menuItem[routeTo], true);
-    });
-    return {
-      data,
-      menuItem
-    };
-  }
-};
+      const changeMenuActivation = (item: any, active: boolean) => {
+        Object.assign(item, {
+          ...item,
+          active: active,
+        });
+      };
+
+      router.afterEach((to, from) => {
+        const routeFrom = from.path.slice(1);
+        const routeTo = to.path.slice(1);
+        if (routeFrom) {
+          changeMenuActivation(menuItem[routeFrom], false);
+        }
+        changeMenuActivation(menuItem[routeTo], true);
+      });
+      return {
+        data,
+        menuItem,
+      };
+    },
+  };
 </script>
 
 <style scoped></style>

@@ -5,17 +5,17 @@
 </template>
 
 <script>
-export default {
-  name: 'v-icell-legend',
-  props: {
-    caption: String,
-    name: String,
-    classes: String
-  },
-  setup() {
-    return {};
-  }
-};
+  export default {
+    name: 'v-icell-legend',
+    props: {
+      caption: String,
+      name: String,
+      classes: String,
+    },
+    setup() {
+      return {};
+    },
+  };
 </script>
 
 <style scoped></style>

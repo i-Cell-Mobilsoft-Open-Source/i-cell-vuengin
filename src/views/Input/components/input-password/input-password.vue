@@ -51,34 +51,34 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive } from '@vue/composition-api';
-import { templateCode } from './template-code';
+  import { ref, reactive } from '@vue/composition-api';
+  import { templateCode } from './template-code';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const state = reactive({
-      label: '',
-      value: '',
-      type: 'password',
-      passwordReveal: true
-    });
-    const onInput = (ev: InputEvent, value: any) => {
-      state.value = value;
-    };
-    return {
-      code,
-      state,
-      onInput
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+        isOpenData: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const state = reactive({
+        label: '',
+        value: '',
+        type: 'password',
+        passwordReveal: true,
+      });
+      const onInput = (ev: InputEvent, value: any) => {
+        state.value = value;
+      };
+      return {
+        code,
+        state,
+        onInput,
+      };
+    },
+  };
 </script>
 <style scoped></style>

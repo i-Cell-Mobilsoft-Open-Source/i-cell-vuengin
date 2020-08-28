@@ -12,7 +12,7 @@
       </div>
       <!-- Content -->
       <div class="table-content">
-        <v-icell-table :data="state.data" :columns="state.columns"> </v-icell-table>
+        <v-icell-table :data="state.data" :columns="state.columns"></v-icell-table>
       </div>
     </div>
 
@@ -24,28 +24,28 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive } from '@vue/composition-api';
-import { templateCode } from './template-code';
-import { data, columnsSorting } from '@/views/Table/components/data';
+  import { ref, reactive } from '@vue/composition-api';
+  import { templateCode } from './template-code';
+  import { data, columnsSorting } from '@/views/Table/components/data';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const state = reactive({
-      data: data,
-      columns: columnsSorting
-    });
-    return {
-      state,
-      code
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const state = reactive({
+        data: data,
+        columns: columnsSorting,
+      });
+      return {
+        state,
+        code,
+      };
+    },
+  };
 </script>
 <style scoped></style>

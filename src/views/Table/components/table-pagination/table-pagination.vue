@@ -26,8 +26,7 @@
           :per-page="state.perPage"
           :current-page="state.currentPage"
           @pageChange="onPageChange"
-        >
-        </v-icell-table>
+        ></v-icell-table>
       </div>
 
       <!-- Settings -->
@@ -36,9 +35,7 @@
         <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="settings-item">
-              <b-switch v-model="state.paginated" :size="'is-small'">
-                Paginated
-              </b-switch>
+              <b-switch v-model="state.paginated" :size="'is-small'">Paginated</b-switch>
             </div>
 
             <div class="settings-item">
@@ -64,7 +61,7 @@
               </b-select>
             </div>
             <div class="settings-item">
-              <b-button :label="'Set page to 2'" :size="'is-small'" @click="state.currentPage = 2"> </b-button>
+              <b-button :label="'Set page to 2'" :size="'is-small'" @click="state.currentPage = 2"></b-button>
             </div>
           </b-field>
         </div>
@@ -79,38 +76,38 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref } from '@vue/composition-api';
-import { templateCode } from '@/views/Table/components/table-pagination/template-code';
-import { dataBig, columnsBig } from '@/views/Table/components/data';
+  import { reactive, ref } from '@vue/composition-api';
+  import { templateCode } from '@/views/Table/components/table-pagination/template-code';
+  import { dataBig, columnsBig } from '@/views/Table/components/data';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const state = reactive({
-      data: dataBig,
-      columns: columnsBig,
-      paginated: true,
-      paginationSimple: true,
-      paginationPosition: 'bottom',
-      paginationSize: 'is-small',
-      perPage: 5,
-      currentPage: 1
-    });
-    const onPageChange = (page: number) => {
-      state.currentPage = page;
-    };
-    return {
-      code,
-      state,
-      onPageChange
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const state = reactive({
+        data: dataBig,
+        columns: columnsBig,
+        paginated: true,
+        paginationSimple: true,
+        paginationPosition: 'bottom',
+        paginationSize: 'is-small',
+        perPage: 5,
+        currentPage: 1,
+      });
+      const onPageChange = (page: number) => {
+        state.currentPage = page;
+      };
+      return {
+        code,
+        state,
+        onPageChange,
+      };
+    },
+  };
 </script>
 <style scoped></style>

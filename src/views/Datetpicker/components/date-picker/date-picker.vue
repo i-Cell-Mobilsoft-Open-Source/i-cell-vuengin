@@ -52,36 +52,36 @@
 </template>
 
 <script lang="ts">
-import moment from 'moment';
-import { ref, reactive } from '@vue/composition-api';
-import { templateCode } from './template-code';
+  import moment from 'moment';
+  import { ref, reactive } from '@vue/composition-api';
+  import { templateCode } from './template-code';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const state = reactive({
-      label: 'Date',
-      placeHolder: 'Choose date',
-      minDate: moment().subtract(5, 'days').toDate(),
-      maxDate: moment().add(5, 'days').toDate(),
-      value: moment().toDate()
-    });
-    const onInput = (value: any) => {
-      state.value = value;
-    };
-    return {
-      code,
-      state,
-      onInput
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+        isOpenData: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const state = reactive({
+        label: 'Date',
+        placeHolder: 'Choose date',
+        minDate: moment().subtract(5, 'days').toDate(),
+        maxDate: moment().add(5, 'days').toDate(),
+        value: moment().toDate(),
+      });
+      const onInput = (value: any) => {
+        state.value = value;
+      };
+      return {
+        code,
+        state,
+        onInput,
+      };
+    },
+  };
 </script>
 <style scoped></style>

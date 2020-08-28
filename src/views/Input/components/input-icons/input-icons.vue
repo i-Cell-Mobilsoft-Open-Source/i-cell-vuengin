@@ -62,44 +62,44 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, inject } from '@vue/composition-api';
-import { templateCode } from './template-code';
+  import { ref, reactive, inject } from '@vue/composition-api';
+  import { templateCode } from './template-code';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const toast = inject('toastService') as any;
-    const state = reactive({
-      label: '',
-      placeHolder: 'email',
-      icon: 'email',
-      value: '',
-      iconClickable: false
-    });
-    const onIconClick = () => {
-      toast.open('Clicked on the icon!', 'is-info');
-    };
-    const onInput = (ev: InputEvent, value: any) => {
-      state.value = value;
-    };
-    const onIconSelect = (value: string) => {
-      state.placeHolder = value;
-    };
-    return {
-      code,
-      state,
-      onInput,
-      onIconClick,
-      onIconSelect
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+        isOpenData: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const toast = inject('toastService') as any;
+      const state = reactive({
+        label: '',
+        placeHolder: 'email',
+        icon: 'email',
+        value: '',
+        iconClickable: false,
+      });
+      const onIconClick = () => {
+        toast.open('Clicked on the icon!', 'is-info');
+      };
+      const onInput = (ev: InputEvent, value: any) => {
+        state.value = value;
+      };
+      const onIconSelect = (value: string) => {
+        state.placeHolder = value;
+      };
+      return {
+        code,
+        state,
+        onInput,
+        onIconClick,
+        onIconSelect,
+      };
+    },
+  };
 </script>
 <style scoped></style>

@@ -26,8 +26,7 @@
           :hoverable="state.hoverable"
           :focusable="state.focusable"
           :mobileCards="state.mobileCards"
-        >
-        </v-icell-table>
+        ></v-icell-table>
       </div>
 
       <!-- Settings -->
@@ -67,37 +66,37 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive } from '@vue/composition-api';
-import { templateCode } from './template-code';
-import { data, columns } from '@/views/Table/components/data';
+  import { ref, reactive } from '@vue/composition-api';
+  import { templateCode } from './template-code';
+  import { data, columns } from '@/views/Table/components/data';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false,
-      switcherClass: 'is-small'
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const state = reactive({
-      data: data,
-      columns: columns,
-      bordered: false,
-      striped: false,
-      narrowed: false,
-      hoverable: false,
-      focusable: false,
-      loading: false,
-      mobileCards: true
-    });
-    return {
-      code,
-      state
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+        isOpenData: false,
+        switcherClass: 'is-small',
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const state = reactive({
+        data: data,
+        columns: columns,
+        bordered: false,
+        striped: false,
+        narrowed: false,
+        hoverable: false,
+        focusable: false,
+        loading: false,
+        mobileCards: true,
+      });
+      return {
+        code,
+        state,
+      };
+    },
+  };
 </script>
 <style scoped></style>

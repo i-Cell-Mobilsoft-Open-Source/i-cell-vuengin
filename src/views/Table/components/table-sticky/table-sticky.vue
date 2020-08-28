@@ -16,7 +16,7 @@
 
       <!-- Content -->
       <div class="table-content">
-        <v-icell-table :data="state.data" :columns="state.columns" :sticky-header="state.stickyHeader"> </v-icell-table>
+        <v-icell-table :data="state.data" :columns="state.columns" :sticky-header="state.stickyHeader"></v-icell-table>
       </div>
 
       <!-- Settings -->
@@ -38,29 +38,29 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive } from '@vue/composition-api';
-import { templateCode } from './template-code';
-import { dataBig, columnsBig } from '@/views/Table/components/data';
+  import { ref, reactive } from '@vue/composition-api';
+  import { templateCode } from './template-code';
+  import { dataBig, columnsBig } from '@/views/Table/components/data';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const state = reactive({
-      data: dataBig,
-      columns: columnsBig,
-      stickyHeader: true
-    });
-    return {
-      state,
-      code
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const state = reactive({
+        data: dataBig,
+        columns: columnsBig,
+        stickyHeader: true,
+      });
+      return {
+        state,
+        code,
+      };
+    },
+  };
 </script>
 <style scoped></style>

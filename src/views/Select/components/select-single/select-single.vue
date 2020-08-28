@@ -52,35 +52,35 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive } from '@vue/composition-api';
-import { templateCode } from './template-code';
+  import { ref, reactive } from '@vue/composition-api';
+  import { templateCode } from './template-code';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const state = reactive({
-      label: '',
-      placeHolder: 'Select name',
-      expanded: true,
-      option: ['Palvin Barbi', 'Mihalik Enikő', 'Ördög Nóra', 'Szabó Erika'],
-      value: null
-    });
-    const onInput = (value: any) => {
-      state.value = value;
-    };
-    return {
-      code,
-      state,
-      onInput
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+        isOpenData: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const state = reactive({
+        label: '',
+        placeHolder: 'Select name',
+        expanded: true,
+        option: ['Palvin Barbi', 'Mihalik Enikő', 'Ördög Nóra', 'Szabó Erika'],
+        value: null,
+      });
+      const onInput = (value: any) => {
+        state.value = value;
+      };
+      return {
+        code,
+        state,
+        onInput,
+      };
+    },
+  };
 </script>
 <style scoped></style>

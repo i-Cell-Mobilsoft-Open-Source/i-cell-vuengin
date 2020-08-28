@@ -24,14 +24,10 @@
         <div class="settings-content">
           <b-field grouped group-multiline>
             <div class="settings-item">
-              <b-switch v-model="idSearch" :size="'is-small'">
-                ID
-              </b-switch>
+              <b-switch v-model="idSearch" :size="'is-small'">ID</b-switch>
             </div>
             <div class="settings-item">
-              <b-switch v-model="firstNameSearch" :size="'is-small'">
-                First Name
-              </b-switch>
+              <b-switch v-model="firstNameSearch" :size="'is-small'">First Name</b-switch>
             </div>
           </b-field>
         </div>
@@ -45,55 +41,55 @@
 </template>
 
 <script lang="ts">
-import { ref, computed } from '@vue/composition-api';
-import { templateCode } from '@/views/Table/components/table-searchable/template-code';
-import { data } from '@/views/Table/components/data';
+  import { ref, computed } from '@vue/composition-api';
+  import { templateCode } from '@/views/Table/components/table-searchable/template-code';
+  import { data } from '@/views/Table/components/data';
 
-export default {
-  data() {
-    return {
-      data: data,
-      isOpenSetting: false,
-      isOpenCode: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const idSearch = ref(false);
-    const firstNameSearch = ref(false);
-    const columns = computed(() => {
-      return [
-        {
-          field: 'id',
-          label: 'ID',
-          searchable: idSearch.value
-        },
-        {
-          field: 'first_name',
-          label: 'First Name',
-          searchable: firstNameSearch.value
-        },
-        {
-          field: 'last_name',
-          label: 'Last Name'
-        },
-        {
-          field: 'date',
-          label: 'Date'
-        },
-        {
-          field: 'gender',
-          label: 'Gender'
-        }
-      ];
-    });
-    return {
-      code,
-      columns,
-      idSearch,
-      firstNameSearch
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        data: data,
+        isOpenSetting: false,
+        isOpenCode: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const idSearch = ref(false);
+      const firstNameSearch = ref(false);
+      const columns = computed(() => {
+        return [
+          {
+            field: 'id',
+            label: 'ID',
+            searchable: idSearch.value,
+          },
+          {
+            field: 'first_name',
+            label: 'First Name',
+            searchable: firstNameSearch.value,
+          },
+          {
+            field: 'last_name',
+            label: 'Last Name',
+          },
+          {
+            field: 'date',
+            label: 'Date',
+          },
+          {
+            field: 'gender',
+            label: 'Gender',
+          },
+        ];
+      });
+      return {
+        code,
+        columns,
+        idSearch,
+        firstNameSearch,
+      };
+    },
+  };
 </script>
 <style scoped></style>

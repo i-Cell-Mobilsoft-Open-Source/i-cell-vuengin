@@ -19,10 +19,10 @@
 </template>
 
 <script lang="ts">
-import { ToastService } from '@/services/toast.service';
-export default {
-  provide: {
-    toastService: new ToastService()
-  }
-};
+  import { ToastService } from '@/services/toast.service';
+  export default {
+    provide: {
+      toastService: new ToastService(),
+    },
+  };
 </script>

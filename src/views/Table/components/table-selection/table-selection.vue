@@ -24,8 +24,7 @@
           :columns="state.columns"
           :selected="isSelected ? state.selected : null"
           @onSelectChange="onSelectChange($event)"
-        >
-        </v-icell-table>
+        ></v-icell-table>
       </div>
 
       <!-- Settings -->
@@ -52,36 +51,36 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref } from '@vue/composition-api';
-import { templateCode } from './template-code';
-import { data, columns } from '@/views/Table/components/data';
+  import { reactive, ref } from '@vue/composition-api';
+  import { templateCode } from './template-code';
+  import { data, columns } from '@/views/Table/components/data';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const isSelected = ref(true);
-    const state = reactive({
-      data: data,
-      columns: columns,
-      selected: data[0]
-    });
-    const onSelectChange = (value: any) => {
-      state.selected = value;
-    };
-    return {
-      code,
-      state,
-      isSelected,
-      onSelectChange
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+        isOpenData: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const isSelected = ref(true);
+      const state = reactive({
+        data: data,
+        columns: columns,
+        selected: data[0],
+      });
+      const onSelectChange = (value: any) => {
+        state.selected = value;
+      };
+      return {
+        code,
+        state,
+        isSelected,
+        onSelectChange,
+      };
+    },
+  };
 </script>
 <style scoped></style>

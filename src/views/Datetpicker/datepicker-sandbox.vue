@@ -17,15 +17,15 @@
 </template>
 
 <script lang="ts">
-import datePickerComponent from './components/date-picker/date-picker.vue';
-import monthPickerComponent from './components/month-picker/month-picker.vue';
-import rangePickerComponent from './components/range-picker/range-picker.vue';
+  import datePickerComponent from './components/date-picker/date-picker.vue';
+  import monthPickerComponent from './components/month-picker/month-picker.vue';
+  import rangePickerComponent from './components/range-picker/range-picker.vue';
 
-export default {
-  components: {
-    'datepicker-date': datePickerComponent,
-    'datepicker-month': monthPickerComponent,
-    'datepicker-range': rangePickerComponent
-  }
-};
+  export default {
+    components: {
+      'datepicker-date': datePickerComponent,
+      'datepicker-month': monthPickerComponent,
+      'datepicker-range': rangePickerComponent,
+    },
+  };
 </script>

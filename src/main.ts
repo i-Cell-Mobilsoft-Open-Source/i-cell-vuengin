@@ -46,11 +46,11 @@ Vue.use(Buefy, {
     'Szeptember',
     'Október',
     'November',
-    'December'
+    'December',
   ],
   defaultFirstDayOfWeek: 1,
   defaultTrapFocus: true,
-  defaultDatepickerYearsRange: [-100, 60]
+  defaultDatepickerYearsRange: [-100, 60],
 });
 Vue.use(VueCompositionApi);
 Vue.use(InputPlugin);
@@ -78,5 +78,5 @@ Vue.component('v-icell-table', TableComponent);
 new Vue({
   router,
   store,
-  render: (h) => h(App)
+  render: (h) => h(App),
 }).$mount('#app');

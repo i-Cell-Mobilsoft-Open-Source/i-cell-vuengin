@@ -1,9 +1,12 @@
 {
   "tabWidth": 2,
   "useTabs": false,
-  "printWidth": 140,
+  "printWidth": 120,
+  "trailingComma": "es5",
   "singleQuote": true,
-  "trailingComma": "none",
+  "bracketSpacing": true,
+  "vueIndentScriptAndStyle": true,
+  "htmlWhitespaceSensitivity": "ignore",
   "overrides": [
     {
       "files": "*.hbs",

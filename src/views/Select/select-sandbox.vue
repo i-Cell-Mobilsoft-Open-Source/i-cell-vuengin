@@ -17,15 +17,15 @@
 </template>
 
 <script lang="ts">
-import selectSingleComponent from './components/select-single/select-single.vue';
-import selectMultiSingleComponent from './components/select-multi/select-multi.vue';
-import selectIconsComponent from './components/select-icons/select-icons.vue';
+  import selectSingleComponent from './components/select-single/select-single.vue';
+  import selectMultiSingleComponent from './components/select-multi/select-multi.vue';
+  import selectIconsComponent from './components/select-icons/select-icons.vue';
 
-export default {
-  components: {
-    'select-single': selectSingleComponent,
-    'select-multi': selectMultiSingleComponent,
-    'select-icons': selectIconsComponent
-  }
-};
+  export default {
+    components: {
+      'select-single': selectSingleComponent,
+      'select-multi': selectMultiSingleComponent,
+      'select-icons': selectIconsComponent,
+    },
+  };
 </script>

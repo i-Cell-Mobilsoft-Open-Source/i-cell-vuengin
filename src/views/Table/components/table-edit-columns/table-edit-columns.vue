@@ -16,7 +16,7 @@
 
       <!-- Content -->
       <div class="table-content">
-        <v-icell-table :data="state.data" :columns="state.columns"> </v-icell-table>
+        <v-icell-table :data="state.data" :columns="state.columns"></v-icell-table>
       </div>
 
       <!-- Settings -->
@@ -41,29 +41,29 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref } from '@vue/composition-api';
-import { templateCode } from './template-code';
-import { data, columnsEdit } from '@/views/Table/components/data';
+  import { reactive, ref } from '@vue/composition-api';
+  import { templateCode } from './template-code';
+  import { data, columnsEdit } from '@/views/Table/components/data';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const state = reactive({
-      data: data,
-      columns: columnsEdit
-    });
-    return {
-      state,
-      code
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+        isOpenData: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const state = reactive({
+        data: data,
+        columns: columnsEdit,
+      });
+      return {
+        state,
+        code,
+      };
+    },
+  };
 </script>
 <style scoped></style>

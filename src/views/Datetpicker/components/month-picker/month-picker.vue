@@ -53,40 +53,40 @@
 </template>
 
 <script lang="ts">
-import moment from 'moment';
-import { ref, reactive } from '@vue/composition-api';
-import { templateCode } from './template-code';
+  import moment from 'moment';
+  import { ref, reactive } from '@vue/composition-api';
+  import { templateCode } from './template-code';
 
-export default {
-  data() {
-    return {
-      isOpenSetting: false,
-      isOpenCode: false,
-      isOpenData: false
-    };
-  },
-  setup() {
-    const code = ref(templateCode);
-    const state = reactive({
-      label: 'Month',
-      placeHolder: 'Choose month',
-      type: 'month',
-      value: moment().toDate()
-    });
-    const onInput = (value: any) => {
-      state.value = value;
-    };
-    /*const onChangeMonth = (value: any) => {
+  export default {
+    data() {
+      return {
+        isOpenSetting: false,
+        isOpenCode: false,
+        isOpenData: false,
+      };
+    },
+    setup() {
+      const code = ref(templateCode);
+      const state = reactive({
+        label: 'Month',
+        placeHolder: 'Choose month',
+        type: 'month',
+        value: moment().toDate(),
+      });
+      const onInput = (value: any) => {
+        state.value = value;
+      };
+      /*const onChangeMonth = (value: any) => {
       console.log('onChangeMonth', value);
       // state.value = value;
     };*/
-    return {
-      code,
-      state,
-      onInput
-      // onChangeMonth
-    };
-  }
-};
+      return {
+        code,
+        state,
+        onInput,
+        // onChangeMonth
+      };
+    },
+  };
 </script>
 <style scoped></style>

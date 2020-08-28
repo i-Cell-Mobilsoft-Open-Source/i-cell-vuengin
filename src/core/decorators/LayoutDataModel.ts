@@ -30,7 +30,12 @@ export function multiDecorateProperty(props: string[], values: any[]) {
       if (Reflect.hasMetadata(MetadataKeys.VUENGIN_PROP, target, key)) {
         meta = Reflect.getMetadata(MetadataKeys.VUENGIN_PROP, target, key);
       }
-      Reflect.defineMetadata(MetadataKeys.VUENGIN_PROP, Object.assign({}, meta, { [props[idx]]: values[idx], key }), target, key);
+      Reflect.defineMetadata(
+        MetadataKeys.VUENGIN_PROP,
+        Object.assign({}, meta, { [props[idx]]: values[idx], key }),
+        target,
+        key
+      );
     }
   };
 }
@@ -46,7 +51,10 @@ export function LayoutModel(name: string, debug = false): ClassDecorator {
           type = Reflect.getPrototypeOf(tmpInstance?.[prop]).constructor.name;
           if (debug) console.log(prop, type);
         } else {
-          type = (typeof tmpInstance?.[prop]).replace(/(.)(.*)/, (m: any, $1: any, $2: any) => `${$1.toUpperCase()}${$2}`);
+          type = (typeof tmpInstance?.[prop]).replace(
+            /(.)(.*)/,
+            (m: any, $1: any, $2: any) => `${$1.toUpperCase()}${$2}`
+          );
           if (debug) console.log(prop, type);
         }
       } else {
@@ -65,7 +73,7 @@ export function LayoutModel(name: string, debug = false): ClassDecorator {
       MetadataKeys.VUENGIN,
       Object.assign({}, meta, {
         name,
-        props
+        props,
       }),
       target
     );
