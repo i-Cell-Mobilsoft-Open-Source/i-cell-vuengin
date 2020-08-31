@@ -23,7 +23,7 @@ import LegendComponent from '@/components/legend.vue';
 import ButtonComponent from '@/components/button.vue';
 import TableComponent from '@/components/table.vue';
 import CodeBoxComponent from '@/shared/components/code-box/code-box.vue';
-import NavBarComponent from '@/views/Navbar/nav-bar.vue';
+import NavBarComponent from '@/shared/components/nav-bar/nav-bar.vue';
 
 // Validation
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
