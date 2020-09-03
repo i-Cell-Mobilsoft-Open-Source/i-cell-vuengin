@@ -25,21 +25,19 @@
     @select="onSelect"
     @check="onCheck"
   >
-    <template v-slot="props">
-      <template v-for="(column, index) in columns">
-        <b-table-column
-          :key="index"
-          :field="column.field"
-          :label="column.label"
-          :meta="column.meta"
-          :searchable="column.searchable"
-          :sortable="column.sortable"
-          :visible="column.visible"
-        >
-          {{ props.row[column.field] }}
-        </b-table-column>
-      </template>
-    </template>
+    <b-table-column
+      v-for="(column, index) in columns"
+      v-slot="props"
+      :key="index"
+      :field="column.field"
+      :label="column.label"
+      :meta="column.meta"
+      :searchable="column.searchable"
+      :sortable="column.sortable"
+      :visible="column.visible"
+    >
+      {{ props.row[column.field] }}
+    </b-table-column>
   </b-table>
 </template>
 
@@ -109,6 +107,7 @@
       height: [Number, String],
       filtersEvent: String,
       cardLayout: Boolean,
+      id: [String, Number],
     },
 
     setup(props: any, attr: any) {
