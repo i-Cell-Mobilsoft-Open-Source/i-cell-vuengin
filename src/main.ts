@@ -29,6 +29,7 @@ import NavBarComponent from '@/shared/components/nav-bar/nav-bar.vue';
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import { required, length } from 'vee-validate/dist/rules';
 import { extend } from 'vee-validate';
+
 extend('required', required);
 extend('length', length);
 
@@ -78,5 +79,5 @@ Vue.component('v-icell-table', TableComponent);
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  render: h => h(App),
 }).$mount('#app');
