@@ -21,6 +21,8 @@
     :current-page="currentPage"
     :per-page="perPage"
     :sticky-header="stickyHeader"
+    :sort-icon="sortIcon"
+    :sort-icon-size="sortIconSize"
     @page-change="onPageChange"
     @select="onSelect"
     @check="onCheck"
@@ -35,8 +37,12 @@
       :searchable="column.searchable"
       :sortable="column.sortable"
       :visible="column.visible"
+      :width="column.width"
     >
-      {{ props.row[column.field] }}
+      <template v-if="column.image">
+        <img :src="props.row[column.field]" />
+      </template>
+      <template v-else>{{ props.row[column.field] }}</template>
     </b-table-column>
   </b-table>
 </template>
@@ -106,8 +112,8 @@
       stickyHeader: Boolean,
       height: [Number, String],
       filtersEvent: String,
-      cardLayout: Boolean,
       id: [String, Number],
+      image: Boolean,
     },
 
     setup(props: any, attr: any) {
