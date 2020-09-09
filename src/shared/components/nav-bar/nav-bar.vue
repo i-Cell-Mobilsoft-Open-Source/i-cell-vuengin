@@ -50,6 +50,11 @@
           name: 'Datepicker',
           active: false,
         },
+        steps: {
+          path: '/steps',
+          name: 'Steps',
+          active: false,
+        },
         table: {
           path: '/table',
           name: 'Table',

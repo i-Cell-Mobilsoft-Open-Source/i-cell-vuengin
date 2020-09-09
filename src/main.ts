@@ -22,6 +22,7 @@ import CheckboxComponent from '@/components/checkbox.vue';
 import LegendComponent from '@/components/legend.vue';
 import ButtonComponent from '@/components/button.vue';
 import TableComponent from '@/components/table.vue';
+import StepsComponent from '@/components/steps.vue';
 import CodeBoxComponent from '@/shared/components/code-box/code-box.vue';
 import NavBarComponent from '@/shared/components/nav-bar/nav-bar.vue';
 
@@ -75,6 +76,7 @@ Vue.component('v-icell-checkbox', CheckboxComponent);
 Vue.component('v-icell-legend', LegendComponent);
 Vue.component('v-icell-button', ButtonComponent);
 Vue.component('v-icell-table', TableComponent);
+Vue.component('v-icell-steps', StepsComponent);
 
 new Vue({
   router,

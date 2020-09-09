@@ -25,6 +25,11 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/Select/select-sandbox.vue'),
   },
   {
+    path: '/steps',
+    name: 'Steps',
+    component: () => import('@/views/Steps/steps-sandbox.vue'),
+  },
+  {
     path: '/*',
     redirect: '/input',
   },
