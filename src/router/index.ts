@@ -45,13 +45,13 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/Concepts/LayoutForm.vue'),
   },
   {
-    path: '/buefyinput',
-    name: 'Buery Input',
-    component: () => import('@/views/buefycomponents/buefyInput.vue'),
+    path: '/info',
+    name: 'Info',
+    component: () => import('@/views/info.vue'),
   },
   {
     path: '/*',
-    redirect: '/input',
+    redirect: '/info',
   },
 ];
 

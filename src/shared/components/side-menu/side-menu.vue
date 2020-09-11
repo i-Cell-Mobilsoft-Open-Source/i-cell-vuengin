@@ -29,7 +29,7 @@
           group: 'menu',
           group_order: 1,
         },
-        basic: {
+        'basic-form': {
           path: '/basic-form',
           name: 'Basic',
           active: false,
@@ -37,7 +37,7 @@
           group: 'concepts',
           group_order: 2,
         },
-        dynamic: {
+        'dynamic-form': {
           path: '/dynamic-form',
           name: 'Dynamic',
           active: false,
@@ -45,7 +45,7 @@
           group: 'concepts',
           group_order: 2,
         },
-        layout: {
+        'layout-form': {
           path: '/layout-form',
           name: 'Layout',
           active: false,
