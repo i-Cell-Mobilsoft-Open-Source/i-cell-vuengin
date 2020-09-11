@@ -1,23 +1,10 @@
 <template>
   <b-menu>
-    <b-menu-list label="Menu">
-      <b-menu-item icon="information-outline" label="Info"></b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Concepts">
-      <b-menu-item icon="file-table-box-outline" label="Basic" tag="router-link" to="/basic-form"></b-menu-item>
+    <b-menu-list v-for="(group, index) in getMenuGroups()" :key="index" :label="group">
       <b-menu-item
-        icon="file-table-box-multiple-outline"
-        label="Dynamic"
+        v-for="(item, idx) in getMenuItems(group)"
         tag="router-link"
-        to="/dynamic-form"
-      ></b-menu-item>
-      <b-menu-item icon="file-table-outline" label="Layout" tag="router-link" to="/layout-form"></b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Components">
-      <b-menu-item
-        v-for="(item, index) in menuItem"
-        tag="router-link"
-        :key="index"
+        :key="idx"
         :icon="item.icon"
         :label="item.name"
         :active="item.active"
@@ -33,36 +20,78 @@
 
   export default {
     setup() {
-      const menuItem = reactive({
+      const menuItems = reactive({
+        info: {
+          path: '/info',
+          name: 'Info',
+          active: false,
+          icon: 'information-outline',
+          group: 'menu',
+          group_order: 1,
+        },
+        basic: {
+          path: '/basic-form',
+          name: 'Basic',
+          active: false,
+          icon: 'file-table-box-outline',
+          group: 'concepts',
+          group_order: 2,
+        },
+        dynamic: {
+          path: '/dynamic-form',
+          name: 'Dynamic',
+          active: false,
+          icon: 'file-table-box-multiple-outline',
+          group: 'concepts',
+          group_order: 2,
+        },
+        layout: {
+          path: '/layout-form',
+          name: 'Layout',
+          active: false,
+          icon: 'file-table-outline',
+          group: 'concepts',
+          group_order: 2,
+        },
         input: {
           path: '/input',
           name: 'Input',
           active: false,
           icon: 'form-textbox',
+          group: 'components',
+          group_order: 3,
         },
         select: {
           path: '/select',
           name: 'Select',
           active: false,
           icon: 'form-select',
+          group: 'components',
+          group_order: 3,
         },
         datepicker: {
           path: '/datepicker',
           name: 'Datepicker',
           active: false,
           icon: 'calendar-clock',
+          group: 'components',
+          group_order: 3,
         },
         steps: {
           path: '/steps',
           name: 'Steps',
           active: false,
           icon: 'wizard-hat',
+          group: 'components',
+          group_order: 3,
         },
         table: {
           path: '/table',
           name: 'Table',
           active: false,
           icon: 'table',
+          group: 'components',
+          group_order: 3,
         },
       });
 
@@ -75,16 +104,46 @@
         }
       };
 
+      function groupBy(list, keyGetter) {
+        const map = new Map();
+        list.forEach(item => {
+          const key = keyGetter(item);
+          const collection = map.get(key);
+          if (!collection) {
+            map.set(key, [item]);
+          } else {
+            collection.push(item);
+          }
+        });
+        return map;
+      }
+
+      const getMenuGroups = () => {
+        const menus = Object.keys(menuItems)
+          .map(prop => ({ key: prop, ...menuItems[prop] }))
+          .sort((a, b) => a.group_order - b.group_order);
+        return Array.from(groupBy(menus, item => item.group).keys());
+      };
+
+      const getMenuItems = (group: string) => {
+        return Object.keys(menuItems)
+          .map(prop => ({ key: prop, ...menuItems[prop] }))
+          .filter((item: any) => item.group === group);
+      };
+
       router.afterEach((to, from) => {
         const routeFrom = from.path.slice(1);
         const routeTo = to.path.slice(1);
         if (routeFrom) {
-          changeMenuActivation(menuItem[routeFrom], false);
+          changeMenuActivation(menuItems[routeFrom], false);
         }
-        changeMenuActivation(menuItem[routeTo], true);
+        changeMenuActivation(menuItems[routeTo], true);
       });
+
       return {
-        menuItem,
+        menuItems,
+        getMenuGroups,
+        getMenuItems,
       };
     },
   };
