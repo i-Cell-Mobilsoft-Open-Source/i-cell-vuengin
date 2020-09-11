@@ -1,7 +1,7 @@
 <template>
-  <b-steps v-model="model" :animated="true" :rounded="true" :has-navigation="true" :label-position="bottom">
+  <b-steps v-model="model" :animated="true" :rounded="true" :has-navigation="true" :label-position="'bottom'">
     <template v-for="item in steps">
-      <b-step-item v-step="item.i" :key="item.i" :label="item.label" :clickable="true">
+      <b-step-item :step="item.i" :key="item.i" :label="item.label" :clickable="true">
         <h1 class="title has-text-centered">{{ item.text }}</h1>
         {{ item.desc }}
       </b-step-item>
@@ -34,11 +34,16 @@
 
 <script lang="ts">
   import { ref } from '@vue/composition-api';
+  import { BSteps } from 'buefy/src/components/steps';
 
   export default {
     name: 'v-icell-steps',
+    components: {
+      [BSteps.name]: BSteps,
+    },
     props: {
       steps: Array,
+      customNavigation: Boolean,
     },
     setup(props: any, attr: any) {
       const defaultValue = props.multiple ? [] : null;

@@ -14,7 +14,7 @@ export function buildLayout(...models: any[]) {
       return {
         type: 'box',
         name: `${meta.name}_${row}`,
-        classes: 'tile is-child columns',
+        classes: 'tile is-child columns px-0 py-0 mx-0 my-0',
         data: fieldMetas.map(field => ({
           ...field,
           name: field.key,
@@ -28,7 +28,7 @@ export function buildLayout(...models: any[]) {
       propMetas.unshift({
         type: 'box',
         name: 'title',
-        classes: 'tile is-child columns',
+        classes: 'tile is-child columns px-0 py-0 mx-0 my-0',
         data: [
           {
             type: 'legend',

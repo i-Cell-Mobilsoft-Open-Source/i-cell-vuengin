@@ -30,6 +30,26 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/Steps/steps-sandbox.vue'),
   },
   {
+    path: '/basic-form',
+    name: 'Basic Form',
+    component: () => import('@/views/Concepts/BasicForm.vue'),
+  },
+  {
+    path: '/dynamic-form',
+    name: 'Dynamic Form',
+    component: () => import('@/views/Concepts/DynamicForm.vue'),
+  },
+  {
+    path: '/layout-form',
+    name: 'Layout Form',
+    component: () => import('@/views/Concepts/LayoutForm.vue'),
+  },
+  {
+    path: '/buefyinput',
+    name: 'Buery Input',
+    component: () => import('@/views/buefycomponents/buefyInput.vue'),
+  },
+  {
     path: '/*',
     redirect: '/input',
   },

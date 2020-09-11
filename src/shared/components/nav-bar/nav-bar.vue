@@ -35,38 +35,40 @@
     setup() {
       const data = ref(['1', '2', '3']);
       const menuItem = reactive({
-        input: {
-          path: '/input',
-          name: 'Input',
-          active: false,
-        },
-        select: {
-          path: '/select',
-          name: 'Select',
-          active: false,
-        },
-        datepicker: {
-          path: '/datepicker',
-          name: 'Datepicker',
-          active: false,
-        },
-        steps: {
-          path: '/steps',
-          name: 'Steps',
-          active: false,
-        },
-        table: {
-          path: '/table',
-          name: 'Table',
-          active: false,
-        },
+        // input: {
+        //   path: '/input',
+        //   name: 'Input',
+        //   active: false,
+        // },
+        // select: {
+        //   path: '/select',
+        //   name: 'Select',
+        //   active: false,
+        // },
+        // datepicker: {
+        //   path: '/datepicker',
+        //   name: 'Datepicker',
+        //   active: false,
+        // },
+        // steps: {
+        //   path: '/steps',
+        //   name: 'Steps',
+        //   active: false,
+        // },
+        // table: {
+        //   path: '/table',
+        //   name: 'Table',
+        //   active: false,
+        // },
       });
 
       const changeMenuActivation = (item: any, active: boolean) => {
-        Object.assign(item, {
-          ...item,
-          active: active,
-        });
+        if (item) {
+          Object.assign(item, {
+            ...item,
+            active: active,
+          });
+        }
       };
 
       router.afterEach((to, from) => {

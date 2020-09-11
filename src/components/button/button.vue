@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: 'v-button',
+    name: 'v-icell-button',
     props: {
       ui: String,
       classes: String,
