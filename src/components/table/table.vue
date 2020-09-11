@@ -49,9 +49,13 @@
 
 <script lang="ts">
   import { ref } from '@vue/composition-api';
+  import { BTable } from 'buefy/src/components/table';
 
   export default {
     name: 'v-icell-table',
+    components: {
+      [BTable.name]: BTable,
+    },
     props: {
       data: Array,
       columns: Array,

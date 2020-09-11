@@ -21,9 +21,13 @@
 </template>
 <script lang="ts">
   import { ref } from '@vue/composition-api';
+  import { BSelect } from 'buefy/src/components/select';
 
   export default {
     name: 'v-icell-select',
+    components: {
+      [BSelect.name]: BSelect,
+    },
     props: {
       ui: String,
       label: String,

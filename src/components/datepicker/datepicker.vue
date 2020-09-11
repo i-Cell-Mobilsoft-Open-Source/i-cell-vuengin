@@ -34,9 +34,12 @@
 
 <script lang="ts">
   import { ref } from '@vue/composition-api';
-
+  import { BDatepicker } from 'buefy/src/components/datepicker';
   export default {
     name: 'v-icell-date',
+    components: {
+      [BDatepicker.name]: BDatepicker,
+    },
     props: [
       'ui',
       'label',

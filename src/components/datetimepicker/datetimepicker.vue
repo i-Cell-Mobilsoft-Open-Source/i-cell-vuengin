@@ -20,9 +20,13 @@
 
 <script lang="ts">
   import { ref } from '@vue/composition-api';
+  import { BDatetimepicker } from 'buefy/src/components/datetimepicker';
 
   export default {
     name: 'v-icell-datetime',
+    components: {
+      [BDatetimepicker.name]: BDatetimepicker,
+    },
     props: ['id', 'label', 'placeHolder', 'required', 'value', 'disabled', 'classes'],
     setup(props: any, attr: any) {
       const model = props.value ? ref(props.value) : null;

@@ -3,8 +3,13 @@
 </template>
 
 <script>
+  import { BButton } from 'buefy/src/components/button';
+
   export default {
     name: 'v-icell-button',
+    components: {
+      [BButton.name]: BButton,
+    },
     props: {
       ui: String,
       classes: String,

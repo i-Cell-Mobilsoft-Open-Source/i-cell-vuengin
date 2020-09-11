@@ -6,9 +6,13 @@
 
 <script lang="ts">
   import { ref } from '@vue/composition-api';
+  import { BCheckbox } from 'buefy/src/components/checkbox';
 
   export default {
     name: 'v-icell-checkbox',
+    components: {
+      [BCheckbox.name]: BCheckbox,
+    },
     props: {
       ui: String,
       label: String,
