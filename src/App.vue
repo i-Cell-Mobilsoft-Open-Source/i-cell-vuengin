@@ -10,8 +10,8 @@
       </div>
     </header>
 
-    <div class="main-content columns">
-      <side-menu class="column is-2 ml-5 is-overflow-auto"></side-menu>
+    <div class="main-content columns px-5">
+      <side-menu class="column is-2 is-overflow-auto"></side-menu>
       <div class="column is-10 is-overflow-auto px-0 py-0">
         <div class="container bd-lead">
           <router-view />
