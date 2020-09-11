@@ -19,7 +19,7 @@
 
       <!-- Content -->
       <div class="input-content">
-        <v-icell-steps :steps="state.steps"></v-icell-steps>
+        <v-icell-steps v-model="state.value" :steps="state.steps" @input="onInput"></v-icell-steps>
       </div>
 
       <!-- Settings -->
@@ -60,15 +60,21 @@
       const code = ref(templateCode);
       const state = reactive({
         steps: [
-          { i: 1, label: 'A', text: 'Alma', desc: 'Szép piros alma' },
-          { i: 2, label: 'B', text: 'Barack', desc: 'Érett kis kopasz barack' },
-          { i: 3, label: 'C', text: 'Cseresznye', desc: 'Kis kosár cseresznye' },
+          { i: 1, label: 'A', text: 'Alma', desc: 'Szép piros alma', clickable: true },
+          { i: 2, label: 'B', text: 'Barack', desc: 'Érett kis kopasz barack', clickable: false },
+          { i: 3, label: 'C', text: 'Cseresznye', desc: 'Kis kosár cseresznye', clickable: true },
         ],
+        value: 198,
       });
+
+      const onInput = (value: any) => {
+        state.value = value;
+      };
 
       return {
         code,
         state,
+        onInput,
       };
     },
   };

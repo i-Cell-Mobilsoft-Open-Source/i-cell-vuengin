@@ -1,5 +1,6 @@
-export const templateCode = `<template>
-  <v-icell-steps :steps="state.steps">
-  </v-icell-steps>
-</template>
+export const templateCode = `<v-icell-steps 
+  v-model="state.value"
+  :steps="state.steps"
+  @input="onInput"                    
+  ></v-icell-steps>
 `;
