@@ -30,6 +30,11 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/Steps/steps-sandbox.vue'),
   },
   {
+    path: '/checkbox',
+    name: 'Checkbox',
+    component: () => import('@/views/Checkbox/checkbox-sandbox.vue'),
+  },
+  {
     path: '/basic-form',
     name: 'Basic Form',
     component: () => import('@/views/Concepts/BasicForm.vue'),

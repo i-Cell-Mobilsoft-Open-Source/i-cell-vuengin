@@ -85,6 +85,14 @@
           group: 'components',
           group_order: 3,
         },
+        checkbox: {
+          path: '/checkbox',
+          name: 'Checkbox',
+          active: false,
+          icon: 'check-circle',
+          group: 'components',
+          group_order: 3,
+        },
         table: {
           path: '/table',
           name: 'Table',

@@ -3,7 +3,7 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Steps</div>
+        <div class="title-label">Checkbox</div>
         <div class="tags-content">
           <!--<span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
@@ -19,20 +19,16 @@
 
       <!-- Content -->
       <div class="input-content">
-        <v-icell-steps
+        <v-icell-checkbox
           v-model="state.value"
-          :steps="state.steps"
-          :animated="true"
-          :rounded="true"
-          :has-navigation="true"
-          :label-position="'bottom'"
-          :type="'is-green'"
-          :size="'is-medium'"
-          :destroy-on-hide="true"
-          :vertical="false"
-          :mobile-mode="'minimalist'"
+          name="love_me_tender_label"
+          :size="'is-large'"
+          :label="'Nos?'"
+          :trueValue="'Szeret'"
+          :falseValue="'Nem Szeret'"
+          :type="'is-info'"
           @input="onInput"
-        ></v-icell-steps>
+        ></v-icell-checkbox>
       </div>
 
       <!-- Settings -->
@@ -46,10 +42,7 @@
         </div>
       </b-collapse>
     </div>
-    <!-- Data -->
-    <div class="data-content">
-      <code-box :open="isOpenData" :code="state.value"></code-box>
-    </div>
+
     <!-- Code -->
     <div class="code-content">
       <code-box :open="isOpenCode" :code="code" copy></code-box>
@@ -72,12 +65,7 @@
     setup() {
       const code = ref(templateCode);
       const state = reactive({
-        steps: [
-          { i: 1, label: 'A', text: 'Alma', desc: 'Szép piros alma', clickable: true },
-          { i: 2, label: 'B', text: 'Barack', desc: 'Érett kis kopasz barack', clickable: false },
-          { i: 3, label: 'C', text: 'Cseresznye', desc: 'Kis kosár cseresznye', clickable: true },
-        ],
-        value: 198,
+        value: 'Szeret',
       });
 
       const onInput = (value: any) => {

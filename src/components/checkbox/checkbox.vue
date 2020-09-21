@@ -1,6 +1,16 @@
 <template>
   <b-field :label="label">
-    <b-checkbox :disabled="disabled" v-model="model">{{ model }}</b-checkbox>
+    <b-checkbox
+      v-model="model"
+      :true-value="trueValue"
+      :false-value="falseValue"
+      :disabled="disabled"
+      :size="size"
+      :indeterminate="indeterminate"
+      :type="type"
+    >
+      {{ model }}
+    </b-checkbox>
   </b-field>
 </template>
 
@@ -17,8 +27,12 @@
       ui: String,
       label: String,
       type: String,
+      indeterminate: Boolean,
       required: Boolean,
       disabled: Boolean,
+      trueValue: String,
+      falseValue: String,
+      size: String,
       value: [Boolean, String, Number, Object],
     },
     setup(props: any) {
