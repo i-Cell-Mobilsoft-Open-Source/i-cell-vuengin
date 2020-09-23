@@ -3,7 +3,7 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Steps</div>
+        <div class="title-label">Radio Button</div>
         <div class="tags-content">
           <!--<span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
@@ -19,20 +19,7 @@
 
       <!-- Content -->
       <div class="input-content">
-        <v-icell-steps
-          v-model="state.value"
-          :steps="state.steps"
-          :animated="true"
-          :rounded="true"
-          :has-navigation="true"
-          :label-position="'bottom'"
-          :type="'is-green'"
-          :size="'is-medium'"
-          :destroy-on-hide="true"
-          :vertical="false"
-          :mobile-mode="'minimalist'"
-          @input="onInput"
-        ></v-icell-steps>
+        <v-icell-radiobutton v-model="state.value" :elements="state.elements" @input="onInput"></v-icell-radiobutton>
       </div>
 
       <!-- Settings -->
@@ -46,10 +33,7 @@
         </div>
       </b-collapse>
     </div>
-    <!-- Data -->
-    <div class="data-content">
-      <code-box :open="isOpenData" :code="state.value"></code-box>
-    </div>
+
     <!-- Code -->
     <div class="code-content">
       <code-box :open="isOpenCode" :code="code" copy></code-box>
@@ -72,12 +56,12 @@
     setup() {
       const code = ref(templateCode);
       const state = reactive({
-        steps: [
-          { i: 1, label: 'A', text: 'Alma', desc: 'Szép piros alma', clickable: true },
-          { i: 2, label: 'B', text: 'Barack', desc: 'Érett kis kopasz barack', clickable: false },
-          { i: 3, label: 'C', text: 'Cseresznye', desc: 'Kis kosár cseresznye', clickable: true },
+        elements: [
+          { i: 1, value: 'A', descreption: 'Aladár' },
+          { i: 2, value: 'B', descreption: 'Béla' },
+          { i: 3, value: 'C', descreption: 'Cecil' },
         ],
-        value: 2,
+        value: 'B',
       });
 
       const onInput = (value: any) => {

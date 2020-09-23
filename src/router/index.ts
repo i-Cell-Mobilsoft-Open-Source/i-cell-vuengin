@@ -35,6 +35,11 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/Checkbox/checkbox-sandbox.vue'),
   },
   {
+    path: '/radiobutton',
+    name: 'Radiobutton',
+    component: () => import('@/views/Radiobutton/radiobutton-sandbox.vue'),
+  },
+  {
     path: '/basic-form',
     name: 'Basic Form',
     component: () => import('@/views/Concepts/BasicForm.vue'),

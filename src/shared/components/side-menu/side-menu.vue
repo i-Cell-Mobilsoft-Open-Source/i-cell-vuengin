@@ -93,6 +93,15 @@
           group: 'components',
           group_order: 3,
         },
+        //https://material.io/resources/icons/?search=radio&icon=radio_button_checked&style=baseline valamiért nem eszi meg: radio_button_checked
+        radiobutton: {
+          path: '/radiobutton',
+          name: 'Radiobutton',
+          active: false,
+          icon: 'check-circle',
+          group: 'components',
+          group_order: 3,
+        },
         table: {
           path: '/table',
           name: 'Table',

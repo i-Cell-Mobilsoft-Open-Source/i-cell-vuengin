@@ -18,6 +18,8 @@ import Steps from './steps/steps.vue';
 export { Steps as VIcellSteps };
 import Table from './table/table.vue';
 export { Table as VIcellTable };
+import Radiobutton from './radiobutton/radiobutton.vue';
+export { Radiobutton as VIcellRadiobutton };
 
 const ComponentsPlugin = {
   install(Vue: any) {
@@ -31,6 +33,7 @@ const ComponentsPlugin = {
     Vue.component(Select.name, Select);
     Vue.component(Steps.name, Steps);
     Vue.component(Table.name, Table);
+    Vue.component(Radiobutton.name, Radiobutton);
   },
 };
 
