@@ -19,7 +19,13 @@
 
       <!-- Content -->
       <div class="input-content">
-        <v-icell-radiobutton v-model="state.value" :elements="state.elements" @input="onInput"></v-icell-radiobutton>
+        <v-icell-radiobutton
+          v-model="state.value"
+          :elements="state.elements"
+          :size="state.size"
+          :type="state.type"
+          @input="onInput"
+        ></v-icell-radiobutton>
       </div>
 
       <!-- Settings -->
@@ -62,6 +68,8 @@
           { i: 3, value: 'C', descreption: 'Cecil' },
         ],
         value: 'B',
+        size: 'is-large',
+        type: 'is-danger',
       });
 
       const onInput = (value: any) => {

@@ -3,7 +3,15 @@
     <div class="block">
       <div class="block">
         <template v-for="item in elements">
-          <b-radio :value="model" :key="item.i" :native-value="item.value" name="name" @input="onInput($event)">
+          <b-radio
+            :value="model"
+            :key="item.i"
+            :native-value="item.value"
+            :size="size"
+            :type="type"
+            name="name"
+            @input="onInput($event)"
+          >
             {{ item.descreption }}
           </b-radio>
         </template>
@@ -25,6 +33,8 @@
       value: String,
       elements: Array,
       label: String,
+      size: String,
+      type: String,
     },
     setup(props: any, attr: any) {
       const model = props.value ? ref(props.value) : false;

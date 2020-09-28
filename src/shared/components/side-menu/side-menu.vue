@@ -98,7 +98,7 @@
           path: '/radiobutton',
           name: 'Radiobutton',
           active: false,
-          icon: 'check-circle',
+          icon: 'volume-high',
           group: 'components',
           group_order: 3,
         },
