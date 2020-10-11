@@ -3,7 +3,7 @@
     <div class="padding-content">
       <!-- Title -->
       <div class="title-content">
-        <div class="title-label">Select - multi</div>
+        <div class="title-label">Auto Complete</div>
         <div class="tags-content">
           <!--<span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
             <i class="mdi mdi-cog"></i>
@@ -19,19 +19,16 @@
 
       <!-- Content -->
       <div class="input-content">
-        <v-icell-select
-          :label="state.label"
-          :placeHolder="state.placeHolder"
-          :option="state.option"
-          :expanded="state.expanded"
-          :multiple="state.multiple"
-          :native-size="state.nativeSize"
+        <v-icell-autocomplete
           :value="state.value"
+          :options="state.data"
+          :placeholder="'Names'"
           @input="onInput"
-        ></v-icell-select>
+          @selected="onSelected"
+        ></v-icell-autocomplete>
       </div>
 
-      <!-- Settings -->
+      <!-- Settins -->
       <b-collapse :open="isOpenSetting">
         <div class="settings-content">
           <b-field grouped group-multiline>
@@ -42,10 +39,7 @@
         </div>
       </b-collapse>
     </div>
-    <!-- Data -->
-    <div class="data-content">
-      <code-box :open="isOpenData" :code="state.value"></code-box>
-    </div>
+
     <!-- Code -->
     <div class="code-content">
       <code-box :open="isOpenCode" :code="code" copy></code-box>
@@ -54,10 +48,11 @@
 </template>
 
 <script lang="ts">
-  import { ref, reactive } from '@vue/composition-api';
+  import { ref, reactive, computed } from '@vue/composition-api';
   import { templateCode } from './template-code';
 
   export default {
+    props: {},
     data() {
       return {
         isOpenSetting: false,
@@ -65,52 +60,74 @@
         isOpenData: false,
       };
     },
+
     setup() {
       const code = ref(templateCode);
       const state = reactive({
-        label: '',
-        placeHolder: '',
-        expanded: true,
-        multiple: true,
-        nativeSize: 4,
-        option: [
-          'Austria',
-          'Belgium',
-          'Bulgaria',
-          'Croatia',
-          'Cyprus',
-          'Czechia',
-          'Denmark',
-          'Estonia',
-          'Finland',
-          'France',
-          'Germany',
-          'Greece',
-          'Hungary',
-          'Ireland',
-          'Italy',
-          'Latvia',
-          'Lithuania',
-          'Luxembourg',
-          'Malta',
-          'Netherlands',
-          'Poland',
-          'Portugal',
-          'Romania',
-          'Slovakia',
-          'Slovenia',
-          'Spain',
-          'Sweden',
+        data: [
+          'Abigail',
+          'Addison',
+          'Amelia',
+          'Aria',
+          'Aubrey',
+          'Aurora ',
+          'Ava',
+          'Avery',
+          'Camila',
+          'Charlotte',
+          'Chloe',
+          'Eleanor',
+          'Elizabeth',
+          'Ella',
+          'Ellie',
+          'Emily',
+          'Emma',
+          'Evelyn',
+          'Grace',
+          'Hannah',
+          'Harper',
+          'Hazel',
+          'Isabella',
+          'Layla',
+          'Leah',
+          'Lillian',
+          'Lily',
+          'Luna',
+          'Madison',
+          'Mia',
+          'Mila',
+          'Natalie',
+          'Nora',
+          'Olivia',
+          'Penelope',
+          'Riley',
+          'Scarlett',
+          'Sofia',
+          'Sophia',
+          'Stella',
+          'Victoria',
+          'Violet',
+          'Zoe',
+          'Zoey',
         ],
-        value: null,
+        name: '',
+        selected: '',
+        value: '',
       });
+
       const onInput = (value: any) => {
         state.value = value;
       };
+
+      const onSelected = (value: any) => {
+        state.selected = value;
+      };
+
       return {
         code,
         state,
         onInput,
+        onSelected,
       };
     },
   };

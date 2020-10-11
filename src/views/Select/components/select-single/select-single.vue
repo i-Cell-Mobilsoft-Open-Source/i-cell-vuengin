@@ -67,9 +67,9 @@
       const code = ref(templateCode);
       const state = reactive({
         label: '',
-        placeHolder: 'Select name',
+        placeHolder: 'Select Greek Alphabet',
         expanded: true,
-        option: ['Palvin Barbi', 'Mihalik Enikő', 'Ördög Nóra', 'Szabó Erika'],
+        option: ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta'],
         value: null,
       });
       const onInput = (value: any) => {

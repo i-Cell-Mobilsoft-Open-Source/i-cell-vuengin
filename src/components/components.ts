@@ -20,6 +20,8 @@ import Table from './table/table.vue';
 export { Table as VIcellTable };
 import Radiobutton from './radiobutton/radiobutton.vue';
 export { Radiobutton as VIcellRadiobutton };
+import Autocomplete from './autocomplete/autocomplete.vue';
+export { Autocomplete as VIcellAutocomplete };
 
 const ComponentsPlugin = {
   install(Vue: any) {
@@ -34,6 +36,7 @@ const ComponentsPlugin = {
     Vue.component(Steps.name, Steps);
     Vue.component(Table.name, Table);
     Vue.component(Radiobutton.name, Radiobutton);
+    Vue.component(Autocomplete.name, Autocomplete);
   },
 };
 

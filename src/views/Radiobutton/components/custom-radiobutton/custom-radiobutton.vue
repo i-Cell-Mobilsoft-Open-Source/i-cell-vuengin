@@ -63,9 +63,9 @@
       const code = ref(templateCode);
       const state = reactive({
         elements: [
-          { i: 1, value: 'A', descreption: 'Aladár' },
-          { i: 2, value: 'B', descreption: 'Béla' },
-          { i: 3, value: 'C', descreption: 'Cecil' },
+          { i: 1, value: 'A', descreption: 'Alpha' },
+          { i: 2, value: 'B', descreption: 'Beta' },
+          { i: 3, value: 'G', descreption: 'Gamma' },
         ],
         value: 'B',
         size: 'is-large',

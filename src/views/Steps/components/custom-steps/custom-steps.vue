@@ -73,9 +73,9 @@
       const code = ref(templateCode);
       const state = reactive({
         steps: [
-          { i: 1, label: 'A', text: 'Alma', desc: 'Szép piros alma', clickable: true },
-          { i: 2, label: 'B', text: 'Barack', desc: 'Érett kis kopasz barack', clickable: false },
-          { i: 3, label: 'C', text: 'Cseresznye', desc: 'Kis kosár cseresznye', clickable: true },
+          { i: 1, label: 'A', text: 'A', desc: 'Apple', clickable: true },
+          { i: 2, label: 'B', text: 'B', desc: 'Bar', clickable: false },
+          { i: 3, label: 'C', text: 'C', desc: 'Cyber', clickable: true },
         ],
         value: 2,
       });

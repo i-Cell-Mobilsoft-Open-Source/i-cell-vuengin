@@ -21,11 +21,44 @@
       <div class="input-content">
         <v-icell-checkbox
           v-model="state.value"
-          name="love_me_tender_label"
+          name="chechbox_large"
           :size="'is-large'"
-          :label="'Nos?'"
-          :trueValue="'Szeret'"
-          :falseValue="'Nem Szeret'"
+          :label="'LARGE?'"
+          :trueValue="'Is Large'"
+          :falseValue="'Is not Large'"
+          :type="'is-info'"
+          @input="onInput"
+        ></v-icell-checkbox>
+
+        <v-icell-checkbox
+          v-model="state.value"
+          name="chechbox_medium"
+          :size="'is-medium'"
+          :label="'Medium?'"
+          :trueValue="'Is Medium'"
+          :falseValue="'Is not Medium'"
+          :type="'is-info'"
+          @input="onInput"
+        ></v-icell-checkbox>
+
+        <v-icell-checkbox
+          v-model="state.value"
+          name="chechbox_default"
+          :size="'is-default'"
+          :label="'Default?'"
+          :trueValue="'Is Default'"
+          :falseValue="'Is not Default'"
+          :type="'is-info'"
+          @input="onInput"
+        ></v-icell-checkbox>
+
+        <v-icell-checkbox
+          v-model="state.value"
+          name="chechbox_large"
+          :size="'is-small'"
+          :label="'small?'"
+          :trueValue="'Is Small'"
+          :falseValue="'Is not Small'"
           :type="'is-info'"
           @input="onInput"
         ></v-icell-checkbox>
@@ -65,7 +98,7 @@
     setup() {
       const code = ref(templateCode);
       const state = reactive({
-        value: 'Szeret',
+        value: 'Is Large',
       });
 
       const onInput = (value: any) => {

@@ -40,6 +40,11 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/Radiobutton/radiobutton-sandbox.vue'),
   },
   {
+    path: '/autocomplete',
+    name: 'Autocomplete',
+    component: () => import('@/views/Autocomplete/autocomplete-sandbox.vue'),
+  },
+  {
     path: '/basic-form',
     name: 'Basic Form',
     component: () => import('@/views/Concepts/BasicForm.vue'),
