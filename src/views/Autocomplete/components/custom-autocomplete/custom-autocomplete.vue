@@ -22,7 +22,10 @@
         <v-icell-autocomplete
           :value="state.value"
           :options="state.data"
-          :placeholder="'Names'"
+          :placeHolder="'Names'"
+          :keepFirst="true"
+          :openOnFocus="true"
+          :clearable="true"
           @input="onInput"
           @selected="onSelected"
         ></v-icell-autocomplete>
@@ -110,7 +113,6 @@
           'Zoe',
           'Zoey',
         ],
-        name: '',
         selected: '',
         value: '',
       });

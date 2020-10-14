@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="columns">
-      <div class="column is-10">
+      <div class="column is-12">
         <custom-radiobutton></custom-radiobutton>
       </div>
     </div>

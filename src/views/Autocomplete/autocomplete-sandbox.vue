@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="columns">
-      <div class="column is-6">
+      <div class="column is-12">
         <custom-autocomplete></custom-autocomplete>
       </div>
     </div>
