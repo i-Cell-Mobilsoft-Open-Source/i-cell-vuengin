@@ -14,7 +14,7 @@
     props: {
       copy: Boolean,
       code: {
-        type: [String, Number, Date, Array, Object],
+        type: [String, Number, Date, Array, Object, Boolean],
         default: '<>',
       },
       open: {

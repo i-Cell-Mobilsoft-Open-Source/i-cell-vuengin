@@ -1,11 +1,11 @@
 export const templateCode = `<v-icell-checkbox
-   v-model="state.value"
-   name = "love_me_tender_label"
-   :size="'is-large'"
-   :label="'Nos?'"
-   :trueValue="'Szeret'"          
-   :falseValue="'Nem Szeret'"
-   :type="'is-info'"
-   @input="onInput">        
+    v-model="state.large"
+    name="chechbox_large"
+    :size="'is-large'"
+    :label="'Large'"
+    :trueValue="'Is Large'"
+    :falseValue="'Is not Large'"
+    :type="'is-info'"
+    @input="onInput">        
 </v-icell-checkbox>
 `;

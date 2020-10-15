@@ -8,6 +8,7 @@
       :size="size"
       :indeterminate="indeterminate"
       :type="type"
+      @input="onInput"
     >
       {{ model }}
     </b-checkbox>
@@ -35,11 +36,13 @@
       size: String,
       value: [Boolean, String, Number, Object],
     },
-    setup(props: any) {
+    setup(props: any, { emit }) {
       const model = props.value ? ref(props.value) : false;
       const isRequired = () => (props.required ? 'required' : '');
+      const onInput = (value) => emit('input', value);
       return {
         isRequired,
+        onInput,
         model,
       };
     },

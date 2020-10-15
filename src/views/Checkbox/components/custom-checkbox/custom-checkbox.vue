@@ -20,10 +20,10 @@
       <!-- Content -->
       <div class="input-content">
         <v-icell-checkbox
-          v-model="state.value"
+          v-model="state.large"
           name="chechbox_large"
           :size="'is-large'"
-          :label="'LARGE?'"
+          :label="'Large'"
           :trueValue="'Is Large'"
           :falseValue="'Is not Large'"
           :type="'is-info'"
@@ -31,10 +31,10 @@
         ></v-icell-checkbox>
 
         <v-icell-checkbox
-          v-model="state.value"
+          v-model="state.medium"
           name="chechbox_medium"
           :size="'is-medium'"
-          :label="'Medium?'"
+          :label="'Medium'"
           :trueValue="'Is Medium'"
           :falseValue="'Is not Medium'"
           :type="'is-info'"
@@ -42,10 +42,10 @@
         ></v-icell-checkbox>
 
         <v-icell-checkbox
-          v-model="state.value"
+          v-model="state.default"
           name="chechbox_default"
           :size="'is-default'"
-          :label="'Default?'"
+          :label="'Default'"
           :trueValue="'Is Default'"
           :falseValue="'Is not Default'"
           :type="'is-info'"
@@ -56,9 +56,7 @@
           v-model="state.value"
           name="chechbox_large"
           :size="'is-small'"
-          :label="'small?'"
-          :trueValue="'Is Small'"
-          :falseValue="'Is not Small'"
+          :label="'Small'"
           :type="'is-info'"
           @input="onInput"
         ></v-icell-checkbox>
@@ -76,6 +74,10 @@
       </b-collapse>
     </div>
 
+    <!-- Data -->
+    <div class="data-content">
+      <code-box :open="isOpenData" :code="state.value"></code-box>
+    </div>
     <!-- Code -->
     <div class="code-content">
       <code-box :open="isOpenCode" :code="code" copy></code-box>
@@ -98,7 +100,10 @@
     setup() {
       const code = ref(templateCode);
       const state = reactive({
-        value: 'Is Large',
+        value: '',
+        large: 'Is Large',
+        medium: 'Is Medium',
+        default: 'Is not Default',
       });
 
       const onInput = (value: any) => {
