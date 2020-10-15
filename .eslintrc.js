@@ -18,6 +18,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-implicit-any': 'off',
     'no-explicit-any': 'off',
+    'vue/custom-event-name-casing': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-inferrable-types': 'off',
     '@typescript-eslint/no-var-requires': 'off',

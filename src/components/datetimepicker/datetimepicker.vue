@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <ValidationProvider :rules="isRequired()" v-slot="">
+    <ValidationProvider :rules="isRequired()">
       <b-field :label="label" :label-for="id">
         <b-datetimepicker
           v-model="model"

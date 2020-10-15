@@ -71,14 +71,7 @@
         label: 'Range',
         placeHolder: 'Choose dates',
         range: true,
-        value: [
-          moment()
-            .subtract(3, 'days')
-            .toDate(),
-          moment()
-            .add(2, 'days')
-            .toDate(),
-        ],
+        value: [moment().subtract(3, 'days').toDate(), moment().add(2, 'days').toDate()],
       });
       const onInput = (value: any) => {
         state.value = value;

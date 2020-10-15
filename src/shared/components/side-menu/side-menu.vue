@@ -130,7 +130,7 @@
 
       function groupBy(list, keyGetter) {
         const map = new Map();
-        list.forEach(item => {
+        list.forEach((item) => {
           const key = keyGetter(item);
           const collection = map.get(key);
           if (!collection) {
@@ -144,14 +144,14 @@
 
       const getMenuGroups = () => {
         const menus = Object.keys(menuItems)
-          .map(prop => ({ key: prop, ...menuItems[prop] }))
+          .map((prop) => ({ key: prop, ...menuItems[prop] }))
           .sort((a, b) => a.group_order - b.group_order);
-        return Array.from(groupBy(menus, item => item.group).keys());
+        return Array.from(groupBy(menus, (item) => item.group).keys());
       };
 
       const getMenuItems = (group: string) => {
         return Object.keys(menuItems)
-          .map(prop => ({ key: prop, ...menuItems[prop] }))
+          .map((prop) => ({ key: prop, ...menuItems[prop] }))
           .filter((item: any) => item.group === group);
       };
 

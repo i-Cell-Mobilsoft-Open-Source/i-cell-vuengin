@@ -1,5 +1,5 @@
 <template>
-  <ValidationProvider :rules="isRequired()" v-slot="">
+  <ValidationProvider :rules="isRequired()">
     <b-field :label="label" :label-for="id">
       <b-select
         :id="id"

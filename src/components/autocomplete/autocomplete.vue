@@ -1,7 +1,7 @@
 <template>
   <section :options="options">
     Selected:{{ state.selected }}
-    <ValidationProvider :rules="isRequired()" v-slot="">
+    <ValidationProvider :rules="isRequired()">
       <b-autocomplete
         rounded
         v-model="state.value"
@@ -66,12 +66,7 @@
 
       const filteredDataArray = computed(() => {
         return state.data.filter((option: String) => {
-          return (
-            option
-              .toString()
-              .toLowerCase()
-              .indexOf(state.value.toLowerCase()) >= 0
-          );
+          return option.toString().toLowerCase().indexOf(state.value.toLowerCase()) >= 0;
         });
       });
 
@@ -84,7 +79,7 @@
             value: state.value,
           },
           confirmText: 'Add',
-          onConfirm: value => {
+          onConfirm: (value) => {
             state.data.push(value as never);
             refs.autocomplete_reference.setSelected(value);
           },

@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <ValidationProvider :rules="isRequired()" v-slot="">
+    <ValidationProvider :rules="isRequired()">
       <b-field :label="label" :type="styleType" :label-for="id">
         <b-input
           v-model="model"

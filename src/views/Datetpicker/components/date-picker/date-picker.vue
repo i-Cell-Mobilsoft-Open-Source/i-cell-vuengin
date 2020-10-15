@@ -69,12 +69,8 @@
       const state = reactive({
         label: 'Date',
         placeHolder: 'Choose date',
-        minDate: moment()
-          .subtract(5, 'days')
-          .toDate(),
-        maxDate: moment()
-          .add(5, 'days')
-          .toDate(),
+        minDate: moment().subtract(5, 'days').toDate(),
+        maxDate: moment().add(5, 'days').toDate(),
         value: moment().toDate(),
       });
       const onInput = (value: any) => {
