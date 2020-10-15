@@ -10,13 +10,13 @@
         :keep-first="keepFirst"
         :open-on-focus="openOnFocus"
         :clearable="clearable"
-        ref="autocomplete_reference"
+        :ref="autoCompleteRef"
         icon="magnify"
         @input="onInput($event)"
         @select="onSelected($event)"
       >
         <template slot="header">
-          <a @click="showAddFruit">
+          <a @click="addNewName">
             <span>Add new...</span>
           </a>
         </template>
@@ -46,7 +46,9 @@
       clearable: Boolean,
     },
 
-    setup(props: any, attr: any) {
+    setup(props: any, { refs, emit }: any) {
+      console.log('refs', refs);
+      const autoCompleteRef = ref('autocomplete_reference');
       const defaultValue = props.multiple ? [] : null;
       const model = props.value ? ref(props.value) : defaultValue;
       const isRequired = () => (props.required ? 'required' : '');
@@ -73,7 +75,7 @@
         });
       });
 
-      const showAddFruit = () => {
+      const addNewName = () => {
         Dialog.prompt({
           message: `Add New Name`,
           inputAttrs: {
@@ -84,28 +86,29 @@
           confirmText: 'Add',
           onConfirm: value => {
             state.data.push(value as never);
-            //this.$refs.autocomplete_reference.setSelected(value)
+            refs.autocomplete_reference.setSelected(value);
           },
         });
       };
 
       const onInput = (value: string) => {
-        attr.emit('input', value);
+        emit('input', value);
       };
 
       const onSelected = (value: string) => {
         state.selected = value;
-        attr.emit('selected', value);
+        emit('selected', value);
       };
 
       return {
         state,
         filteredDataArray,
         model,
+        autoCompleteRef,
         isRequired,
         onInput,
         onSelected,
-        showAddFruit,
+        addNewName,
       };
     },
   };
