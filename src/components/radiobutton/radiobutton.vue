@@ -9,7 +9,7 @@
             :native-value="item.value"
             :size="size"
             :type="type"
-            name="name"
+            :name="name"
             @input="onInput($event)"
           >
             {{ item.descreption }}
@@ -35,6 +35,7 @@
       label: String,
       size: String,
       type: String,
+      name: String,
     },
     setup(props: any, attr: any) {
       const model = props.value ? ref(props.value) : false;

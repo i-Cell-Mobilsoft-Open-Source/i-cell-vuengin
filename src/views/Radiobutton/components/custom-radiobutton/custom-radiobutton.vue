@@ -5,9 +5,6 @@
       <div class="title-content">
         <div class="title-label">Radio Button</div>
         <div class="tags-content">
-          <!--<span class="tag is-light" @click="isOpenSetting = !isOpenSetting" :class="isOpenSetting ? 'active' : ''">
-            <i class="mdi mdi-cog"></i>
-          </span>-->
           <span class="tag is-light" @click="isOpenData = !isOpenData" :class="isOpenData ? 'active' : ''">
             <i class="mdi mdi-code-greater-than"></i>
           </span>
@@ -20,10 +17,36 @@
       <!-- Content -->
       <div class="input-content">
         <v-icell-radiobutton
-          v-model="state.value"
-          :elements="state.elements"
-          :size="state.size"
-          :type="state.type"
+          v-model="state.large.value"
+          :elements="state.large.elements"
+          :size="state.large.size"
+          :type="state.large.type"
+          :name="state.large.name"
+          @input="onInput"
+        ></v-icell-radiobutton>
+
+        <v-icell-radiobutton
+          v-model="state.medium.value"
+          :elements="state.medium.elements"
+          :size="state.medium.size"
+          :type="state.medium.type"
+          :name="state.medium.name"
+          @input="onInput"
+        ></v-icell-radiobutton>
+
+        <v-icell-radiobutton
+          v-model="state.default.value"
+          :elements="state.default.elements"
+          :name="state.default.name"
+          @input="onInput"
+        ></v-icell-radiobutton>
+
+        <v-icell-radiobutton
+          v-model="state.small.value"
+          :elements="state.small.elements"
+          :size="state.small.size"
+          :type="state.small.type"
+          :name="state.small.name"
           @input="onInput"
         ></v-icell-radiobutton>
       </div>
@@ -40,6 +63,10 @@
       </b-collapse>
     </div>
 
+    <!-- Data -->
+    <div class="data-content">
+      <code-box :open="isOpenData" :code="state.value"></code-box>
+    </div>
     <!-- Code -->
     <div class="code-content">
       <code-box :open="isOpenCode" :code="code" copy></code-box>
@@ -62,14 +89,48 @@
     setup() {
       const code = ref(templateCode);
       const state = reactive({
-        elements: [
-          { i: 1, value: 'A', descreption: 'Alpha' },
-          { i: 2, value: 'B', descreption: 'Beta' },
-          { i: 3, value: 'G', descreption: 'Gamma' },
-        ],
-        value: 'B',
-        size: 'is-large',
-        type: 'is-danger',
+        large: {
+          elements: [
+            { i: 1, value: 'Large-A', descreption: 'Alpha' },
+            { i: 2, value: 'Large-B', descreption: 'Beta' },
+            { i: 3, value: 'Large-G', descreption: 'Gamma' },
+          ],
+          value: 'Large-A',
+          size: 'is-large',
+          type: 'is-danger',
+          name: 'large',
+        },
+        medium: {
+          elements: [
+            { i: 1, value: 'Medium-A', descreption: 'Alpha' },
+            { i: 2, value: 'Medium-B', descreption: 'Beta' },
+            { i: 3, value: 'Medium-G', descreption: 'Gamma' },
+          ],
+          value: 'Medium-B',
+          size: 'is-medium',
+          type: 'is-warning',
+          name: 'medium',
+        },
+        default: {
+          elements: [
+            { i: 1, value: 'Default-A', descreption: 'Alpha' },
+            { i: 2, value: 'Default-B', descreption: 'Beta' },
+            { i: 3, value: 'Default-G', descreption: 'Gamma' },
+          ],
+          name: 'default',
+          value: 'Default-G',
+        },
+        small: {
+          elements: [
+            { i: 1, value: 'Small-A', descreption: 'Alpha' },
+            { i: 2, value: 'Small-B', descreption: 'Beta' },
+            { i: 3, value: 'Small-G', descreption: 'Gamma' },
+          ],
+          name: 'small',
+          type: 'is-info',
+          size: 'is-small',
+        },
+        value: '',
       });
 
       const onInput = (value: any) => {
