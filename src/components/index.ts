@@ -21,9 +21,10 @@ export { Table as VIcellTable };
 import Radiobutton from './radiobutton/radiobutton.vue';
 export { Radiobutton as VIcellRadiobutton };
 import Autocomplete from './autocomplete/autocomplete.vue';
+import { PluginObject } from 'vue';
 export { Autocomplete as VIcellAutocomplete };
 
-const ComponentsPlugin = {
+const ComponentsPlugin: PluginObject<any> = {
   install(Vue: any) {
     Vue.component(Box.name, Box);
     Vue.component(Button.name, Button);

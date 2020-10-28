@@ -13,7 +13,8 @@ import './assets/scss/app.scss';
 
 // Import Plugins
 // import InputPlugin from '@/components/input/input';
-import ComponentsPlugin from './components/components';
+import { ComponentsPlugin } from '@i-cell/vuengin';
+console.log(ComponentsPlugin);
 
 // Import Components
 // import BoxComponent from '@/components/box/Box.vue';

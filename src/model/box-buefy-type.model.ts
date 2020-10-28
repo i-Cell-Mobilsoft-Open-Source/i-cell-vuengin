@@ -10,7 +10,7 @@ import {
   Row,
   Text,
   UI,
-} from '@/core/decorators';
+} from '@i-cell/vuengin';
 
 @LayoutModel('GeneralData')
 @Legend('GeneralData')
