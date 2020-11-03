@@ -14,7 +14,8 @@ import './assets/scss/app.scss';
 // Import Plugins
 // import InputPlugin from '@/components/input/input';
 import { ComponentsPlugin } from '@i-cell/vuengin';
-console.log(ComponentsPlugin);
+// import ComponentsPlugin from './components';
+// console.log(ComponentsPlugin);
 
 // Import Components
 // import BoxComponent from '@/components/box/Box.vue';
@@ -37,6 +38,7 @@ import { extend } from 'vee-validate';
 
 extend('required', required);
 extend('length', length);
+Vue.use(VueCompositionApi);
 
 Vue.use(Buefy, {
   defaultDayNames: ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'],
@@ -58,7 +60,6 @@ Vue.use(Buefy, {
   defaultTrapFocus: true,
   defaultDatepickerYearsRange: [-100, 60],
 });
-Vue.use(VueCompositionApi);
 
 // Vue.use(InputPlugin);
 Vue.use(ComponentsPlugin);

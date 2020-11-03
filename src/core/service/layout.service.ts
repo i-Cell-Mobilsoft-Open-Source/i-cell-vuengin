@@ -15,13 +15,14 @@ export function buildLayout(...models: any[]) {
         type: 'box',
         name: `${meta.name}_${row}`,
         classes: 'tile is-child columns px-0 py-0 mx-0 my-0',
-        data: fieldMetas.map((field) => ({
-          ...field,
-          name: field.key,
-          type: field.type || 'input',
-          subtype: field.subtype || field.modelType.toLowerCase() || 'text',
-          data: `model.${meta.name}.${field.key}`,
-        })),
+        data: fieldMetas.map((field) =>
+          Object.assign({}, field, {
+            name: field.key,
+            type: field.type || 'input',
+            subtype: field.subtype || field.modelType.toLowerCase() || 'text',
+            data: `model.${meta.name}.${field.key}`,
+          })
+        ),
       };
     });
     if (meta.legend)

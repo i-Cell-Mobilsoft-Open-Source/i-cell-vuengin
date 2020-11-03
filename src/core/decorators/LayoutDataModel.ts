@@ -46,12 +46,12 @@ export function LayoutModel(name: string, debug = false): ClassDecorator {
     const props: any = {};
     for (const prop of Reflect.ownKeys(tmpInstance)) {
       let type = 'text';
-      if (tmpInstance?.[prop]) {
-        if (typeof tmpInstance?.[prop] === 'object') {
-          type = Reflect.getPrototypeOf(tmpInstance?.[prop]).constructor.name;
+      if (tmpInstance && tmpInstance[prop]) {
+        if (typeof tmpInstance[prop] === 'object') {
+          type = Reflect.getPrototypeOf(tmpInstance[prop]).constructor.name;
           if (debug) console.log(prop, type);
         } else {
-          type = (typeof tmpInstance?.[prop]).replace(
+          type = (typeof tmpInstance[prop]).replace(
             /(.)(.*)/,
             (m: any, $1: any, $2: any) => `${$1.toUpperCase()}${$2}`
           );
