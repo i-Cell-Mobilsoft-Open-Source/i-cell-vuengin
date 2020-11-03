@@ -7,11 +7,15 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import typescript from 'rollup-plugin-typescript2';
 import vue from 'rollup-plugin-vue';
 import uglify from 'rollup-plugin-uglify';
+import copy from 'rollup-plugin-copy';
 
 const plugins = [
   peerDepsExternal(),
   typescript({ check: false }),
   vue(),
+  copy({
+    targets: [{ src: './README.md', dest: 'dist/' }],
+  }),
   nodeResolve({
     mainFields: ['module', 'main', 'jsnext:main', 'browser'],
     modulesOnly: true,

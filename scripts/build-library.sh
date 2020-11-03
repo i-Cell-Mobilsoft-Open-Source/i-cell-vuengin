@@ -1,6 +1,10 @@
 #!/bin/bash
 NODE_ENV=production
 JQ=`command -v jq`
+if ! [ -x $JQ ]; then
+  sudo apt install asciidoctor
+  JQ=`command -v jq`
+fi
 PACKAGE_VERSION=`$JQ .version ./package.json`
 
 PACKAGE_JSON="{ \

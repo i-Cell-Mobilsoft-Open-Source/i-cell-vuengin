@@ -4,15 +4,19 @@
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",
-    "build:library": "bash ./build-library.sh",
+    "build:prod": "bash ./scripts/build-library.sh",
+    "prebuild:prod": "npm run docs:readme",
+    "docs:cleanup": "rm ./README.md",
+    "docs:readme": "bash ./scripts/readme-adoc2md",
     "pack": "npm pack dist/",
-    "prepack": "npm run build:library",
+    "prepack": "npm run build:prod",
     "publish": "npm publish dist/",
-    "prepublish": "npm run build:library",
+    "prepublish": "npm run version:patch && npm run build:prod",
     "install:local": "npm i --no-save i-cell-vuengin-*.tgz",
     "preinstall:local": "npm run pack",
     "lint": "vue-cli-service lint",
-    "start": "vue-cli-service serve"
+    "start": "vue-cli-service serve",
+    "version:patch": "npm --no-git-tag-version version patch"
   },
   "dependencies": {
     "@vue/composition-api": "^1.0.0-beta.16",
@@ -56,7 +60,7 @@
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-buble": "^0.16.0",
     "rollup-plugin-commonjs": "^8.2.1",
-    "rollup-plugin-copy": "^0.2.3",
+    "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-livereload": "^0.6.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
