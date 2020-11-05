@@ -40,7 +40,7 @@ const plugins = [
 ];
 
 export default {
-  input: 'src/lib.ts',
+  input: 'lib/lib.ts',
   external: ['lodash', 'moment', '@vue/composition-api', 'reflect-metadata', 'core-js/modules/es.function.name'],
   output: [
     {

@@ -1,22 +1,19 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "dist/"
+    "declarationDir": "dist/",
+    "paths": {
+      "@/*": [
+        "lib/*"
+      ]
+    },
   },
   "include": [
-    "src/lib.ts",
-    "src/**/*.ts",
-    "src/**/*.vue",
+    "lib/**/*.ts",
+    "lib/**/*.vue",
   ],
   "exclude": [
     "node_modules",
-    "src/main.ts",
-    "src/assets/**/*",
-    "src/model/**/*",
-    "src/router/**/*",
-    "src/services/**/*",
-    "src/shared/**/*",
-    "src/store/**/*",
-    "src/views/**/*"
+    "src/**/*"
   ]
 }

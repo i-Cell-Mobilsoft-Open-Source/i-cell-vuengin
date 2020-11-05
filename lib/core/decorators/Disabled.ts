@@ -1,4 +1,4 @@
-import { decorateProperty } from '@/core/decorators/LayoutDataModel';
+import { decorateProperty } from './LayoutDataModel';
 export function Disabled(disabled = true): PropertyDecorator {
   return decorateProperty('disabled', disabled);
 }

@@ -1,4 +1,4 @@
-import { decorateProperty } from '@/core/decorators/LayoutDataModel';
+import { decorateProperty } from './LayoutDataModel';
 export function Required(required = true): PropertyDecorator {
   return decorateProperty('required', required);
 }

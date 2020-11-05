@@ -1,4 +1,4 @@
-import { InputType } from '@/core/decorators/InputType';
+import { InputType } from './InputType';
 export function Numeric(): PropertyDecorator {
   return InputType('number');
 }

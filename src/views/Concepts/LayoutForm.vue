@@ -23,7 +23,7 @@
   /* eslint-disable @typescript-eslint/no-inferrable-types */
   /* eslint-disable @typescript-eslint/no-explicit-any */
   import 'reflect-metadata';
-  import { buildLayout } from '@/core/service/layout.service';
+  import { buildLayout } from '@i-cell/vuengin';
   import { BoxBuefyTypeModel } from '@/model/box-buefy-type.model';
   import { ref } from '@vue/composition-api';
 

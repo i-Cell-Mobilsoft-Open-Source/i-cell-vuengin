@@ -1,5 +1,5 @@
 import { entries, groupBy, orderBy } from 'lodash';
-import { MetadataKeys } from '@/core/enums';
+import { MetadataKeys } from '../enums';
 
 // TODO
 export function buildLayout(...models: any[]) {

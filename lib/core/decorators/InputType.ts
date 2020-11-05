@@ -1,4 +1,4 @@
-import { decorateProperty } from '@/core/decorators/LayoutDataModel';
+import { decorateProperty } from './LayoutDataModel';
 export function InputType(subtype: string): PropertyDecorator {
   return decorateProperty('subtype', subtype);
 }
