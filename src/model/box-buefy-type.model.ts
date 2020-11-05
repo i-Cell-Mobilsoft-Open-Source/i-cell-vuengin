@@ -17,14 +17,14 @@ import {
 export class BoxBuefyTypeModel {
   // identifier ----------------------------------------------------------------
   /**
-   * serviceProviderId
+   * customerId
    */
   @Row('identifier', 1)
   @Order(1)
   @Text()
   @Disabled()
   @Classes('column is-4')
-  public serviceProviderId = '';
+  public customerId = '';
   /**
    * name
    */
@@ -121,7 +121,7 @@ export class BoxBuefyTypeModel {
   public static factory(obj: any) {
     const instance = new BoxBuefyTypeModel();
     instance.name = obj.name;
-    instance.serviceProviderId = obj.serviceProviderId;
+    instance.customerId = obj.customerId;
     instance.settlementPeriodLength = obj.settlementPeriodLength;
     instance.contractDate = obj.contractDate;
     instance.ifUrl = obj.ifUrl;

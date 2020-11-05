@@ -1,6 +1,6 @@
 {
-  "name": "@i-cell/vuengin",
-  "version": "1.0.0",
+  "name": "vuengin",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",

@@ -23,5 +23,5 @@ pnpm-debug.log*
 *.sw?
 *.tgz
 
-./README.xml
-./README.md
+README.xml
+README.md

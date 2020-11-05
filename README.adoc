@@ -1,3 +1,24 @@
-= i-Cell VUEngin
+:source-highlighter: highlightjs
+:highlightjs-languages: javascript, xml, css, bash, typescript
+:icons: font
+
+# i-Cell VUEngin
 
 Components and Layout library
+
+This project contains the library in ``lib/`` and the example ``./``. 
+
+## Installation of the library
+
+[source, bash]
+----
+npm i @i-cell/vuengin
+----
+
+## Installation for the example
+
+[source, bash]
+----
+npm i # install dependencies
+npm run install:local # build library locally and install as dependency
+----

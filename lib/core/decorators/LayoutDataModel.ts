@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 // import * as _ from 'lodash';
-import { MetadataKeys } from '@/core/enums';
+import { MetadataKeys } from '../enums';
 export const LAYOUT_META = 'layout:metadata';
 
 export function Legend(legend: string): ClassDecorator {
