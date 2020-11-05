@@ -30,14 +30,14 @@
   export default {
     setup() {
       const generalBuefyData: BoxBuefyTypeModel = BoxBuefyTypeModel.factory({
-        name: 'FE Test E2E',
-        serviceProviderId: null,
+        name: 'Example Customer',
+        customerId: null,
         settlementPeriodLength: 2,
         contractDate: new Date(),
-        ifUrl: 'http://eets_service_spmock_serviceprovidermock:10010/mock',
+        ifUrl: 'http://example.com/customer',
         regNumber: '',
-        customerTaxNumber: 'HU11111111',
-        iban: 'HU40031551504361750648232185',
+        customerTaxNumber: '',
+        iban: '',
         oversightOrganization: '',
         paymentTerm: 10,
       });
